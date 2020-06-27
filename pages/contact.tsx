@@ -14,7 +14,9 @@ export default function Index() {
           <dl>
             <dt>Mail</dt>
             <dd>
-              1888 Main Street, Suite C-198
+              1888 Main Street
+              <br />
+              Suite C-198
               <br />
               Madison, MS 39110
             </dd>
