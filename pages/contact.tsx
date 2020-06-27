@@ -28,7 +28,13 @@ export default function Index() {
             </dd>
           </dl>
         </address>
-        <form action="">
+        <form
+          action=""
+          onSubmit={(event) => {
+            event.preventDefault();
+            // TODO: Build message form submission
+          }}
+        >
           <div>
             <label htmlFor="name">Name (required)</label>
             <input type="text" name="name" id="name" required />
