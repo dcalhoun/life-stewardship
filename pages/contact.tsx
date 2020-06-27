@@ -30,11 +30,11 @@ export default function Index() {
         </address>
         <form action="">
           <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name (required)</label>
             <input type="text" name="name" id="name" required />
           </div>
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email (required)</label>
             <input type="email" name="email" id="email" required />
           </div>
           <div>
@@ -50,7 +50,7 @@ export default function Index() {
             <input type="text" name="address" id="address" />
           </div>
           <div>
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Message (required)</label>
             <textarea
               name="message"
               id="message"
