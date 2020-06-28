@@ -1,7 +1,21 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation";
+import { useState, useEffect } from "react";
 
 export default function Index() {
+  const [toast, setToast] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let toastTO = setTimeout(() => {
+      setToast(null);
+    }, 3000);
+
+    return () => {
+      clearTimeout(toastTO);
+    };
+  }, [toast]);
+
   return (
     <>
       <Head>
@@ -28,11 +42,44 @@ export default function Index() {
             </dd>
           </dl>
         </address>
+        <p>
+          If you’d like to receive more information or ask a question about our
+          services, please fill out the form below.
+        </p>
+        {toast ? <p>{toast}</p> : null}
+        {error ? <p>{error}</p> : null}
         <form
-          action=""
+          noValidate
           onSubmit={(event) => {
             event.preventDefault();
-            // TODO: Build message form submission
+            let form = event.currentTarget;
+            if (!form.checkValidity()) {
+              setError("Please fill all required fields.");
+              return;
+            }
+            setError(null);
+            let formData = new FormData(form);
+            let formEntries = Array.from(formData.entries()).reduce(
+              (acc, [key, value]) => (value ? { ...acc, [key]: value } : acc),
+              {}
+            );
+
+            fetch("/api/message", {
+              method: "POST",
+              body: JSON.stringify(formEntries),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  setToast("Your message was sent successfully.");
+                } else {
+                  throw new Error("Network response was not OK.");
+                }
+              })
+              .catch((error) => {
+                setError(
+                  `Your message failed to send. Please try again or email us directly. Error details: ${error.message}`
+                );
+              });
           }}
         >
           <div>
@@ -52,8 +99,24 @@ export default function Index() {
             <input type="tel" name="fax" id="fax" />
           </div>
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="address">Address 1</label>
             <input type="text" name="address" id="address" />
+          </div>
+          <div>
+            <label htmlFor="address">Address 2</label>
+            <input type="text" name="address" id="address" />
+          </div>
+          <div>
+            <label htmlFor="city">City</label>
+            <input type="text" name="city" id="city" />
+          </div>
+          <div>
+            <label htmlFor="state">State</label>
+            <input type="text" name="state" id="state" maxLength={2} />
+          </div>
+          <div>
+            <label htmlFor="zip-code">ZIP Code</label>
+            <input type="text" name="zip-code" id="zip-code" />
           </div>
           <div>
             <label htmlFor="message">Message (required)</label>
