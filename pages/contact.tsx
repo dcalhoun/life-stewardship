@@ -3,8 +3,8 @@ import Navigation from "../components/Navigation";
 import { useState, useEffect } from "react";
 
 export default function Index() {
-  const [toast, setToast] = useState(null);
-  const [error, setError] = useState(null);
+  let [toast, setToast] = useState(null);
+  let [error, setError] = useState(null);
 
   useEffect(() => {
     let toastTO = setTimeout(() => {
@@ -15,6 +15,39 @@ export default function Index() {
       clearTimeout(toastTO);
     };
   }, [toast]);
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    let form = event.currentTarget;
+    if (!form.checkValidity()) {
+      setError("Please fill all required fields.");
+      return;
+    }
+    setError(null);
+    let formData = new FormData(form);
+    let formEntries = Array.from(formData.entries()).reduce(
+      (acc, [key, value]) => (value ? { ...acc, [key]: value } : acc),
+      {}
+    );
+
+    fetch(form.action, {
+      method: form.method,
+      body: JSON.stringify(formEntries),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setToast("Your message was sent successfully.");
+        } else {
+          throw new Error("Network response was not OK.");
+        }
+      })
+      .catch((error) => {
+        setError(
+          `Your message failed to send. Please try again or email us directly. Error details: ${error.message}`
+        );
+      });
+  }
 
   return (
     <>
@@ -49,47 +82,24 @@ export default function Index() {
         {toast ? <p>{toast}</p> : null}
         {error ? <p>{error}</p> : null}
         <form
+          action="https://formspree.io/xyynddoo"
+          method="post"
           noValidate
-          onSubmit={(event) => {
-            event.preventDefault();
-            let form = event.currentTarget;
-            if (!form.checkValidity()) {
-              setError("Please fill all required fields.");
-              return;
-            }
-            setError(null);
-            let formData = new FormData(form);
-            let formEntries = Array.from(formData.entries()).reduce(
-              (acc, [key, value]) => (value ? { ...acc, [key]: value } : acc),
-              {}
-            );
-
-            fetch("/api/message", {
-              method: "POST",
-              body: JSON.stringify(formEntries),
-            })
-              .then((response) => {
-                if (response.ok) {
-                  setToast("Your message was sent successfully.");
-                } else {
-                  throw new Error("Network response was not OK.");
-                }
-              })
-              .catch((error) => {
-                setError(
-                  `Your message failed to send. Please try again or email us directly. Error details: ${error.message}`
-                );
-              });
-          }}
+          onSubmit={handleFormSubmit}
         >
           <div>
             <label htmlFor="name">Name (required)</label>
             <input type="text" name="name" id="name" required />
           </div>
           <div>
-            <label htmlFor="email">Email (required)</label>
-            <input type="email" name="email" id="email" required />
+            <label htmlFor="_replyto">Email (required)</label>
+            <input type="email" name="_replyto" id="_replyto" required />
           </div>
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Life Stewardship Inquiry"
+          />
           <div>
             <label htmlFor="phone">Phone</label>
             <input type="tel" name="phone" id="phone" />
