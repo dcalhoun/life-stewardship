@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const EMAIL = "paul@pcalhoun.com";
 
@@ -8,11 +8,16 @@ export default function Index() {
   let [toast, setToast] = useState(null);
   let [error, setError] = useState(null);
   let [reCaptchaLoadAttempts, setReCaptchaLoadAttempts] = useState(0);
+  let reCaptchaId = useRef(null);
 
   function loadReCaptcha() {
+    if (reCaptchaId.current !== null) {
+      return;
+    }
+
     window.onReCaptchaLoad = () => {
       setReCaptchaLoadAttempts(0);
-      window.grecaptcha.render("js-reCaptcha", {
+      reCaptchaId.current = window.grecaptcha.render("js-reCaptcha", {
         sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
       });
     };
@@ -39,7 +44,11 @@ export default function Index() {
 
     loadReCaptcha();
 
-    return window.grecaptcha && window.grecaptcha.reset;
+    return () => {
+      if (window.grecaptcha && reCaptchaId.current !== null) {
+        window.grecaptcha.reset(reCaptchaId.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
