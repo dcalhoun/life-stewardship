@@ -63,16 +63,25 @@ export default function Index() {
       body: JSON.stringify(formEntries),
       headers: { "Content-Type": "application/json" },
     })
+      .then((response) =>
+        response.json().then((json) => ({
+          ...response,
+          json,
+        }))
+      )
       .then((response) => {
         if (response.ok) {
           setToast("Your message was sent successfully.");
         } else {
-          throw new Error("Network response was not OK.");
+          throw new Error(
+            (response.json && response.json.error) ||
+              "Network response was not OK."
+          );
         }
       })
       .catch((error) => {
         setError(
-          `Your message failed to send. Please try again or email us directly. Error details: ${error.message}`
+          `${error.message} Your message failed to send. Please try again or email us directly.`
         );
       });
   }
