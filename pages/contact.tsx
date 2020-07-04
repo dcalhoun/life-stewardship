@@ -7,6 +7,30 @@ export default function Index() {
   let [error, setError] = useState(null);
 
   useEffect(() => {
+    if (typeof window === "undefined" || window.grecaptcha) {
+      return;
+    }
+
+    window.onReCaptchaLoad = () => {
+      window.grecaptcha.render("js-reCaptcha", {
+        sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+      });
+    };
+
+    let scriptTag = document.createElement("script");
+    scriptTag.async = true;
+    scriptTag.onerror = () => {
+      setError(
+        "An error occured while loading the form. Please refresh the page."
+      );
+    };
+    scriptTag.src =
+      "//www.google.com/recaptcha/api.js?onload=onReCaptchaLoad&render=explicit";
+    document.getElementsByTagName("script");
+    document.body.appendChild(scriptTag);
+  }, []);
+
+  useEffect(() => {
     let toastTO = setTimeout(() => {
       setToast(null);
     }, 3000);
@@ -138,6 +162,7 @@ export default function Index() {
               required
             ></textarea>
           </div>
+          <div id="js-reCaptcha" />
           <button type="submit">Send Message</button>
         </form>
       </main>
