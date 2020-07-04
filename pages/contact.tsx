@@ -7,7 +7,7 @@ export default function Index() {
   let [error, setError] = useState(null);
 
   useEffect(() => {
-    if (typeof window === "undefined" || window.grecaptcha) {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -17,17 +17,21 @@ export default function Index() {
       });
     };
 
-    let scriptTag = document.createElement("script");
-    scriptTag.async = true;
-    scriptTag.onerror = () => {
-      setError(
-        "An error occured while loading the form. Please refresh the page."
-      );
-    };
-    scriptTag.src =
-      "//www.google.com/recaptcha/api.js?onload=onReCaptchaLoad&render=explicit";
-    document.getElementsByTagName("script");
-    document.body.appendChild(scriptTag);
+    if (window.grecaptcha) {
+      window.onReCaptchaLoad();
+    } else {
+      let scriptTag = document.createElement("script");
+      scriptTag.async = true;
+      scriptTag.onerror = () => {
+        setError(
+          "An error occured while loading the form. Please refresh the page."
+        );
+      };
+      scriptTag.src =
+        "//www.google.com/recaptcha/api.js?onload=onReCaptchaLoad&render=explicit";
+      document.getElementsByTagName("script");
+      document.body.appendChild(scriptTag);
+    }
   }, []);
 
   useEffect(() => {
