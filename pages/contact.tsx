@@ -97,9 +97,7 @@ export default function Index() {
         }
       })
       .catch((error) => {
-        setError(
-          `${error.message} Your message failed to send. Please try again or email us directly.`
-        );
+        setError(error.message);
       });
   }
 
