@@ -2,16 +2,16 @@ import Head from "next/head";
 import Navigation from "../components/Navigation";
 import { useState, useEffect } from "react";
 
+const EMAIL = "paul@pcalhoun.com";
+
 export default function Index() {
   let [toast, setToast] = useState(null);
   let [error, setError] = useState(null);
+  let [reCaptchaLoadAttempts, setReCaptchaLoadAttempts] = useState(0);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
+  function loadReCaptcha() {
     window.onReCaptchaLoad = () => {
+      setReCaptchaLoadAttempts(0);
       window.grecaptcha.render("js-reCaptcha", {
         sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
       });
@@ -23,15 +23,23 @@ export default function Index() {
       let scriptTag = document.createElement("script");
       scriptTag.async = true;
       scriptTag.onerror = () => {
-        setError(
-          "An error occured while loading the form. Please refresh the page."
-        );
+        setReCaptchaLoadAttempts((c) => c + 1);
       };
       scriptTag.src =
         "//www.google.com/recaptcha/api.js?onload=onReCaptchaLoad&render=explicit";
       document.getElementsByTagName("script");
       document.body.appendChild(scriptTag);
     }
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    loadReCaptcha();
+
+    return window.grecaptcha && window.grecaptcha.reset;
   }, []);
 
   useEffect(() => {
@@ -108,7 +116,7 @@ export default function Index() {
             <dd>(601) 624-5135</dd>
             <dt>Email</dt>
             <dd>
-              <a href="mailto:paul@pcalhoun.com">paul@pcalhoun.com</a>
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
             </dd>
           </dl>
         </address>
@@ -118,6 +126,20 @@ export default function Index() {
         </p>
         {toast ? <p>{toast}</p> : null}
         {error ? <p>{error}</p> : null}
+
+        {reCaptchaLoadAttempts > 2 ? (
+          <p>
+            Multiple attempts to load the contact form failed. We recommend
+            emailing us directly at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+          </p>
+        ) : reCaptchaLoadAttempts > 0 ? (
+          <p>
+            Loading the contact form failed.{" "}
+            <button type="button" onClick={loadReCaptcha}>
+              Please try again.
+            </button>
+          </p>
+        ) : null}
         <form
           action="https://formspree.io/xyynddoo"
           method="post"
