@@ -4,9 +4,32 @@ import { useState, useEffect, useRef } from "react";
 
 const EMAIL = "paul@pcalhoun.com";
 
+interface FormError {
+  subject: string;
+  message: string;
+}
+
+interface FormControlProps {
+  children: React.ReactChild;
+  errors: FormError[];
+  name: string;
+  label: string;
+}
+
+function FormControl<FormControlProps>({ children, label, name, errors }) {
+  let error = errors.find(({ subject }) => subject === name);
+  return (
+    <div>
+      <label htmlFor={name}>{label}</label>
+      {children}
+      {error ? <span>{error.message}</span> : null}
+    </div>
+  );
+}
+
 export default function Index() {
   let [toast, setToast] = useState(null);
-  let [error, setError] = useState(null);
+  let [errors, setErrors] = useState([]);
   let [reCaptchaLoadAttempts, setReCaptchaLoadAttempts] = useState(0);
   let reCaptchaId = useRef(null);
 
@@ -62,13 +85,23 @@ export default function Index() {
   }, [toast]);
 
   function handleFormSubmit(event) {
+    console.log("> submit");
+
     event.preventDefault();
     let form = event.currentTarget;
-    if (!form.checkValidity()) {
-      setError("Please fill all required fields.");
+    let errors = Array.from(form.elements)
+      .filter((el: HTMLInputElement) => !el.checkValidity())
+      .map((el: HTMLInputElement) => ({
+        subject: el.name,
+        message: el.dataset.errorMessage,
+      }));
+
+    if (errors.length > 0) {
+      setErrors(errors);
       return;
     }
-    setError(null);
+
+    setErrors([]);
     let formData = new FormData(form);
     let formEntries = Array.from(formData.entries()).reduce(
       (acc, [key, value]) => (value ? { ...acc, [key]: value } : acc),
@@ -97,7 +130,7 @@ export default function Index() {
         }
       })
       .catch((error) => {
-        setError(error.message);
+        setErrors([{ subject: "form", message: error.message }]);
       });
   }
 
@@ -132,7 +165,18 @@ export default function Index() {
           services, please fill out the form below.
         </p>
         {toast ? <p>{toast}</p> : null}
-        {error ? <p>{error}</p> : null}
+        {errors.length > 0 ? (
+          <p>
+            {errors
+              .filter(({ subject }) => subject === "form")
+              .map(({ message }, index) => (
+                <span key={index}>
+                  {message}
+                  <br />
+                </span>
+              ))}
+          </p>
+        ) : null}
 
         {reCaptchaLoadAttempts > 2 ? (
           <p>
@@ -153,57 +197,64 @@ export default function Index() {
           noValidate
           onSubmit={handleFormSubmit}
         >
-          <div>
-            <label htmlFor="name">Name (required)</label>
-            <input type="text" name="name" id="name" required />
-          </div>
-          <div>
-            <label htmlFor="_replyto">Email (required)</label>
-            <input type="email" name="_replyto" id="_replyto" required />
-          </div>
+          <FormControl label="Name (required)" name="name" errors={errors}>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              data-error-message="Name is required."
+            />
+          </FormControl>
+          <FormControl label="Email (required)" name="_replyto" errors={errors}>
+            <input
+              type="email"
+              name="_replyto"
+              id="_replyto"
+              required
+              data-error-message="Valid email is required."
+            />
+          </FormControl>
           <input
             type="hidden"
             name="_subject"
             value="New Life Stewardship Inquiry"
           />
-          <div>
-            <label htmlFor="phone">Phone</label>
+          <FormControl label="Phone" name="phone" errors={errors}>
             <input type="tel" name="phone" id="phone" />
-          </div>
-          <div>
-            <label htmlFor="fax">Fax</label>
+          </FormControl>
+          <FormControl label="Fax" name="fax" errors={errors}>
             <input type="tel" name="fax" id="fax" />
-          </div>
-          <div>
-            <label htmlFor="address">Address 1</label>
-            <input type="text" name="address" id="address" />
-          </div>
-          <div>
-            <label htmlFor="address">Address 2</label>
-            <input type="text" name="address" id="address" />
-          </div>
-          <div>
-            <label htmlFor="city">City</label>
+          </FormControl>
+          <FormControl label="Address 1" name="address-1" errors={errors}>
+            <input type="text" name="address-1" id="address-1" />
+          </FormControl>
+          <FormControl label="Address 2" name="address-2" errors={errors}>
+            <input type="text" name="address-2" id="address-2" />
+          </FormControl>
+          <FormControl label="City" name="city" errors={errors}>
             <input type="text" name="city" id="city" />
-          </div>
-          <div>
-            <label htmlFor="state">State</label>
+          </FormControl>
+          <FormControl label="State" name="state" errors={errors}>
             <input type="text" name="state" id="state" maxLength={2} />
-          </div>
-          <div>
-            <label htmlFor="zip-code">ZIP Code</label>
+          </FormControl>
+          <FormControl label="ZIP Code" name="zip-code" errors={errors}>
             <input type="text" name="zip-code" id="zip-code" />
-          </div>
-          <div>
-            <label htmlFor="message">Message (required)</label>
+          </FormControl>
+          <FormControl
+            label="Message (required)"
+            name="message"
+            errors={errors}
+          >
             <textarea
               name="message"
               id="message"
               cols={30}
               rows={10}
               required
+              data-error-message="Messaged required."
             ></textarea>
-          </div>
+          </FormControl>
           <div id="js-reCaptcha" />
           <button type="submit">Send Message</button>
         </form>
