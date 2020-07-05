@@ -162,19 +162,6 @@ export default function Index() {
           If you’d like to receive more information or ask a question about our
           services, please fill out the form below.
         </p>
-        {toast ? <p>{toast}</p> : null}
-        {errors.length > 0 ? (
-          <p>
-            {errors
-              .filter(({ subject }) => subject === "form")
-              .map(({ message }, index) => (
-                <span key={index}>
-                  {message}
-                  <br />
-                </span>
-              ))}
-          </p>
-        ) : null}
 
         {reCaptchaLoadAttempts > 2 ? (
           <p>
@@ -189,6 +176,7 @@ export default function Index() {
             </button>
           </p>
         ) : null}
+
         <form
           action="https://formspree.io/xyynddoo"
           method="post"
@@ -256,6 +244,21 @@ export default function Index() {
           <div id="js-reCaptcha" />
           <button type="submit">Send Message</button>
         </form>
+
+        {errors.length > 0 ? (
+          <p>
+            {errors
+              .filter(({ subject }) => subject === "form")
+              .map(({ message }, index) => (
+                <span key={index}>
+                  {message}
+                  <br />
+                </span>
+              ))}
+          </p>
+        ) : null}
+
+        {toast ? <p>{toast}</p> : null}
       </main>
     </>
   );
