@@ -60,6 +60,7 @@ export default function Index() {
     }
   }
 
+  // Load reCAPTCHA on initial render
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -74,6 +75,7 @@ export default function Index() {
     };
   }, []);
 
+  // Clear toast message
   useEffect(() => {
     let toastTO = setTimeout(() => {
       setToast(null);
