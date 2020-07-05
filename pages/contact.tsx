@@ -85,8 +85,6 @@ export default function Index() {
   }, [toast]);
 
   function handleFormSubmit(event) {
-    console.log("> submit");
-
     event.preventDefault();
     let form = event.currentTarget;
     let errors = Array.from(form.elements)
