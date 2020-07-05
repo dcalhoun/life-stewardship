@@ -7,13 +7,13 @@ export default function Navigation() {
       <nav>
         <Link href="/">
           <a>About</a>
-        </Link>
+        </Link>{" "}
         <Link href="/nonprofit">
           <a>Nonprofit</a>
-        </Link>
+        </Link>{" "}
         <Link href="/individuals">
           <a>Individuals</a>
-        </Link>
+        </Link>{" "}
         <Link href="/contact">
           <a>Contact</a>
         </Link>
