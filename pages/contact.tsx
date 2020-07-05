@@ -1,6 +1,12 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation";
-import { useState, useEffect, useRef } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  PropsWithChildren,
+  ReactElement,
+} from "react";
 
 const EMAIL = "paul@pcalhoun.com";
 
@@ -10,19 +16,39 @@ interface FormError {
 }
 
 interface FormControlProps {
-  children: React.ReactChild;
   errors: FormError[];
   name: string;
   label: string;
 }
 
-function FormControl<FormControlProps>({ children, label, name, errors }) {
+function FormControl({
+  children,
+  errors,
+  label,
+  name,
+}: PropsWithChildren<FormControlProps>): ReactElement {
   let error = errors.find(({ subject }) => subject === name);
   return (
     <div>
       <label htmlFor={name}>{label}</label>
       {children}
       {error ? <span>{error.message}</span> : null}
+    </div>
+  );
+}
+
+interface ToastProps {
+  onDismiss(): void;
+}
+
+function Toast({
+  children,
+  onDismiss,
+}: PropsWithChildren<ToastProps>): ReactElement {
+  return (
+    <div>
+      <button onClick={onDismiss}>Dismiss</button>
+      {children}
     </div>
   );
 }
@@ -77,9 +103,13 @@ export default function Index() {
 
   // Clear toast message
   useEffect(() => {
+    if (!toast) {
+      return;
+    }
+
     let toastTO = setTimeout(() => {
       setToast(null);
-    }, 3000);
+    }, 5000);
 
     return () => {
       clearTimeout(toastTO);
@@ -260,7 +290,15 @@ export default function Index() {
           </p>
         ) : null}
 
-        {toast ? <p>{toast}</p> : null}
+        {toast ? (
+          <Toast
+            onDismiss={() => {
+              setToast(null);
+            }}
+          >
+            {toast}
+          </Toast>
+        ) : null}
       </main>
     </>
   );
