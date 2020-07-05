@@ -8,7 +8,7 @@ export default function Index() {
         <title>Individuals - Life Stewardship</title>
       </Head>
       <Navigation />
-      <main>
+      <main id="content">
         <h1>Individuals</h1>
         <p>
           Being a good steward of our personal finances is something we all

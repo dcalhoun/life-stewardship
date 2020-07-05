@@ -8,7 +8,7 @@ export default function Index() {
         <title>Nonprofit - Life Stewardship</title>
       </Head>
       <Navigation />
-      <main>
+      <main id="content">
         <h1>Nonprofit</h1>
         <p>
           Effective nonprofit organizations are mission driven. Their management

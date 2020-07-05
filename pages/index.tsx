@@ -8,7 +8,7 @@ export default function Index() {
         <title>Life Stewardship, Financial Planning &amp; Coaching</title>
       </Head>
       <Navigation />
-      <main>
+      <main id="content">
         <h1>Life Stewardship</h1>
         <p>
           Life Stewardship LLC is a financial service firm located in Madison,

@@ -138,7 +138,7 @@ export default function Index() {
         <title>Contact - Life Stewardship</title>
       </Head>
       <Navigation />
-      <main>
+      <main id="content">
         <h1>Contact</h1>
         <address>
           <dl>
