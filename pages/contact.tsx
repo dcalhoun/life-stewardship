@@ -6,6 +6,7 @@ import {
   useRef,
   PropsWithChildren,
   ReactElement,
+  FormEvent,
 } from "react";
 
 const EMAIL = "paul@pcalhoun.com";
@@ -116,7 +117,7 @@ export default function Index() {
     };
   }, [toast]);
 
-  function handleFormSubmit(event) {
+  function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     let form = event.currentTarget;
     let errors = Array.from(form.elements)
