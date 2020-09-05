@@ -10,57 +10,48 @@ export default function Index() {
       <Navigation />
       <main id="content">
         <h1>Individuals</h1>
-
+        
         <img
           src="/header-individuals.jpg"
-          alt="Neon light sign displaying the phrase do something great"
+          alt="Full coffee mug with the word begin on it resting on a table"
         />
 
         <p>
-          <b>Do something great.</b> Serving others or making things better is
-          the mission of all nonprofits. That is why they exist and why we give
-          our time and money to nonprofits. When they accept our time and money,
-          they assume a stewardship responsibility for them.
+          <b>Begin.</b> Beginning is often the hardest step. We do not know how
+          to get started, so we procrastinate. We may know what needs to be done
+          but life is busy, so we procrastinate. We may believe its complex and
+          we do not know who to talk with, so we procrastinate. Seldom does
+          procrastination solve our problems, it may limit our options; and it
+          may not provide us the best solutions
         </p>
 
         <p>
-          Board members and management have the primary responsibility for
-          stewardship of the nonprofit’s assets. This is a critical
-          responsibility because nonprofits are accountable to their
-          clients/constituents, donors, the public, and government authorities.
+          Being a good steward of our personal finances is something we all
+          recognize is important. We want to reduce the financial stress in our
+          lives, and we want to give, spend, and save our money wisely so that
+          we can accomplish the goals which are important to us.
         </p>
 
         <p>
-          For the board of directors and management to fulfill their fiduciary
-          responsibilities, a nonprofit must develop a sound accounting and
-          financial reporting system which includes appropriate internal
-          controls based on the size and complexity of the organization.
-          Internal controls designed to achieve effective and efficient
-          operations, reliable financial reporting, and compliance with
-          applicable laws and regulations.
+          Stewardship is the lifelong process of managing everything God
+          provides us in a manner that honors God. We can honor God by wisely
+          using what He has given us to provide for ourselves, our families, and
+          others.
         </p>
 
         <p>
-          Many nonprofits lack expertise and knowledge or time to develop their
-          accounting and financial reporting system and have limited external
-          support. I have extensive experience working with nonprofits and can
-          help the board of directors and management fulfill their fiduciary
-          responsibilities.
-        </p>
-
-        <p>
-          If you want more information or need help fulfilling your fiduciary
-          responsibilities, let’s talk. I can assist you with:
+          <b>Begin.</b> If you are ready to get begin, let’s talk. I can assist
+          you with:
         </p>
 
         <ul>
-          <li>Assisting with Board Governance & Oversight</li>
-          <li>Board of Director Training</li>
-          <li>Financial Statement Preparation</li>
-          <li>Functional Expense Reporting</li>
-          <li>Grant Compliance</li>
-          <li>Internal Controls</li>
-          <li>Tax Compliance</li>
+          <li>Clarifying Your Financial Goals</li>
+          <li>Budgeting & Tracking</li>
+          <li>Cash Management & Planning</li>
+          <li>Debt Payoff & Management</li>
+          <li>Education Funding</li>
+          <li>Retirement Planning</li>
+          <li>Social Security </li>
         </ul>
       </main>
     </>

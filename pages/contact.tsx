@@ -9,7 +9,7 @@ import {
   FormEvent,
 } from "react";
 
-const EMAIL = "paul@pcalhoun.com";
+const EMAIL = "Paul@LifeStewardshipLLC.com";
 
 interface FormError {
   subject: string;
