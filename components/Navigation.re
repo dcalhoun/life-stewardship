@@ -1,7 +1,7 @@
 [@react.component]
 let make = () => {
   <>
-    <a href="#content"> "Skip to content"->React.string </a>
+    <a className="sr-only focus:not-sr-only" href="#content"> "Skip to content"->React.string </a>
     <nav>
       <Next.Link href="/"> <a> "About"->React.string </a> </Next.Link>
       <Next.Link href="/nonprofit">
