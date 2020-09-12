@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navigation from "../components/Navigation";
+import { make as Navigation } from "../components/Navigation.bs";
 import {
   useState,
   useEffect,

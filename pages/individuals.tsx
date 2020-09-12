@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Navigation from "../components/Navigation";
+import { make as Navigation } from "../components/Navigation.bs";
 
 export default function Index() {
   return (
@@ -10,7 +10,7 @@ export default function Index() {
       <Navigation />
       <main id="content">
         <h1>Individuals</h1>
-        
+
         <img
           src="/header-individuals.jpg"
           alt="Full coffee mug with the word begin on it resting on a table"
