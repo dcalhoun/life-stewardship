@@ -4,9 +4,9 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: [],
-  theme: {
-    extend: {},
+  theme: {},
+  variants: {
+    accessibility: ({ after }) => after(["focus-within"]),
   },
-  variants: {},
   plugins: [],
 };

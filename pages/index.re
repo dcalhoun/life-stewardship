@@ -8,13 +8,12 @@ let default = () => {
     </Next.Head>
     <Navigation />
     <main id="content">
-      <h1> "Life Stewardship"->React.string </h1>
-      <p>
+      <h1>
         "Life Stewardship LLC is a financial service firm located in Madison,
           Mississippi. Providing financial planning and coaching to nonprofits
           and individuals."
         ->React.string
-      </p>
+      </h1>
       <p>
         "My name is Paul Calhoun, the founder and managing member of Life
           Stewardship LLC. Until my retirement in December 2019, I was a partner
