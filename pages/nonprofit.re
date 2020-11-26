@@ -2,11 +2,10 @@ open React;
 
 [@react.component]
 let default = () => {
-  <>
+  <Layout>
     <Next.Head>
       <title> "Nonprofit - Life Stewardship"->string </title>
     </Next.Head>
-    <Navigation />
     <main id="content">
       <h1> "Nonprofit"->string </h1>
       <img
@@ -61,5 +60,5 @@ let default = () => {
         <li> "Tax Compliance"->string </li>
       </ul>
     </main>
-  </>;
+  </Layout>;
 };

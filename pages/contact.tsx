@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { make as Navigation } from "../components/Navigation.bs";
+import { make as Layout } from "../components/Layout.bs";
 import {
   useState,
   useEffect,
@@ -166,11 +166,10 @@ export default function Index() {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Contact - Life Stewardship</title>
       </Head>
-      <Navigation />
       <main id="content">
         <h1>Contact</h1>
         <address>
@@ -301,6 +300,6 @@ export default function Index() {
           </Toast>
         ) : null}
       </main>
-    </>
+    </Layout>
   );
 }

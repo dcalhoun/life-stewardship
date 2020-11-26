@@ -2,13 +2,12 @@ open React;
 
 [@react.component]
 let default = () => {
-  <>
+  <Layout>
     <Next.Head>
       <title>
         "Life Stewardship, Financial Planning &amp; Coaching"->string
       </title>
     </Next.Head>
-    <Navigation />
     <main id="content">
       <h1>
         "Life Stewardship LLC is a financial service firm located in Madison,
@@ -46,5 +45,5 @@ let default = () => {
         <li> "Vice-Chairman Baptist Hospital Board of Directors"->string </li>
       </ul>
     </main>
-  </>;
+  </Layout>;
 };
