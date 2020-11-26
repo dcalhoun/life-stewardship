@@ -5,7 +5,7 @@ let default = () => {
   <Layout>
     <Next.Head>
       <title>
-        "Life Stewardship, Financial Planning &amp; Coaching"->string
+        "Life Stewardship, Financial Planning & Coaching"->string
       </title>
     </Next.Head>
     <main id="content">
