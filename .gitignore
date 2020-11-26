@@ -18,6 +18,11 @@
 # misc
 .DS_Store
 *.pem
+bs
+.merlin
+lib/
+*.bs.js
+.bsb.lock
 
 # debug
 npm-debug.log*
