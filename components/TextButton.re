@@ -1,7 +1,7 @@
 [@react.component]
 let make =
   React.forwardRef((~children, ~href: option(string)=?, _ref) => {
-    let el = {
+    let element = {
       switch (href) {
       | Some(_) => "a"
       | None => "button"
@@ -9,7 +9,7 @@ let make =
     };
 
     ReactDOMRe.createElement(
-      el,
+      element,
       ~props=ReactDOMRe.props(~className="underline", ~href?, ()),
       [|children|],
     );

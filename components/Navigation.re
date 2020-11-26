@@ -1,3 +1,5 @@
+open React;
+
 [@react.component]
 let make = () => {
   <>
@@ -5,7 +7,7 @@ let make = () => {
       <a
         className="inline-block bg-white border-solid absolute rounded-lg m-4 p-4 color-black z-10"
         href="#content">
-        "Skip to content"->React.string
+        "Skip to content"->string
       </a>
     </div>
     <nav className="flex flex-col p-2">
@@ -24,13 +26,13 @@ let make = () => {
       </Next.Link>
       <div className="flex justify-center">
         <Next.Link href="/nonprofit" passHref=true>
-          <TextButton> "Nonprofit"->React.string </TextButton>
+          <TextButton> "Nonprofit"->string </TextButton>
         </Next.Link>
         <Next.Link href="/individuals" passHref=true>
-          <TextButton> "Individuals"->React.string </TextButton>
+          <TextButton> "Individuals"->string </TextButton>
         </Next.Link>
         <Next.Link href="/contact" passHref=true>
-          <TextButton> "Contact"->React.string </TextButton>
+          <TextButton> "Contact"->string </TextButton>
         </Next.Link>
       </div>
     </nav>
