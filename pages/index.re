@@ -9,7 +9,7 @@ let default = () => {
       </title>
     </Next.Head>
     <main id="content">
-      <h1>
+      <h1 className=Heading.Styles.primary>
         "Life Stewardship LLC is a financial service firm located in Madison,
           Mississippi. Providing financial planning and coaching to nonprofits
           and individuals."
