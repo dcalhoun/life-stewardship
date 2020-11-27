@@ -146,6 +146,7 @@ export default function Index() {
             <dd>(601) 624-5135</dd>
             <dt>Email</dt>
             <dd>
+              {/* @ts-ignore */}
               <TextButton href={`mailto:${EMAIL}`}>{EMAIL}</TextButton>
             </dd>
           </dl>
@@ -234,7 +235,7 @@ export default function Index() {
             ></textarea>
           </FormControl>
           <div id="js-reCaptcha" />
-          <TextButton type_="submit">Send Message</TextButton>
+          <button type="submit">Send Message</button>
         </form>
 
         {errors.length > 0 ? (
