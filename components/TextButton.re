@@ -2,10 +2,11 @@
 let make =
   React.forwardRef(
     (
-      ~className,
       ~children,
+      ~className,
       ~href: option(string)=?,
       ~onClick: option(ReactEvent.Mouse.t => unit)=?,
+      ~type_: option(string)=?,
       _ref,
     ) => {
     let element = {
@@ -17,7 +18,14 @@ let make =
 
     ReactDOMRe.createElement(
       element,
-      ~props=ReactDOMRe.props(~className=className ++ " underline", ~href?, ~onClick?, ()),
+      ~props=
+        ReactDOMRe.props(
+          ~className=className ++ " underline",
+          ~href?,
+          ~onClick?,
+          ~type_?,
+          (),
+        ),
       [|children|],
     );
   });

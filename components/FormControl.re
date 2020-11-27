@@ -9,10 +9,15 @@ type formError = {
 let make = (~children, ~errors, ~label, ~name) => {
   let error = Belt.Array.getBy(errors, e => e.subject === name);
   <div>
-    <label htmlFor=name> label->string </label>
+    <label className="text-base lg:text-2xl mb-4 lg:mb-8" htmlFor=name>
+      label->string
+    </label>
     children
     {switch (error) {
-     | Some(error) => <span> error.message->string </span>
+     | Some(error) =>
+       <span className="text-base lg:text-2xl mb-4 lg:mb-8">
+         error.message->string
+       </span>
      | None => React.null
      }}
   </div>;

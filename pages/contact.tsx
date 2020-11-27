@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { make as Layout } from "../components/Layout.bs";
 import { make as Toast } from "../components/Toast.bs";
+import { make as Paragraph } from "../components/Paragraph.bs";
+import { make as TextButton } from "../components/TextButton.bs";
 import { make as FormControl } from "../components/FormControl.bs";
 import { Styles as HeadingStyles } from "../components/Heading.bs";
 import {
@@ -131,7 +133,7 @@ export default function Index() {
       <main id="content">
         <h1 className={`${HeadingStyles.primary} mb-4 lg:mb-8`}>Contact</h1>
         <address>
-          <dl>
+          <dl className="text-base lg:text-2xl mb-4 lg:mb-8">
             <dt>Mail</dt>
             <dd>
               1888 Main Street
@@ -144,27 +146,27 @@ export default function Index() {
             <dd>(601) 624-5135</dd>
             <dt>Email</dt>
             <dd>
-              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <TextButton href={`mailto:${EMAIL}`}>{EMAIL}</TextButton>
             </dd>
           </dl>
         </address>
-        <p>
+        <Paragraph>
           If you’d like to receive more information or ask a question about our
           services, please fill out the form below.
-        </p>
+        </Paragraph>
 
         {reCaptchaLoadAttempts > 2 ? (
-          <p>
+          <Paragraph>
             Multiple attempts to load the contact form failed. We recommend
             emailing us directly at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
-          </p>
+          </Paragraph>
         ) : reCaptchaLoadAttempts > 0 ? (
-          <p>
+          <Paragraph>
             Loading the contact form failed.{" "}
             <button type="button" onClick={loadReCaptcha}>
               Please try again.
             </button>
-          </p>
+          </Paragraph>
         ) : null}
 
         <form
@@ -232,11 +234,11 @@ export default function Index() {
             ></textarea>
           </FormControl>
           <div id="js-reCaptcha" />
-          <button type="submit">Send Message</button>
+          <TextButton type_="submit">Send Message</TextButton>
         </form>
 
         {errors.length > 0 ? (
-          <p>
+          <Paragraph>
             {errors
               .filter(({ subject }) => subject === "form")
               .map(({ message }, index) => (
@@ -245,7 +247,7 @@ export default function Index() {
                   <br />
                 </span>
               ))}
-          </p>
+          </Paragraph>
         ) : null}
 
         {toast ? (
