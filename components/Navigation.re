@@ -2,14 +2,15 @@ open React;
 
 module NavItem = {
   [@react.component]
-  let make = (~children, ~href="", ~onClick=_event => ()) => {
-    <a
-      className="bg-gray-200 rounded-lg mx-2 p-2 flex-1 text-center"
-      href
-      onClick>
-      children
-    </a>;
-  };
+  let make =
+    React.forwardRef((~children, ~href="", ~onClick=_event => (), _ref) => {
+      <a
+        className="bg-gray-200 rounded-lg mx-2 p-2 flex-1 text-center "
+        href
+        onClick>
+        children
+      </a>
+    });
 };
 
 [@react.component]
