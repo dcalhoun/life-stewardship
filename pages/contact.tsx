@@ -130,7 +130,6 @@ export default function Index() {
       <Head>
         <title>Contact - Life Stewardship</title>
       </Head>
-      <main id="content">
         <h1 className={`${HeadingStyles.primary} mb-4 lg:mb-8`}>Contact</h1>
         <address>
           <dl className="text-base lg:text-2xl mb-4 lg:mb-8">
@@ -260,7 +259,6 @@ export default function Index() {
             {toast}
           </Toast>
         ) : null}
-      </main>
     </Layout>
   );
 }
