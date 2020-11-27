@@ -38,8 +38,7 @@ let default = () => {
         ->string
       </Paragraph>
       <Paragraph>
-        <b> "Begin."->string </b>
-        (" If you are ready to get begin, let" ++ {j|’|j} ++ "s talk. I can assist
+        ("If you are ready to get begin, let" ++ {j|’|j} ++ "s talk. I can assist
           you with:")
         ->string
       </Paragraph>
