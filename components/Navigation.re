@@ -3,9 +3,12 @@ open React;
 module NavItem = {
   [@react.component]
   let make =
-    React.forwardRef((~children, ~href="", ~onClick=_event => (), _ref) => {
+    React.forwardRef(
+      (~children, ~className="", ~href="", ~onClick=_event => (), _ref) => {
       <a
-        className="bg-gray-200 rounded-lg mx-2 p-2 flex-1 text-center "
+        className={
+          "bg-gray-200 rounded-lg p-2 flex-1 text-center " ++ className
+        }
         href
         onClick>
         children
@@ -31,13 +34,13 @@ let make = () => {
     </Next.Link>
     <div className="flex">
       <Next.Link href="/nonprofit" passHref=true>
-        <NavItem> "Nonprofit"->string </NavItem>
+        <NavItem className="mr-2"> "Nonprofit"->string </NavItem>
       </Next.Link>
       <Next.Link href="/individuals" passHref=true>
-        <NavItem> "Individuals"->string </NavItem>
+        <NavItem className="mx-2"> "Individuals"->string </NavItem>
       </Next.Link>
       <Next.Link href="/contact" passHref=true>
-        <NavItem> "Contact"->string </NavItem>
+        <NavItem className="ml-2"> "Contact"->string </NavItem>
       </Next.Link>
     </div>
   </nav>;
