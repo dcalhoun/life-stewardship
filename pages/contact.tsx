@@ -1,59 +1,16 @@
 import Head from "next/head";
 import { make as Layout } from "../components/Layout.bs";
+import { make as Toast } from "../components/Toast.bs";
+import { make as FormControl } from "../components/FormControl.bs";
 import { Styles as HeadingStyles } from "../components/Heading.bs";
 import {
   useState,
   useEffect,
   useRef,
-  PropsWithChildren,
-  ReactElement,
   FormEvent,
 } from "react";
 
 const EMAIL = "Paul@LifeStewardshipLLC.com";
-
-interface FormError {
-  subject: string;
-  message: string;
-}
-
-interface FormControlProps {
-  errors: FormError[];
-  name: string;
-  label: string;
-}
-
-function FormControl({
-  children,
-  errors,
-  label,
-  name,
-}: PropsWithChildren<FormControlProps>): ReactElement {
-  let error = errors.find(({ subject }) => subject === name);
-  return (
-    <div>
-      <label htmlFor={name}>{label}</label>
-      {children}
-      {error ? <span>{error.message}</span> : null}
-    </div>
-  );
-}
-
-interface ToastProps {
-  onDismiss(): void;
-}
-
-function Toast({
-  children,
-  onDismiss,
-}: PropsWithChildren<ToastProps>): ReactElement {
-  return (
-    <div>
-      <button onClick={onDismiss}>Dismiss</button>
-      {children}
-    </div>
-  );
-}
 
 export default function Index() {
   let [toast, setToast] = useState(null);
