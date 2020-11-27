@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { make as Layout } from "../components/Layout.bs";
+import { Styles as HeadingStyles } from "../components/Heading.bs";
 import {
   useState,
   useEffect,
@@ -171,7 +172,7 @@ export default function Index() {
         <title>Contact - Life Stewardship</title>
       </Head>
       <main id="content">
-        <h1>Contact</h1>
+        <h1 className={`${HeadingStyles.primary} mb-4 lg:mb-8`}>Contact</h1>
         <address>
           <dl>
             <dt>Mail</dt>

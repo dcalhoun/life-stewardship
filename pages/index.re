@@ -9,20 +9,20 @@ let default = () => {
       </title>
     </Next.Head>
     <main id="content">
-      <h1 className=Heading.Styles.primary>
+      <h1 className=(Heading.Styles.primary ++ " mb-4 lg:mb-8")>
         "Life Stewardship LLC is a financial service firm located in Madison,
           Mississippi. Providing financial planning and coaching to nonprofits
           and individuals."
         ->string
       </h1>
-      <p>
+      <Paragraph>
         "My name is Paul Calhoun, the founder and managing member of Life
           Stewardship LLC. Until my retirement in December 2019, I was a partner
           with a sixty-person certified public accounting firm, serving 12 years
           as its managing partner."
         ->string
-      </p>
-      <p>
+      </Paragraph>
+      <Paragraph>
         "During my 43-year career in public accounting, my practice included
           providing audit, consulting, and tax services to nonprofit
           organizations just starting up, to ones which have matured to serving
@@ -31,19 +31,19 @@ let default = () => {
           served as an officer and board member including finance chairman,
           treasurer, president, vice chairman and board chairman."
         ->string
-      </p>
-      <p>
+      </Paragraph>
+      <Paragraph>
         "My public accounting practice also included working with individuals
           regarding their financial planning and income taxes."
         ->string
-      </p>
-      <p> "Professional and Community Affiliation"->string </p>
-      <ul>
-        <li> "American Institute of Certified Public Accountants"->string </li>
-        <li> "AICPA Not-for-Profit Section"->string </li>
-        <li> "AICPA Personal Financial Planning Section"->string </li>
-        <li> "Vice-Chairman Baptist Hospital Board of Directors"->string </li>
-      </ul>
+      </Paragraph>
+      <Paragraph> "Professional and Community Affiliation"->string </Paragraph>
+      <UnorderedList>
+        <ListItem> "American Institute of Certified Public Accountants"->string </ListItem>
+        <ListItem> "AICPA Not-for-Profit Section"->string </ListItem>
+        <ListItem> "AICPA Personal Financial Planning Section"->string </ListItem>
+        <ListItem> "Vice-Chairman Baptist Hospital Board of Directors"->string </ListItem>
+      </UnorderedList>
     </main>
   </Layout>;
 };

@@ -5,7 +5,7 @@ let make = () => {
   <>
     <div className="sr-only focus-within:not-sr-only">
       <a
-        className="inline-block bg-white border-solid absolute rounded-lg m-4 p-4 color-black z-10"
+        className="inline-block bg-white border-solid rounded-lg m-4 p-4 color-black absolute z-10"
         href="#content">
         "Skip to content"->string
       </a>
@@ -26,13 +26,13 @@ let make = () => {
       </Next.Link>
       <div className="flex justify-center">
         <Next.Link href="/nonprofit" passHref=true>
-          <TextButton> "Nonprofit"->string </TextButton>
+          <TextButton className="p-2"> "Nonprofit"->string </TextButton>
         </Next.Link>
         <Next.Link href="/individuals" passHref=true>
-          <TextButton> "Individuals"->string </TextButton>
+          <TextButton className="p-2"> "Individuals"->string </TextButton>
         </Next.Link>
         <Next.Link href="/contact" passHref=true>
-          <TextButton> "Contact"->string </TextButton>
+          <TextButton className="p-2"> "Contact"->string </TextButton>
         </Next.Link>
       </div>
     </nav>
