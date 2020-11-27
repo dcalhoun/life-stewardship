@@ -53,6 +53,7 @@ export default function Index() {
       return;
     }
 
+    // TODO: Avoid recaptcha render after component is destroyed
     loadReCaptcha();
 
     return () => {
