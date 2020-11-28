@@ -20,7 +20,7 @@ let make =
       element,
       ~props=
         ReactDOMRe.props(
-          ~className=className ++ " border rounded bg-blue-300 p-2",
+          ~className=className ++ " rounded-full bg-blue-600 text-white p-2",
           ~href?,
           ~onClick?,
           ~type_?,

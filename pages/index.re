@@ -38,7 +38,7 @@ let default = () => {
           regarding their financial planning and income taxes."
       ->string
     </Paragraph>
-    <Paragraph> "Professional and Community Affiliation"->string </Paragraph>
+    <Paragraph> "Professional and Community Affiliation:"->string </Paragraph>
     <UnorderedList>
       <ListItem>
         "American Institute of Certified Public Accountants"->string
