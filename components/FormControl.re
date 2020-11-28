@@ -6,9 +6,9 @@ type formError = {
 };
 
 [@react.component]
-let make = (~children, ~errors, ~label, ~name) => {
+let make = (~className, ~children, ~errors, ~label, ~name) => {
   let error = Belt.Array.getBy(errors, e => e.subject === name);
-  <div>
+  <div className>
     <label className="text-base lg:text-2xl mb-4 lg:mb-8" htmlFor=name>
       label->string
     </label>
