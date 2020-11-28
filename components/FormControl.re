@@ -15,7 +15,7 @@ let make = (~className, ~children, ~errors, ~label, ~name) => {
     children
     {switch (error) {
      | Some(error) =>
-       <span className="text-base lg:text-2xl mb-4 lg:mb-8">
+       <span className="text-base text-red-500 lg:text-2xl mb-4 lg:mb-8">
          error.message->string
        </span>
      | None => React.null

@@ -3,6 +3,7 @@ import { make as Layout } from "../components/Layout.bs";
 import { make as Toast } from "../components/Toast.bs";
 import { make as Paragraph } from "../components/Paragraph.bs";
 import { make as TextButton } from "../components/TextButton.bs";
+import { make as Button } from "../components/Button.bs";
 import { make as FormControl } from "../components/FormControl.bs";
 import { className as inputClassName } from "../components/Input.bs";
 import { Styles as HeadingStyles } from "../components/Heading.bs";
@@ -236,8 +237,9 @@ export default function Index() {
             rows={10}
           ></textarea>
         </FormControl>
-        <div id="js-reCaptcha" />
-        <button type="submit">Send Message</button>
+        <div id="js-reCaptcha" className="mb-4 lg:mb-8" />
+        {/* @ts-ignore */}
+        <Button className="mb-4 lg:mb-8 block w-full" type_="submit">Send Message</Button>
       </form>
 
       {errors.length > 0 ? (
