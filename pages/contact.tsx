@@ -104,8 +104,10 @@ export default function Index() {
     })
       .then((response) =>
         response.json().then((json) => ({
-          ...response,
           json,
+          ok: response.ok,
+          status: response.status,
+          statusText: response.statusText,
         }))
       )
       .then((response) => {
@@ -119,6 +121,7 @@ export default function Index() {
         }
       })
       .catch((error) => {
+        grecaptcha.reset();
         setErrors([{ subject: "form", message: error.message }]);
       });
   }
@@ -245,7 +248,10 @@ export default function Index() {
       </form>
 
       {errors.filter(({ subject }) => subject === "form").length > 0 ? (
-        <Toast className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2 bg-red-500 border-red-700 text-white">
+        <Toast
+          className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2 bg-red-500 border-red-700 text-white"
+          onDismiss={() => setErrors([])}
+        >
           {errors
             .filter(({ subject }) => subject === "form")
             .map(({ message }, index) => (
