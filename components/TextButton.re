@@ -20,7 +20,7 @@ let make =
       element,
       ~props=
         ReactDOMRe.props(
-          ~className=className ++ " underline",
+          ~className=className ++ " underline text-blue-600",
           ~href?,
           ~onClick?,
           ~type_?,
