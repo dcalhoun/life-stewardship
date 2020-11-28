@@ -242,8 +242,9 @@ export default function Index() {
         <Button className="mb-4 lg:mb-8 block w-full" type_="submit">Send Message</Button>
       </form>
 
-      {errors.length > 0 ? (
-        <Paragraph>
+      {errors.filter(({subject}) => subject === "form").length > 0 ? (
+        <Toast
+          className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2 bg-red-500 border-red-700 text-white">
           {errors
             .filter(({ subject }) => subject === "form")
             .map(({ message }, index) => (
@@ -252,11 +253,12 @@ export default function Index() {
                 <br />
               </span>
             ))}
-        </Paragraph>
+        </Toast>
       ) : null}
 
       {toast ? (
         <Toast
+          className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2"
           onDismiss={() => {
             setToast(null);
           }}
