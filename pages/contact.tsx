@@ -132,7 +132,7 @@ export default function Index() {
       <address>
         <dl className="text-base lg:text-2xl mb-4 lg:mb-8">
           <dt>Mail</dt>
-          <dd>
+          <dd className="ml-4">
             1888 Main Street
             <br />
             Suite C-198
@@ -140,9 +140,9 @@ export default function Index() {
             Madison, MS 39110
           </dd>
           <dt>Phone</dt>
-          <dd>(601) 624-5135</dd>
+          <dd className="ml-4">(601) 624-5135</dd>
           <dt>Email</dt>
-          <dd>
+          <dd className="ml-4">
             {/* @ts-ignore */}
             <TextButton href={`mailto:${EMAIL}`}>{EMAIL}</TextButton>
           </dd>
