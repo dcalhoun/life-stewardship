@@ -208,7 +208,11 @@ export default function Index() {
             data-error-message="Valid email is required."
           />
         </FormControl>
-        <input type="hidden" name="_subject" value="Life Stewardship Inquiry" />
+        <input
+          type="hidden"
+          name="_subject"
+          value="Life Stewardship LLC Inquiry"
+        />
         <FormControl
           className="mb-4 lg:mb-8"
           errors={errors}
