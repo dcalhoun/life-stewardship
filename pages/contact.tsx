@@ -121,7 +121,7 @@ export default function Index() {
         }
       })
       .catch((error) => {
-        grecaptcha.reset();
+        grecaptcha.reset(reCaptchaId.current);
         setErrors([{ subject: "form", message: error.message }]);
       });
   }
