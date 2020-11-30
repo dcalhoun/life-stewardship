@@ -16,6 +16,7 @@ export default function Index() {
   let [errors, setErrors] = useState([]);
   let [reCaptchaLoadAttempts, setReCaptchaLoadAttempts] = useState(0);
   let reCaptchaId = useRef(null);
+  let formRef = useRef(null);
 
   function loadReCaptcha() {
     if (reCaptchaId.current !== null) {
@@ -26,6 +27,8 @@ export default function Index() {
       setReCaptchaLoadAttempts(0);
       reCaptchaId.current = window.grecaptcha.render("js-reCaptcha", {
         sitekey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+        callback: sendMessage,
+        size: "invisible",
       });
     };
 
@@ -77,7 +80,8 @@ export default function Index() {
 
   function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    let form = event.currentTarget;
+    formRef.current = event.currentTarget;
+    const form = formRef.current;
     let errors = Array.from(form.elements)
       .filter((el: HTMLInputElement) => !el.checkValidity())
       .map((el: HTMLInputElement) => ({
@@ -90,7 +94,12 @@ export default function Index() {
       return;
     }
 
+    grecaptcha.execute();
+  }
+
+  function sendMessage() {
     setErrors([]);
+    const form = formRef.current;
     let formData = new FormData(form);
     let formEntries = Array.from(formData.entries()).reduce(
       (acc, [key, value]) => (value ? { ...acc, [key]: value } : acc),
@@ -244,7 +253,7 @@ export default function Index() {
             rows={10}
           ></textarea>
         </FormControl>
-        <div id="js-reCaptcha" className="mb-4 lg:mb-8" />
+        <div id="js-reCaptcha" className="g-recaptcha" />
         {/* @ts-ignore */}
         <Button className="mb-4 lg:mb-8 block w-full" type_="submit">
           Send Message
