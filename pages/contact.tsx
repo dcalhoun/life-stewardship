@@ -171,7 +171,7 @@ export default function Index() {
       ) : null}
 
       <form
-        action="https://formspree.io/xyynddoo"
+        action={process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT}
         method="post"
         noValidate
         onSubmit={handleFormSubmit}
