@@ -8,14 +8,17 @@ let default = () => {
         "Life Stewardship, Financial Planning & Coaching"->string
       </title>
     </Next.Head>
-    <h1 className={Heading.Styles.primary ++ " mb-4 lg:mb-8 text-center"}>
-      "Financial planning and coaching for nonprofits and individuals."->string
-    </h1>
-    <h2 className={Heading.Styles.secondary ++ " mb-4 lg:mb-8 text-center"}>
-      "Life Stewardship LLC is a financial service firm located in Madison,
+    <div className="bg-green-400 rounded mb-4 lg:mb-8 p-4 shadow-xl">
+      <h1 className={Heading.Styles.primary ++ " mb-4 lg:mb-8 text-center"}>
+        "Financial planning and coaching for nonprofits and individuals."
+        ->string
+      </h1>
+      <h2 className={Heading.Styles.secondary ++ " mb-4 lg:mb-8 text-center"}>
+        "Life Stewardship LLC is a financial service firm located in Madison,
           Mississippi."
-      ->string
-    </h2>
+        ->string
+      </h2>
+    </div>
     <Paragraph>
       "My name is Paul Calhoun, the founder and managing member of Life
           Stewardship LLC. Until my retirement in December 2019, I was a partner
