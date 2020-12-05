@@ -6,13 +6,15 @@ let default = () => {
     <Next.Head>
       <title> "Individuals - Life Stewardship"->string </title>
     </Next.Head>
-    <h1 className={Heading.Styles.primary ++ " mb-4 lg:mb-8"}>
+    <h1 className={Heading.Styles.primary ++ " mb-5"}>
       "Individuals"->string
     </h1>
-    <img
-      className="mb-4 lg:mb-8"
-      src="/header-individuals.jpg"
-      alt="Full coffee mug with the word begin on it resting on a table"
+    <div
+      className="h-40 lg:h-80 overflow-hidden rounded-lg mb-5 bg-cover bg-bottom bg-no-repeat"
+      style={ReactDOM.Style.make(
+        ~backgroundImage="url(/header-individuals.jpg)",
+        ()
+      )}
     />
     <Paragraph>
       <b> "Begin."->string </b>
@@ -56,5 +58,6 @@ let default = () => {
       <ListItem> "Retirement Planning"->string </ListItem>
       <ListItem> "Social Security"->string </ListItem>
     </UnorderedList>
+    <ContactCTA />
   </Layout>;
 };

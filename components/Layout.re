@@ -14,16 +14,16 @@ let make = (~children) => {
   <>
     <div className="sr-only focus-within:not-sr-only">
       <a
-        className="inline-block bg-white border-solid rounded-lg m-4 p-4 color-black absolute z-10"
+        className="inline-block bg-gray-600 border-solid rounded-lg m-5 mt-9 p-4 text-gray-200 absolute z-10"
         href="#content">
         "Skip to content"->string
       </a>
     </div>
     <div className="bg-green-600 h-4 w-full" />
     <div className="p-4 max-w-4xl mx-auto">
-      <nav className="flex flex-col lg:flex-row mb-5">
+      <nav className="flex flex-col lg:flex-row items-center lg:py-5 mb-5">
         <Next.Link href="/">
-          <a className="w-64 self-center mb-5">
+          <a className="w-64 self-center mb-5 lg:mb-0">
             <div
               className="relative"
               style={ReactDOM.Style.make(~paddingBottom="21.0344828%", ())}>
@@ -35,15 +35,15 @@ let make = (~children) => {
             </div>
           </a>
         </Next.Link>
-        <div className="flex justify-center">
+        <div className="flex flex-1 justify-center lg:justify-evenly">
           <Next.Link href="/nonprofit" passHref=true>
-            <NavItem className="ml-4"> "Nonprofit"->string </NavItem>
+            <NavItem className="mx-4"> "Nonprofit"->string </NavItem>
           </Next.Link>
           <Next.Link href="/individuals" passHref=true>
-            <NavItem className="ml-4"> "Individuals"->string </NavItem>
+            <NavItem className="mx-4"> "Individuals"->string </NavItem>
           </Next.Link>
           <Next.Link href="/contact" passHref=true>
-            <NavItem className="ml-4"> "Contact"->string </NavItem>
+            <NavItem className="mx-4"> "Contact"->string </NavItem>
           </Next.Link>
         </div>
       </nav>

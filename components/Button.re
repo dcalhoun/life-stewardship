@@ -3,7 +3,7 @@ let make =
   React.forwardRef(
     (
       ~children,
-      ~className,
+      ~className="",
       ~href: option(string)=?,
       ~onClick: option(ReactEvent.Mouse.t => unit)=?,
       ~type_: option(string)=?,
@@ -20,7 +20,7 @@ let make =
       element,
       ~props=
         ReactDOMRe.props(
-          ~className=className ++ " rounded-full bg-blue-600 text-white p-2",
+          ~className=className ++ " rounded-lg bg-green-600 text-white text-sm font-semibold uppercase p-3",
           ~href?,
           ~onClick?,
           ~type_?,

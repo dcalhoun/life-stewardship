@@ -142,7 +142,7 @@ export default function Index() {
       </Head>
       <h1 className={`${HeadingStyles.primary} mb-4 lg:mb-8`}>Contact</h1>
       <address>
-        <dl className="text-base lg:text-2xl mb-4 lg:mb-8">
+        <dl className="text-base lg:text-xl text-gray-900 font-serif mb-5">
           <dt>Mail</dt>
           <dd className="ml-4">
             1888 Main Street
@@ -180,6 +180,7 @@ export default function Index() {
       ) : null}
 
       <form
+        className="pb-14"
         action={process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT}
         method="post"
         noValidate
@@ -255,7 +256,7 @@ export default function Index() {
         </FormControl>
         <div id="js-reCaptcha" className="g-recaptcha" />
         {/* @ts-ignore */}
-        <Button className="mb-4 lg:mb-8 block w-full" type_="submit">
+        <Button className="mb-4 lg:mb-8" type_="submit">
           Send Message
         </Button>
       </form>
