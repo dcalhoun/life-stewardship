@@ -2,8 +2,8 @@
 let make = (~className=?, ~children) => {
   <p
     className={
-      "text-base lg:text-2xl mb-4 lg:mb-8 "
-      ++ className->Belt.Option.getWithDefault("")
+      className->Belt.Option.getWithDefault("")
+      ++ " text-base text-gray-900 font-serif mb-5 "
     }>
     children
   </p>;

@@ -8,17 +8,19 @@ let default = () => {
         "Life Stewardship, Financial Planning & Coaching"->string
       </title>
     </Next.Head>
-    <div className="bg-green-400 rounded mb-4 lg:mb-8 p-4 shadow-xl">
-      <h1 className={Heading.Styles.primary ++ " mb-4 lg:mb-8 text-center"}>
+    <div className="bg-white text-gray-700 rounded mb-5 p-4 shadow-md">
+      <h1
+        className="text-2xl lg:text-4xl font-light leading-tight mb-5 text-center">
         "Financial planning and coaching for nonprofits and individuals."
         ->string
       </h1>
-      <h2 className={Heading.Styles.secondary ++ " mb-4 lg:mb-8 text-center"}>
+      <h2 className="text-sm lg:text-3xl text-gray-500 italic text-center">
         "Life Stewardship LLC is a financial service firm located in Madison,
           Mississippi."
         ->string
       </h2>
     </div>
+    <img className="mx-auto rounded-2xl w-40 mb-5" src="paul-calhoun.jpg" />
     <Paragraph>
       "My name is Paul Calhoun, the founder and managing member of Life
           Stewardship LLC. Until my retirement in December 2019, I was a partner
@@ -41,18 +43,23 @@ let default = () => {
           regarding their financial planning and income taxes."
       ->string
     </Paragraph>
-    <Paragraph> "Professional and Community Affiliation:"->string </Paragraph>
-    <UnorderedList>
-      <ListItem>
-        "American Institute of Certified Public Accountants"->string
-      </ListItem>
-      <ListItem> "AICPA Not-for-Profit Section"->string </ListItem>
-      <ListItem>
-        "AICPA Personal Financial Planning Section"->string
-      </ListItem>
-      <ListItem>
-        "Vice-Chairman Baptist Hospital Board of Directors"->string
-      </ListItem>
-    </UnorderedList>
+    <div className="my-10">
+      <h3
+        className="text-xl font-normal tracking-wider text-center uppercase mb-5">
+        "Professional & Community Affiliation"->string
+      </h3>
+      <div className="grid gap-4 grid-cols-1">
+        <Affiliation>
+          "American Institute of Certified Public Accountants"->string
+        </Affiliation>
+        <Affiliation> "AICPA Not-for-Profit Section"->string </Affiliation>
+        <Affiliation>
+          "AICPA Personal Financial Planning Section"->string
+        </Affiliation>
+        <Affiliation>
+          "Vice-Chairman Baptist Hospital Board of Directors"->string
+        </Affiliation>
+      </div>
+    </div>
   </Layout>;
 };
