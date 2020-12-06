@@ -5,6 +5,7 @@ import { make as Paragraph } from "../components/Paragraph.bs";
 import { make as TextButton } from "../components/TextButton.bs";
 import { make as Button } from "../components/Button.bs";
 import { make as FormControl } from "../components/FormControl.bs";
+import { make as ContactInfo } from "../components/ContactInfo.bs";
 import { className as inputClassName } from "../components/Input.bs";
 import { Styles as HeadingStyles } from "../components/Heading.bs";
 import { useState, useEffect, useRef, FormEvent } from "react";
@@ -140,26 +141,7 @@ export default function Index() {
       <Head>
         <title>Contact - Life Stewardship</title>
       </Head>
-      <h1 className={`${HeadingStyles.primary} mb-4 lg:mb-8`}>Contact</h1>
-      <address>
-        <dl className="text-base lg:text-xl text-gray-900 font-serif mb-5">
-          <dt>Mail</dt>
-          <dd className="ml-4">
-            1888 Main Street
-            <br />
-            Suite C-198
-            <br />
-            Madison, MS 39110
-          </dd>
-          <dt>Phone</dt>
-          <dd className="ml-4">(601) 624-5135</dd>
-          <dt>Email</dt>
-          <dd className="ml-4">
-            {/* @ts-ignore */}
-            <TextButton href={`mailto:${EMAIL}`}>{EMAIL}</TextButton>
-          </dd>
-        </dl>
-      </address>
+      <h1 className={`${HeadingStyles.primary} mb-5 lg:mb-10`}>Contact</h1>
       <Paragraph>
         If you’d like to receive more information or ask a question about our
         services, please fill out the form below.
@@ -180,14 +162,13 @@ export default function Index() {
       ) : null}
 
       <form
-        className="pb-14"
         action={process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT}
         method="post"
         noValidate
         onSubmit={handleFormSubmit}
       >
         <FormControl
-          className="mb-4 lg:mb-8"
+          className="mb-5 lg:mb-10"
           errors={errors}
           label="Name (required)"
           name="name"
@@ -203,7 +184,7 @@ export default function Index() {
           />
         </FormControl>
         <FormControl
-          className="mb-4 lg:mb-8"
+          className="mb-5 lg:mb-10"
           errors={errors}
           label="Email (required)"
           name="_replyto"
@@ -224,7 +205,7 @@ export default function Index() {
           value="Life Stewardship LLC Inquiry"
         />
         <FormControl
-          className="mb-4 lg:mb-8"
+          className="mb-5 lg:mb-10"
           errors={errors}
           label="Phone"
           name="phone"
@@ -238,7 +219,7 @@ export default function Index() {
           />
         </FormControl>
         <FormControl
-          className="mb-4 lg:mb-8"
+          className="mb-5 lg:mb-10"
           errors={errors}
           label="Message (required)"
           name="message"
@@ -256,7 +237,7 @@ export default function Index() {
         </FormControl>
         <div id="js-reCaptcha" className="g-recaptcha" />
         {/* @ts-ignore */}
-        <Button className="mb-4 lg:mb-8" type_="submit">
+        <Button className="block mx-auto mb-5 lg:mb-10" type_="submit">
           Send Message
         </Button>
       </form>
@@ -287,6 +268,25 @@ export default function Index() {
           {toast}
         </Toast>
       ) : null}
+
+      <hr className="mb-5" />
+
+      <address className="pb-16 md:pb-0 md:flex justify-evenly">
+        <ContactInfo icon="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+          1888 Main Street
+          <br />
+          Suite C-198
+          <br />
+          Madison, MS 39110
+        </ContactInfo>
+        <ContactInfo icon="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+          601-624-5135
+        </ContactInfo>
+        <ContactInfo icon="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207">
+          {/* @ts-ignore */}
+          <TextButton href={`mailto:Paul%20Calhoun<${EMAIL}>?subject=Life%20Stewardship%20LLC%20Inquiry`}>{EMAIL}</TextButton>
+        </ContactInfo>
+      </address>
     </Layout>
   );
 }

@@ -23,7 +23,7 @@ let default = () => {
     </div>
     <div className="lg:grid lg:grid-cols-2">
       <img className="mx-auto rounded-2xl w-40 lg:w-80 mb-5" src="paul-calhoun.jpg" />
-      <div className="px-5">
+      <div className="lg:px-5">
         <Paragraph>
           "My name is Paul Calhoun, the founder and managing member of Life
           Stewardship LLC. Until my retirement in December 2019, I was a partner

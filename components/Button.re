@@ -20,7 +20,7 @@ let make =
       element,
       ~props=
         ReactDOMRe.props(
-          ~className=className ++ " rounded-lg bg-green-600 text-white text-sm font-semibold uppercase p-3",
+          ~className=className ++ " rounded-lg bg-green-600 text-white text-base font-semibold p-3 px-8",
           ~href?,
           ~onClick?,
           ~type_?,
