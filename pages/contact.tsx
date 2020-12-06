@@ -235,11 +235,11 @@ export default function Index() {
             rows={10}
           ></textarea>
         </FormControl>
-        <div id="js-reCaptcha" className="g-recaptcha" />
         {/* @ts-ignore */}
         <Button className="block mx-auto mb-5 lg:mb-10" type_="submit">
           Send Message
         </Button>
+        <div id="js-reCaptcha" className="g-recaptcha" />
       </form>
 
       {errors.filter(({ subject }) => subject === "form").length > 0 ? (
@@ -269,7 +269,7 @@ export default function Index() {
         </Toast>
       ) : null}
 
-      <hr className="mb-5" />
+      <hr className="mb-5 border-gray-200" />
 
       <address className="pb-16 md:pb-0 md:flex justify-evenly">
         <ContactInfo icon="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -284,7 +284,11 @@ export default function Index() {
         </ContactInfo>
         <ContactInfo icon="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207">
           {/* @ts-ignore */}
-          <TextButton href={`mailto:Paul%20Calhoun<${EMAIL}>?subject=Life%20Stewardship%20LLC%20Inquiry`}>{EMAIL}</TextButton>
+          <TextButton
+            href={`mailto:Paul%20Calhoun<${EMAIL}>?subject=Life%20Stewardship%20LLC%20Inquiry`}
+          >
+            {EMAIL}
+          </TextButton>
         </ContactInfo>
       </address>
     </Layout>

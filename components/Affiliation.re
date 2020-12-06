@@ -1,7 +1,7 @@
 [@react.component]
 let make = (~children) => {
   <div
-    className="flex items-center bg-white border border-gray-300 rounded-lg p-5 lg:p-10 shadow-md italic text-lg text-gray-600">
+    className="flex items-center bg-white rounded-lg p-5 lg:p-10 shadow-md italic text-lg text-gray-600">
     <svg
       className="w-12 h-12 mr-5 flex-none text-gray-500"
       xmlns="http://www.w3.org/2000/svg"

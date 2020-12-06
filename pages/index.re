@@ -24,7 +24,7 @@ let default = () => {
     </div>
     <div className="lg:grid lg:grid-cols-2">
       <img
-        className="mx-auto rounded-2xl w-40 lg:w-80 mb-5"
+        className="mx-auto mb-5 lg:my-auto rounded-2xl w-40 lg:w-80"
         src="paul-calhoun.jpg"
       />
       <div className="max-w-xl mx-auto">
@@ -45,7 +45,7 @@ let default = () => {
           treasurer, president, vice chairman and board chairman."
           ->string
         </Paragraph>
-        <Paragraph className="mb-10">
+        <Paragraph>
           "My public accounting practice also included working with individuals
           regarding their financial planning and income taxes."
           ->string
@@ -56,7 +56,7 @@ let default = () => {
       className="text-xl font-light tracking-wider text-center uppercase mb-5">
       "Professional & Community Affiliation"->string
     </h3>
-    <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
+    <div className="grid gap-5 grid-cols-1 lg:grid-cols-2">
       <Affiliation>
         "American Institute of Certified Public Accountants"->string
       </Affiliation>
