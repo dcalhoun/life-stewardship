@@ -1,5 +1,3 @@
-open React
-
 module NavItem = {
   @react.component
   let make = (~children, ~className="", ~onClick=_event => (), ~href="") =>
@@ -17,7 +15,7 @@ let make = (~children) => <>
     <a
       className="inline-block bg-gray-600 border-solid rounded-lg m-5 mt-9 p-4 text-gray-200 absolute z-10"
       href="#content">
-      {"Skip to content"->string}
+      {"Skip to content"->React.string}
     </a>
   </div>
   <div className="bg-green-600 h-4 w-full" />
@@ -36,13 +34,13 @@ let make = (~children) => <>
       </Next.Link>
       <div className="flex flex-1 justify-center lg:justify-end">
         <Next.Link href="/nonprofit" passHref=true>
-          <NavItem> {"Nonprofit"->string} </NavItem>
+          <NavItem> {"Nonprofit"->React.string} </NavItem>
         </Next.Link>
         <Next.Link href="/individuals" passHref=true>
-          <NavItem> {"Individuals"->string} </NavItem>
+          <NavItem> {"Individuals"->React.string} </NavItem>
         </Next.Link>
         <Next.Link href="/contact" passHref=true>
-          <NavItem> {"Contact"->string} </NavItem>
+          <NavItem> {"Contact"->React.string} </NavItem>
         </Next.Link>
       </div>
     </nav>
