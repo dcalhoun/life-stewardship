@@ -9,7 +9,8 @@ let default = () => {
       </title>
     </Next.Head>
     <div
-      className="bg-white text-gray-700 rounded-lg mb-5 p-4 lg:px-24 lg:py-10 shadow-md">
+      className="flex flex-col justify-center bg-white text-gray-700 rounded-lg mb-5 py-4 px-8 lg:px-24 lg:py-10 shadow-md"
+      style={ReactDOM.Style.make(~minHeight="10rem", ())}>
       <h1
         className="text-2xl lg:text-4xl font-light leading-tight mb-5 text-center">
         "Financial planning and coaching for nonprofits and individuals."
@@ -22,8 +23,11 @@ let default = () => {
       </h2>
     </div>
     <div className="lg:grid lg:grid-cols-2">
-      <img className="mx-auto rounded-2xl w-40 lg:w-80 mb-5" src="paul-calhoun.jpg" />
-      <div className="lg:px-5">
+      <img
+        className="mx-auto rounded-2xl w-40 lg:w-80 mb-5"
+        src="paul-calhoun.jpg"
+      />
+      <div className="max-w-xl mx-auto">
         <Paragraph>
           "My name is Paul Calhoun, the founder and managing member of Life
           Stewardship LLC. Until my retirement in December 2019, I was a partner

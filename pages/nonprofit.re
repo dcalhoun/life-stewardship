@@ -13,7 +13,7 @@ let default = () => {
       className="h-40 lg:h-80 overflow-hidden rounded-lg mb-5 bg-contain lg:bg-cover bg-center bg-no-repeat bg-black"
       style={ReactDOM.Style.make(
         ~backgroundImage="url(/header-nonprofit.jpg)",
-        ()
+        (),
       )}
     />
     <Paragraph>

@@ -2,8 +2,14 @@ open React;
 
 module NavItem = {
   [@react.component]
-  let make = (~children, ~className, ~onClick=_event => (), ~href="") => {
-    <a className={className ++ " tracking-wider text-gray-700"} href onClick>
+  let make = (~children, ~className="", ~onClick=_event => (), ~href="") => {
+    <a
+      className={
+        className
+        ++ " tracking-wider font-semibold text-gray-700 mx-4 lg:ml-12 lg:mr-0"
+      }
+      href
+      onClick>
       children
     </a>;
   };
@@ -35,15 +41,15 @@ let make = (~children) => {
             </div>
           </a>
         </Next.Link>
-        <div className="flex flex-1 justify-center lg:justify-evenly">
+        <div className="flex flex-1 justify-center lg:justify-end">
           <Next.Link href="/nonprofit" passHref=true>
-            <NavItem className="mx-4"> "Nonprofit"->string </NavItem>
+            <NavItem> "Nonprofit"->string </NavItem>
           </Next.Link>
           <Next.Link href="/individuals" passHref=true>
-            <NavItem className="mx-4"> "Individuals"->string </NavItem>
+            <NavItem> "Individuals"->string </NavItem>
           </Next.Link>
           <Next.Link href="/contact" passHref=true>
-            <NavItem className="mx-4"> "Contact"->string </NavItem>
+            <NavItem> "Contact"->string </NavItem>
           </Next.Link>
         </div>
       </nav>
