@@ -37,8 +37,8 @@ let default = () =>
           responsibilities."->React.string}
     </Paragraph>
     <Paragraph>
-      {"If you want more information or need help fulfilling your fiduciary
-          responsibilities, let’s talk. I can assist you with:"->React.string}
+      {`If you want more information or need help fulfilling your fiduciary
+          responsibilities, let’s talk. I can assist you with:`->React.string}
     </Paragraph>
     <UnorderedList>
       <ListItem> {"Assisting with Board Governance & Oversight"->React.string} </ListItem>

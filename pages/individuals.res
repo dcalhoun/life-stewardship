@@ -29,7 +29,7 @@ let default = () =>
           others."->React.string}
     </Paragraph>
     <Paragraph>
-      {"If you are ready to get begin, let’s talk. I can assist you with:"->React.string}
+      {`If you are ready to get begin, let’s talk. I can assist you with:`->React.string}
     </Paragraph>
     <UnorderedList>
       <ListItem> {"Clarifying Your Financial Goals"->React.string} </ListItem>
