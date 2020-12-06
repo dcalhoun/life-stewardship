@@ -1,5 +1,5 @@
-[@react.component]
-let make = (~children) => {
+@react.component
+let make = (~children) =>
   <div
     className="flex items-center bg-white rounded-lg p-5 lg:p-10 shadow-md italic text-lg text-gray-600">
     <svg
@@ -16,5 +16,4 @@ let make = (~children) => {
       />
     </svg>
     <div className="flex-auto"> children </div>
-  </div>;
-};
+  </div>
