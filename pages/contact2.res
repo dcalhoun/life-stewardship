@@ -10,13 +10,6 @@ external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_
 let default = () => {
   let (toast, setToast) = React.useState(_ => "")
   let (errors, setErrors) = React.useState(_ => [])
-
-  let sendMessage = _ => ()
-  let (grecaptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
-    ~callback=sendMessage,
-    ~key=reCaptchaSiteKey,
-  )
-
   let formErrors = Belt.Array.keep(errors, ({FormControl.subject: subject}) => subject === "form")
 
   // Clear toast message
@@ -29,8 +22,13 @@ let default = () => {
     }
   }, [toast])
 
-  let formRef = React.useRef(Js.Nullable.null)
+  let sendMessage = _ => ()
+  let (grecaptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
+    ~callback=sendMessage,
+    ~key=reCaptchaSiteKey,
+  )
 
+  let formRef = React.useRef(Js.Nullable.null)
   let handleFormSubmit = event => {
     event->ReactEvent.Form.preventDefault
     formRef.current = event->ReactEvent.Form.currentTarget->Js.Nullable.return
