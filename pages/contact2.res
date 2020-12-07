@@ -31,14 +31,14 @@ let default = () => {
     setErrors(_ => [])
     let form = formRef.current
     let entries = Js.Dict.empty()
-    form->createFormData->Js.Array.from->Belt.Array.forEach(([key, value]) => {
-      switch key {
-      | "name" => entries->Js.Dict.set("name", Js.Json.string(value))
-      | "_replyto" => entries->Js.Dict.set("_replyto", Js.Json.string(value))
-      | "_subject" => entries->Js.Dict.set("_subject", Js.Json.string(value))
-      | "phone" => entries->Js.Dict.set("phone", Js.Json.string(value))
-      | "message" => entries->Js.Dict.set("message", Js.Json.string(value))
-      | "g-recaptcha-response" =>
+    form->createFormData->Js.Array.from->Belt.Array.forEach(entry => {
+      switch entry {
+      | [Some("name"), Some(value)] => entries->Js.Dict.set("name", Js.Json.string(value))
+      | [Some("_replyto"), Some(value)] => entries->Js.Dict.set("_replyto", Js.Json.string(value))
+      | [Some("_subject"), Some(value)] => entries->Js.Dict.set("_subject", Js.Json.string(value))
+      | [Some("phone"), Some(value)] => entries->Js.Dict.set("phone", Js.Json.string(value))
+      | [Some("message"), Some(value)] => entries->Js.Dict.set("message", Js.Json.string(value))
+      | [Some("g-recaptcha-response"), Some(value)] =>
         entries->Js.Dict.set("g-recaptcha-response", Js.Json.string(value))
       | _ => ()
       }
