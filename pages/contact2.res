@@ -4,7 +4,9 @@ let email = "Paul@LifeStewardshipLLC.com"
 external reCaptchaSiteKey: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
 
 @bs.val
-external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
+external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT"
+
+@bs.new external createFormData: 'form => 'formData = "FormData"
 
 @react.component
 let default = () => {
@@ -22,13 +24,47 @@ let default = () => {
     }
   }, [toast])
 
-  let sendMessage = _ => ()
+  let formRef = React.useRef(Js.Nullable.null)
+
+  let sendMessage = _ => {
+    setErrors(_ => [])
+    let form = formRef.current
+    // let entries =
+    //   form->createFormData->Js.Array.from->Belt.Array.reduce(Js.Dict.empty(), (acc, entry) => {
+    //     switch entry {
+    //     | ["name"] => {...acc, "name": value}
+    //     | _ => acc
+    //     }
+    //   })
+    switch form->Js.Nullable.toOption {
+    | None => ()
+    | Some(form) =>
+      let _ =
+        Fetch.fetchWithInit(
+          form["action"],
+          Fetch.RequestInit.make(
+            ~method_=Post,
+            ~body=form->createFormData->Fetch.BodyInit.makeWithFormData,
+            ~headers=Fetch.HeadersInit.make({"Content-Type": "application/json"}),
+            (),
+          ),
+        )
+        |> Js.Promise.then_(Fetch.Response.json)
+        |> Js.Promise.then_(json => {
+          Js.log2(">>>", json) |> Js.Promise.resolve
+        })
+        |> Js.Promise.catch(error => {
+          // TODO(David): Currently rejected due to failed reCAPTCHA. Why? FormData?
+          Js.log2(">>>", error) |> Js.Promise.resolve
+        })
+    }
+  }
+
   let (grecaptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
     ~callback=sendMessage,
     ~key=reCaptchaSiteKey,
   )
 
-  let formRef = React.useRef(Js.Nullable.null)
   let handleFormSubmit = event => {
     event->ReactEvent.Form.preventDefault
     formRef.current = event->ReactEvent.Form.currentTarget->Js.Nullable.return

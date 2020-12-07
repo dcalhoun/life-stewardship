@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.0.4",
+    "bs-fetch": "^0.6.2",
     "next": "^10.0.3",
     "next-transpile-modules": "4.1.0",
     "postcss": "^8.1.14",
