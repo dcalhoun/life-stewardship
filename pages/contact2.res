@@ -10,12 +10,25 @@ external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_
 let default = () => {
   let (toast, setToast) = React.useState(_ => "")
   let (errors, setErrors) = React.useState(_ => [])
-  let (reCaptchaLoadAttempts, _setReCaptchaLoadAttempts) = React.useState(_ => 0)
 
-  let loadReCaptcha = _ => ()
   let handleFormSubmit = _ => ()
+  let sendMessage = _ => ()
+  let (_greptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
+    ~callback=sendMessage,
+    ~key=reCaptchaSiteKey,
+  )
 
   let formErrors = Belt.Array.keep(errors, ({FormControl.subject: subject}) => subject === "form")
+
+  // Clear toast message
+  React.useEffect1(() => {
+    switch toast->Js.String.length > 0 {
+    | false => None
+    | true =>
+      let toastTO = Js.Global.setTimeout(() => {setToast(_ => "")}, 5000)
+      Some(() => Js.Global.clearTimeout(toastTO))
+    }
+  }, [toast])
 
   <Layout>
     <Next.Head> <title> {"Contact - Life Stewardship"->React.string} </title> </Next.Head>
