@@ -7,7 +7,7 @@ external reCaptchaSiteKey: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_S
 @bs.val
 external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT"
 
-@bs.new external createFormData: 'form => 'formData = "FormData"
+@bs.new external createFormData: 'form => Js.Array.array_like<'formData> = "FormData"
 
 @react.component
 let default = () => {
@@ -30,13 +30,19 @@ let default = () => {
   let sendMessage = _ => {
     setErrors(_ => [])
     let form = formRef.current
-    // let entries =
-    //   form->createFormData->Js.Array.from->Belt.Array.reduce(Js.Dict.empty(), (acc, entry) => {
-    //     switch entry {
-    //     | ["name"] => {...acc, "name": value}
-    //     | _ => acc
-    //     }
-    //   })
+    let entries = Js.Dict.empty()
+    form->createFormData->Js.Array.from->Belt.Array.forEach(([key, value]) => {
+      switch key {
+      | "name" => entries->Js.Dict.set("name", Js.Json.string(value))
+      | "_replyto" => entries->Js.Dict.set("_replyto", Js.Json.string(value))
+      | "_subject" => entries->Js.Dict.set("_subject", Js.Json.string(value))
+      | "phone" => entries->Js.Dict.set("phone", Js.Json.string(value))
+      | "message" => entries->Js.Dict.set("message", Js.Json.string(value))
+      | "g-recaptcha-response" =>
+        entries->Js.Dict.set("g-recaptcha-response", Js.Json.string(value))
+      | _ => ()
+      }
+    })
     switch form->Js.Nullable.toOption {
     | None => ()
     | Some(form) =>
@@ -45,7 +51,7 @@ let default = () => {
           form["action"],
           Fetch.RequestInit.make(
             ~method_=Post,
-            ~body=form->createFormData->Fetch.BodyInit.makeWithFormData,
+            ~body=entries->Js.Json.object_->Js.Json.stringify->Fetch.BodyInit.make,
             ~headers=Fetch.HeadersInit.make({"Content-Type": "application/json"}),
             (),
           ),
