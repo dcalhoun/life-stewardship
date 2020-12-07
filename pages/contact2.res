@@ -36,21 +36,23 @@ let default = () => {
     <Paragraph>
       {`If you’d like to receive more information or ask a question about our services, please fill out the form below.`->React.string}
     </Paragraph>
-    {reCaptchaLoadAttempts > 2
-      ? <Paragraph>
-          {"Multiple attempts to load the contact form failed. We recommend
-          emailing us directly at"->React.string}
-          <a href={"mailto:" ++ email}> {email->React.string} </a>
-          {"."->React.string}
-        </Paragraph>
-      : reCaptchaLoadAttempts > 0
-      ? <Paragraph>
+    {switch reCaptchaLoadAttempts {
+    | 0 => React.null
+    | 1 | 2 =>
+      <Paragraph>
         {"Loading the contact form failed. "->React.string}
         <button type_="button" onClick={loadReCaptcha}>
           {"Please try again."->React.string}
         </button>
       </Paragraph>
-      : React.null}
+    | _ =>
+      <Paragraph>
+        {"Multiple attempts to load the contact form failed. We recommend
+          emailing us directly at"->React.string}
+        <a href={"mailto:" ++ email}> {email->React.string} </a>
+        {"."->React.string}
+      </Paragraph>
+    }}
     <form
       action={Belt.Option.getWithDefault(formspreeEndpoint, "POST")}
       method="post"
