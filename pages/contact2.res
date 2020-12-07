@@ -11,9 +11,8 @@ let default = () => {
   let (toast, setToast) = React.useState(_ => "")
   let (errors, setErrors) = React.useState(_ => [])
 
-  let handleFormSubmit = _ => ()
   let sendMessage = _ => ()
-  let (_greptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
+  let (grecaptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
     ~callback=sendMessage,
     ~key=reCaptchaSiteKey,
   )
@@ -29,6 +28,32 @@ let default = () => {
       Some(() => Js.Global.clearTimeout(toastTO))
     }
   }, [toast])
+
+  let formRef = React.useRef(Js.Nullable.null)
+
+  let handleFormSubmit = event => {
+    event->ReactEvent.Form.preventDefault
+    formRef.current = event->ReactEvent.Form.currentTarget->Js.Nullable.return
+    let form = formRef.current
+    switch form->Js.Nullable.toOption {
+    | None => ()
+    | Some(form) => {
+        let errors =
+          form["elements"]
+          ->Js.Array.from
+          ->Belt.Array.keep(el => !el["checkValidity"]())
+          ->Belt.Array.map(el => {
+            {FormControl.subject: el["name"], message: el["dataset"]["errorMessage"]}
+          })
+
+        if errors->Belt.Array.length > 0 {
+          setErrors(_ => errors)
+        } else {
+          grecaptcha()
+        }
+      }
+    }
+  }
 
   <Layout>
     <Next.Head> <title> {"Contact - Life Stewardship"->React.string} </title> </Next.Head>
