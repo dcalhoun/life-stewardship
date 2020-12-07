@@ -1,4 +1,5 @@
 let email = "Paul@LifeStewardshipLLC.com"
+let mailTo = "mailto:Paul%20Calhoun<" ++ email ++ "?subject=Life%20Stewardship%20LLC%20Inquiry"
 
 @bs.val
 external reCaptchaSiteKey: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
@@ -108,7 +109,7 @@ let default = () => {
       <Paragraph>
         {"Multiple attempts to load the contact form failed. We recommend
           emailing us directly at"->React.string}
-        <a href={"mailto:" ++ email}> {email->React.string} </a>
+        <a href={mailTo}> {email->React.string} </a>
         {"."->React.string}
       </Paragraph>
     }}
@@ -201,10 +202,7 @@ let default = () => {
       </ContactInfo>
       <ContactInfo
         icon="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207">
-        <TextButton
-          href={"mailto:Paul%20Calhoun<" ++ email ++ "?subject=Life%20Stewardship%20LLC%20Inquiry"}>
-          {email->React.string}
-        </TextButton>
+        <TextButton href={mailTo}> {email->React.string} </TextButton>
       </ContactInfo>
     </address>
   </Layout>
