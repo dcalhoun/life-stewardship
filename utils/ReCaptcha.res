@@ -13,7 +13,7 @@ type renderProps = {
 }
 
 type grecaptcha = {
-  execute: unit => unit,
+  execute: (. unit) => unit,
   render: (. string, renderProps) => Js.Nullable.t<string>,
   reset: string => unit,
 }
@@ -77,7 +77,7 @@ let useReCaptcha = (~key, ~callback) => {
 
   let guardedGrecaptcha = () => {
     if Js.typeof(grecaptcha) != "undefined" {
-      grecaptcha.execute()
+      grecaptcha.execute(.)
     }
   }
 
