@@ -5,5 +5,5 @@ const withTM = require("next-transpile-modules")(
 );
 
 module.exports = withTM({
-  pageExtensions: ["jsx", "js", "ts", "tsx", "bs.js"],
+  pageExtensions: ["js", "bs.js"],
 });

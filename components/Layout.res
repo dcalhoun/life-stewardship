@@ -1,12 +1,13 @@
 module NavItem = {
   @react.component
-  let make = (~children, ~className="", ~onClick=_event => (), ~href="") =>
+  let make = React.forwardRef((~children, ~className="", ~onClick=_event => (), ~href="", _ref) => {
     <a
       className={className ++ " tracking-wider font-semibold text-gray-700 mx-4 lg:ml-12 lg:mr-0"}
       href
       onClick>
       children
     </a>
+  })
 }
 
 @react.component
