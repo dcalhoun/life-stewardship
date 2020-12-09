@@ -43,13 +43,24 @@ let default = () => {
             (),
           ),
         )
-        |> Js.Promise.then_(Fetch.Response.json)
-        |> Js.Promise.then_(json => {
-          Js.log2(">>>", json) |> Js.Promise.resolve
+        |> Js.Promise.then_(response => {
+          let _ = response |> Fetch.Response.json |> Js.Promise.then_(_json => {
+            if response->Fetch.Response.ok {
+              setToast(_ => "Your message was sent successfully.")
+            } else {
+              // TODO: Use error message from JSON
+              let message = "Fail."
+              setErrors(_ => [{FormControl.subject: "form", message: message}])
+            }
+            () |> Js.Promise.resolve
+          })
+          () |> Js.Promise.resolve
         })
-        |> Js.Promise.catch(error => {
-          // TODO(David): Currently rejected due to failed reCAPTCHA. Why? FormData?
-          Js.log2(">>>", error) |> Js.Promise.resolve
+        |> Js.Promise.catch(_error => {
+          // TODO: Reset captcha
+          // grecaptcha.reset()
+          setErrors(_ => [{FormControl.subject: "form", message: "Fail."}])
+          () |> Js.Promise.resolve
         })
     }
   }
