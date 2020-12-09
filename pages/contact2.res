@@ -65,8 +65,6 @@ let default = () => {
           () |> Js.Promise.resolve
         })
         |> Js.Promise.catch(error => {
-          // TODO: Reset captcha
-          // grecaptcha.reset()
           let {message} = error->toJsError
           setErrors(_ => [{FormControl.subject: "form", message: message}])
           () |> Js.Promise.resolve
