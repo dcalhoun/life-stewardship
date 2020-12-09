@@ -41,7 +41,7 @@ let make = (
     <meta
       key="og:image"
       property="og:image"
-      content={image->Belt.Option.getWithDefault(siteOrigin ++ "/social-share.jpg")}
+      content={image->Belt.Option.getWithDefault(siteOrigin ++ "/social-share.png")}
     />
     <meta key="og:title" property="og:title" content=title />
     <meta key="og:type" property="og:type" content="website" />
