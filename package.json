@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev:reason": "bsb -clean-world -make-world -w",
+    "dev:rescript": "bsb -clean-world -make-world -w",
     "dev:next": "next dev",
     "build": "bsb -clean-world -make-world && next build",
     "start": "next start"
