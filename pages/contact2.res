@@ -9,6 +9,12 @@ external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_
 
 @bs.new external createFormData: 'form => 'formData = "FormData"
 
+@decco type formError = {error: string}
+
+type fetchError = {message: string}
+
+external toJsError: Js.Promise.error => fetchError = "%identity"
+
 @react.component
 let default = () => {
   let (toast, setToast) = React.useState(_ => "")
@@ -44,22 +50,25 @@ let default = () => {
           ),
         )
         |> Js.Promise.then_(response => {
-          let _ = response |> Fetch.Response.json |> Js.Promise.then_(_json => {
+          let _ = response |> Fetch.Response.json |> Js.Promise.then_(json => {
             if response->Fetch.Response.ok {
               setToast(_ => "Your message was sent successfully.")
             } else {
-              // TODO: Use error message from JSON
-              let message = "Fail."
-              setErrors(_ => [{FormControl.subject: "form", message: message}])
+              let {error} =
+                json
+                ->formError_decode
+                ->Belt.Result.getWithDefault({error: "Network response was not OK."})
+              setErrors(_ => [{FormControl.subject: "form", message: error}])
             }
             () |> Js.Promise.resolve
           })
           () |> Js.Promise.resolve
         })
-        |> Js.Promise.catch(_error => {
+        |> Js.Promise.catch(error => {
           // TODO: Reset captcha
           // grecaptcha.reset()
-          setErrors(_ => [{FormControl.subject: "form", message: "Fail."}])
+          let {message} = error->toJsError
+          setErrors(_ => [{FormControl.subject: "form", message: message}])
           () |> Js.Promise.resolve
         })
     }
@@ -118,8 +127,8 @@ let default = () => {
       </Paragraph>
     }}
     <form
-      action={Belt.Option.getWithDefault(formspreeEndpoint, "POST")}
-      method="post"
+      action={formspreeEndpoint->Belt.Option.getUnsafe}
+      method="POST"
       noValidate=true
       onSubmit={handleFormSubmit}>
       <FormControl className="mb-5 lg:mb-10" errors={errors} label="Name (required)" name="name">
