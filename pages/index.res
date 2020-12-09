@@ -1,9 +1,7 @@
 @react.component
 let default = () =>
   <Layout>
-    <Next.Head>
-      <title> {"Life Stewardship, Financial Planning & Coaching"->React.string} </title>
-    </Next.Head>
+    <SEO />
     <div
       className="flex flex-col justify-center bg-white text-gray-700 rounded-lg mb-5 py-4 px-8 lg:px-24 lg:py-10 shadow-md"
       style={ReactDOM.Style.make(~minHeight="10rem", ())}>

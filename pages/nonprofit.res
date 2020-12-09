@@ -1,7 +1,10 @@
 @react.component
 let default = () =>
   <Layout>
-    <Next.Head> <title> {"Nonprofit - Life Stewardship"->React.string} </title> </Next.Head>
+    <SEO
+      title="Nonprofit"
+      description="Life Stewardship LLC assists nonprofits with financial planning and coaching."
+    />
     <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Nonprofit"->React.string} </h1>
     <div
       className="h-40 lg:h-80 overflow-hidden rounded-lg mb-5 bg-contain lg:bg-cover bg-center bg-no-repeat bg-black"
