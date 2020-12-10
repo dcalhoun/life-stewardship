@@ -44,3 +44,21 @@ type router = {
 }
 
 @bs.module("next/router") external useRouter: unit => router = "useRouter"
+
+module Image = {
+  @bs.module("next/image") @react.component
+  external make: (
+    ~className: string=?,
+    ~height: int,
+    ~layout: [#fixed | #intrinsic | #responsive | #fill]=?,
+    ~loading: [#\"lazy" | #eager]=?,
+    ~objectFit: string=?,
+    ~objectPosition: string=?,
+    ~priority: bool=?,
+    ~quality: int=?,
+    ~sizes: string=?,
+    ~src: string,
+    ~unoptimized: bool=?,
+    ~width: int,
+  ) => React.element = "default"
+}

@@ -6,10 +6,11 @@ let default = () =>
       description="Life Stewardship LLC assists individuals with financial planning and coaching."
     />
     <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Individuals"->React.string} </h1>
-    <div
-      className="h-40 lg:h-80 overflow-hidden rounded-lg mb-5 bg-cover bg-bottom bg-no-repeat"
-      style={ReactDOM.Style.make(~backgroundImage="url(/header-individuals.jpg)", ())}
-    />
+    <div className="mb-5">
+      <Next.Image
+        className="rounded-lg bg-gray-500" src="/header-individuals.jpg" height=400 width=864
+      />
+    </div>
     <Paragraph>
       <b> {"Begin."->React.string} </b>
       {" Beginning is often the hardest step. We do not know how

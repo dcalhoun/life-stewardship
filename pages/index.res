@@ -14,7 +14,11 @@ let default = () =>
       </h2>
     </div>
     <div className="lg:grid lg:grid-cols-2">
-      <img className="mx-auto mb-5 lg:my-auto rounded-2xl w-40 lg:w-80" src="paul-calhoun.jpg" />
+      <div className="mx-auto mb-5 lg:my-auto w-40 lg:w-80">
+        <Next.Image
+          className="rounded-2xl bg-gray-500" src="/paul-calhoun.jpg" height=400 width=320
+        />
+      </div>
       <div className="max-w-xl mx-auto">
         <Paragraph>
           {"My name is Paul Calhoun, the founder and managing member of Life

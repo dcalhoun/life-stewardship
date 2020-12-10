@@ -6,10 +6,11 @@ let default = () =>
       description="Life Stewardship LLC assists nonprofits with financial planning and coaching."
     />
     <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Nonprofit"->React.string} </h1>
-    <div
-      className="h-40 lg:h-80 overflow-hidden rounded-lg mb-5 bg-contain lg:bg-cover bg-center bg-no-repeat bg-black"
-      style={ReactDOM.Style.make(~backgroundImage="url(/header-nonprofit.jpg)", ())}
-    />
+    <div className="mb-5">
+      <Next.Image
+        className="rounded-lg bg-gray-500" src="/header-nonprofit.jpg" height=400 width=864
+      />
+    </div>
     <Paragraph>
       <b> {"Do something great. "->React.string} </b>
       {"Serving others or making things better is
