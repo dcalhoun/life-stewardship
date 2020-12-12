@@ -19,6 +19,7 @@ external toJsError: Js.Promise.error => fetchError = "%identity"
 let default = () => {
   let (toast, setToast) = React.useState(_ => "")
   let (errors, setErrors) = React.useState(_ => [])
+  let (sending, setSending) = React.useState(_ => false)
   let formErrors = Belt.Array.keep(errors, ({FormControl.subject: subject}) => subject === "form")
 
   // Clear toast message
@@ -39,6 +40,7 @@ let default = () => {
     switch form->Js.Nullable.toOption {
     | None => ()
     | Some(form) =>
+      setSending(_ => true)
       let _ =
         Fetch.fetchWithInit(
           form["action"],
@@ -51,13 +53,14 @@ let default = () => {
         )
         ->Js.Promise.then_(response => {
           let _ = response->Fetch.Response.json->Js.Promise.then_(json => {
+            setSending(_ => false)
             if response->Fetch.Response.ok {
               setToast(_ => "Your message was sent successfully.")
             } else {
               let {error} =
                 json
                 ->formError_decode
-                ->Belt.Result.getWithDefault({error: "Network response was not OK."})
+                ->Belt.Result.getWithDefault({error: "Network request failed."})
               setErrors(_ => [{FormControl.subject: "form", message: error}])
             }
             ()->Js.Promise.resolve
@@ -65,6 +68,7 @@ let default = () => {
           ()->Js.Promise.resolve
         }, _)
         ->Js.Promise.catch(error => {
+          setSending(_ => false)
           let {message} = error->toJsError
           setErrors(_ => [{FormControl.subject: "form", message: message}])
           ()->Js.Promise.resolve
@@ -81,9 +85,9 @@ let default = () => {
     event->ReactEvent.Form.preventDefault
     formRef.current = event->ReactEvent.Form.currentTarget->Js.Nullable.return
     let form = formRef.current
-    switch form->Js.Nullable.toOption {
-    | None => ()
-    | Some(form) => {
+    switch (form->Js.Nullable.toOption, sending) {
+    | (None, _) | (_, true) => ()
+    | (Some(form), false) => {
         let errors =
           form["elements"]
           ->Js.Array.from
@@ -177,7 +181,7 @@ let default = () => {
           />
         </Spread>
       </FormControl>
-      <Button className="block mx-auto mb-5 lg:mb-10" type_="submit">
+      <Button className="block mx-auto mb-5 lg:mb-10" loading=sending type_="submit">
         {"Send Message"->React.string}
       </Button>
       <div id="js-reCaptcha" className="g-recaptcha" />
