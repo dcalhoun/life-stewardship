@@ -49,8 +49,8 @@ let default = () => {
             (),
           ),
         )
-        |> Js.Promise.then_(response => {
-          let _ = response |> Fetch.Response.json |> Js.Promise.then_(json => {
+        ->Js.Promise.then_(response => {
+          let _ = response->Fetch.Response.json->Js.Promise.then_(json => {
             if response->Fetch.Response.ok {
               setToast(_ => "Your message was sent successfully.")
             } else {
@@ -60,15 +60,15 @@ let default = () => {
                 ->Belt.Result.getWithDefault({error: "Network response was not OK."})
               setErrors(_ => [{FormControl.subject: "form", message: error}])
             }
-            () |> Js.Promise.resolve
-          })
-          () |> Js.Promise.resolve
-        })
-        |> Js.Promise.catch(error => {
+            ()->Js.Promise.resolve
+          }, _)
+          ()->Js.Promise.resolve
+        }, _)
+        ->Js.Promise.catch(error => {
           let {message} = error->toJsError
           setErrors(_ => [{FormControl.subject: "form", message: message}])
-          () |> Js.Promise.resolve
-        })
+          ()->Js.Promise.resolve
+        }, _)
     }
   }
 
