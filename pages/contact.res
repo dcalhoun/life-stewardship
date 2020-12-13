@@ -137,49 +137,42 @@ let default = () => {
       noValidate=true
       onSubmit={handleFormSubmit}>
       <FormControl className="mb-5 lg:mb-10" errors={errors} label="Name (required)" name="name">
-        <Spread props={"data-error-message": "Name is required."}>
-          <input
-            className={Input.className}
-            placeholder="Jane Doe"
-            type_="text"
-            name="name"
-            id="name"
-            required=true
-          />
-        </Spread>
-      </FormControl>
-      <FormControl
-        className="mb-5 lg:mb-10" errors={errors} label="Email (required)" name="_replyto">
-        <Spread props={"data-error-message": "Valid email is required."}>
-          <input
-            className={Input.className}
-            placeholder="jane.doe@example.com"
-            type_="email"
-            name="_replyto"
-            id="_replyto"
-            required=true
-          />
-        </Spread>
-      </FormControl>
-      <input type_="hidden" name="_subject" value="Life Stewardship LLC Inquiry" />
-      <FormControl className="mb-5 lg:mb-10" errors={errors} label="Phone" name="phone">
-        <input
-          className={Input.className} placeholder="555-555-5555" type_="tel" name="phone" id="phone"
+        <TextInput
+          errorMessage="Name is required."
+          id="name"
+          name="name"
+          placeholder="Jane Doe"
+          required=true
+          type_="text"
         />
       </FormControl>
       <FormControl
+        className="mb-5 lg:mb-10" errors={errors} label="Email (required)" name="_replyto">
+        <TextInput
+          errorMessage="Valid email is required."
+          id="_replyto"
+          name="_replyto"
+          placeholder="jane.doe@example.com"
+          required=true
+          type_="email"
+        />
+      </FormControl>
+      <input type_="hidden" name="_subject" value="Life Stewardship LLC Inquiry" />
+      <FormControl className="mb-5 lg:mb-10" errors={errors} label="Phone" name="phone">
+        <TextInput placeholder="555-555-5555" type_="tel" name="phone" id="phone" />
+      </FormControl>
+      <FormControl
         className="mb-5 lg:mb-10" errors={errors} label="Message (required)" name="message">
-        <Spread props={"data-error-message": "Message required."}>
-          <textarea
-            className={Input.className}
-            cols={30}
-            id="message"
-            name="message"
-            placeholder="Tell me more about your project, needs, or timeline."
-            required=true
-            rows={10}
-          />
-        </Spread>
+        <TextInput
+          cols={30}
+          errorMessage="Message is required."
+          id="message"
+          multiline=true
+          name="message"
+          placeholder="Tell me more about your project, needs, or timeline."
+          required=true
+          rows={10}
+        />
       </FormControl>
       <Button className="block mx-auto mb-5 lg:mb-10" loading=sending type_="submit">
         {"Send Message"->React.string}

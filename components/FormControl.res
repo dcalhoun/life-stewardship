@@ -7,10 +7,14 @@ type formError = {
 let make = (~className, ~children, ~errors, ~label, ~name) => {
   let error = Belt.Array.getBy(errors, e => e.subject === name)
   <div className>
-    <label className="text-base lg:text-xl text-gray-900 font-serif" htmlFor=name>
+    <label
+      className={(
+        error->Belt.Option.isSome ? "text-red-500" : "text-gray-900"
+      ) ++ " text-base lg:text-xl text-gray-900 font-serif"}
+      htmlFor=name>
       {label->React.string}
     </label>
-    children
+    <Spread props={"invalid": error->Belt.Option.isSome}> children </Spread>
     {switch error {
     | Some(error) =>
       <span className="text-base lg:text-xl text-red-500 font-serif">
