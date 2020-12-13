@@ -1,8 +1,14 @@
+type context = Error | Success
+
 @react.component
-let make = (~children, ~className, ~onDismiss) =>
+let make = (~children, ~className, ~context, ~onDismiss) =>
   <div
-    className={className ++ " flex items-center bg-white border border-gray-300 shadow-xl rounded"}>
-    <TextButton className="p-3" onClick=onDismiss>
+    className={className ++
+    switch context {
+    | Success => " bg-green-600"
+    | Error => " bg-red-500"
+    } ++ " flex items-center text-white shadow-xl rounded"}>
+    <button className="p-3 text-white" onClick=onDismiss>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -13,6 +19,6 @@ let make = (~children, ~className, ~onDismiss) =>
           strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"
         />
       </svg>
-    </TextButton>
+    </button>
     children
   </div>

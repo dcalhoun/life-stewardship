@@ -188,7 +188,8 @@ let default = () => {
     </form>
     {formErrors->Belt.Array.length > 0
       ? <Toast
-          className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2 bg-red-500 border-red-700 text-white"
+          className="fixed top-10 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2"
+          context=Toast.Error
           onDismiss={_ => setErrors(_ => [])}>
           {Belt.Array.mapWithIndex(formErrors, (index, {TextInput.message: message}) =>
             <span key={index->Belt.Int.toString}> {message->React.string} <br /> </span>
@@ -197,7 +198,8 @@ let default = () => {
       : React.null}
     {toast->Js.String.length > 0
       ? <Toast
-          className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2"
+          className="fixed top-10 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2"
+          context=Toast.Success
           onDismiss={_ => {
             setToast(_ => "")
           }}>
