@@ -20,7 +20,7 @@ let default = () => {
   let (toast, setToast) = React.useState(_ => "")
   let (errors, setErrors) = React.useState(_ => [])
   let (sending, setSending) = React.useState(_ => false)
-  let formErrors = Belt.Array.keep(errors, ({FormControl.subject: subject}) => subject === "form")
+  let formErrors = Belt.Array.keep(errors, ({TextInput.subject: subject}) => subject === "form")
 
   // Clear toast message
   React.useEffect1(() => {
@@ -61,7 +61,7 @@ let default = () => {
                 json
                 ->formError_decode
                 ->Belt.Result.getWithDefault({error: "Network request failed."})
-              setErrors(_ => [{FormControl.subject: "form", message: error}])
+              setErrors(_ => [{TextInput.subject: "form", message: error}])
             }
             ()->Js.Promise.resolve
           }, _)
@@ -70,7 +70,7 @@ let default = () => {
         ->Js.Promise.catch(error => {
           setSending(_ => false)
           let {message} = error->toJsError
-          setErrors(_ => [{FormControl.subject: "form", message: message}])
+          setErrors(_ => [{TextInput.subject: "form", message: message}])
           ()->Js.Promise.resolve
         }, _)
     }
@@ -93,7 +93,7 @@ let default = () => {
           ->Js.Array.from
           ->Belt.Array.keep(el => !el["checkValidity"]())
           ->Belt.Array.map(el => {
-            {FormControl.subject: el["name"], message: el["dataset"]["errorMessage"]}
+            {TextInput.subject: el["name"], message: el["dataset"]["errorMessage"]}
           })
 
         if errors->Belt.Array.length > 0 {
@@ -136,44 +136,51 @@ let default = () => {
       method="POST"
       noValidate=true
       onSubmit={handleFormSubmit}>
-      <FormControl className="mb-5 lg:mb-10" errors={errors} label="Name (required)" name="name">
-        <TextInput
-          errorMessage="Name is required."
-          id="name"
-          name="name"
-          placeholder="Jane Doe"
-          required=true
-          type_="text"
-        />
-      </FormControl>
-      <FormControl
-        className="mb-5 lg:mb-10" errors={errors} label="Email (required)" name="_replyto">
-        <TextInput
-          errorMessage="Valid email is required."
-          id="_replyto"
-          name="_replyto"
-          placeholder="jane.doe@example.com"
-          required=true
-          type_="email"
-        />
-      </FormControl>
-      <input type_="hidden" name="_subject" value="Life Stewardship LLC Inquiry" />
-      <FormControl className="mb-5 lg:mb-10" errors={errors} label="Phone" name="phone">
-        <TextInput placeholder="555-555-5555" type_="tel" name="phone" id="phone" />
-      </FormControl>
-      <FormControl
-        className="mb-5 lg:mb-10" errors={errors} label="Message (required)" name="message">
-        <TextInput
-          cols={30}
-          errorMessage="Message is required."
-          id="message"
-          multiline=true
-          name="message"
-          placeholder="Tell me more about your project, needs, or timeline."
-          required=true
-          rows={10}
-        />
-      </FormControl>
+      <TextInput
+        className="mb-5 lg:mb-10"
+        errorMessage="Name is required."
+        errors={errors}
+        id="name"
+        label="Name (required)"
+        name="name"
+        placeholder="Jane Doe"
+        required=true
+        type_="text"
+      />
+      <TextInput
+        className="mb-5 lg:mb-10"
+        errorMessage="Valid email is required."
+        errors={errors}
+        id="_replyto"
+        label="Email (required)"
+        name="_replyto"
+        placeholder="jane.doe@example.com"
+        required=true
+        type_="email"
+      />
+      <TextInput id="subject" name="_subject" type_="hidden" value="Life Stewardship LLC Inquiry" />
+      <TextInput
+        className="mb-5 lg:mb-10"
+        errors={errors}
+        id="phone"
+        label="Phone"
+        name="phone"
+        placeholder="555-555-5555"
+        type_="tel"
+      />
+      <TextInput
+        className="mb-5 lg:mb-10"
+        cols={30}
+        errorMessage="Message is required."
+        errors={errors}
+        id="message"
+        label="Message (required)"
+        multiline=true
+        name="message"
+        placeholder="Tell me more about your project, needs, or timeline."
+        required=true
+        rows={10}
+      />
       <Button className="block mx-auto mb-5 lg:mb-10" loading=sending type_="submit">
         {"Send Message"->React.string}
       </Button>
@@ -183,7 +190,7 @@ let default = () => {
       ? <Toast
           className="fixed top-5 left-2/4 w-full lg:w-2/4 transform -translate-x-1/2 bg-red-500 border-red-700 text-white"
           onDismiss={_ => setErrors(_ => [])}>
-          {Belt.Array.mapWithIndex(formErrors, (index, {FormControl.message: message}) =>
+          {Belt.Array.mapWithIndex(formErrors, (index, {TextInput.message: message}) =>
             <span key={index->Belt.Int.toString}> {message->React.string} <br /> </span>
           )->React.array}
         </Toast>
