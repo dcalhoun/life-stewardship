@@ -138,6 +138,7 @@ let default = () => {
       onSubmit={handleFormSubmit}>
       <TextInput
         className="mb-5 lg:mb-10"
+        disabled=sending
         errorMessage="Name is required."
         errors={errors}
         id="name"
@@ -149,6 +150,7 @@ let default = () => {
       />
       <TextInput
         className="mb-5 lg:mb-10"
+        disabled=sending
         errorMessage="Valid email is required."
         errors={errors}
         id="_replyto"
@@ -161,6 +163,7 @@ let default = () => {
       <TextInput id="subject" name="_subject" type_="hidden" value="Life Stewardship LLC Inquiry" />
       <TextInput
         className="mb-5 lg:mb-10"
+        disabled=sending
         errors={errors}
         id="phone"
         label="Phone"
@@ -171,6 +174,7 @@ let default = () => {
       <TextInput
         className="mb-5 lg:mb-10"
         cols={30}
+        disabled=sending
         errorMessage="Message is required."
         errors={errors}
         id="message"

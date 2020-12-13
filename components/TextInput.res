@@ -7,6 +7,7 @@ type formError = {
 let make = (
   ~className="",
   ~cols=?,
+  ~disabled=false,
   ~errorMessage="Required.",
   ~errors=[],
   ~id,
@@ -27,8 +28,12 @@ let make = (
         error->Belt.Option.isSome
           ? "border-red-300 placeholder-red-400 text-red-500"
           : "border-gray-300 placeholder-gray-400 text-gray-900"
-      ) ++ " bg-white shadow-none border rounded-md p-2 block w-full",
+      ) ++
+      (disabled
+        ? " cursor-not-allowed opacity-50"
+        : "") ++ " bg-white shadow-none border rounded-md p-2 block w-full",
       ~cols?,
+      ~disabled,
       ~id,
       ~name,
       ~placeholder,
