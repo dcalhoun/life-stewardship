@@ -110,7 +110,7 @@ let default = () => {
       title="Contact"
       description="Contact Paul Calhoun, managing partner and founder of Life Stewardship LLC."
     />
-    <h1 className={Heading.Styles.primary ++ " mb-5 lg:mb-10"}> {"Contact"->React.string} </h1>
+    <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Contact"->React.string} </h1>
     <Paragraph>
       {`If you’d like to receive more information or ask a question about my services, please fill out the form below.`->React.string}
     </Paragraph>
