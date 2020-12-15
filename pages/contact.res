@@ -138,43 +138,42 @@ let default = () => {
       onSubmit={handleFormSubmit}>
       <TextInput
         className="mb-5 lg:mb-10"
-        disabled=sending
         errorMessage="Name is required."
         errors={errors}
         id="name"
         label="Name (required)"
         name="name"
         placeholder="Jane Doe"
+        readOnly=sending
         required=true
         type_="text"
       />
       <TextInput
         className="mb-5 lg:mb-10"
-        disabled=sending
         errorMessage="Valid email is required."
         errors={errors}
         id="_replyto"
         label="Email (required)"
         name="_replyto"
         placeholder="jane.doe@example.com"
+        readOnly=sending
         required=true
         type_="email"
       />
       <TextInput id="subject" name="_subject" type_="hidden" value="Life Stewardship LLC Inquiry" />
       <TextInput
         className="mb-5 lg:mb-10"
-        disabled=sending
         errors={errors}
         id="phone"
         label="Phone"
         name="phone"
         placeholder="555-555-5555"
+        readOnly=sending
         type_="tel"
       />
       <TextInput
         className="mb-5 lg:mb-10"
         cols={30}
-        disabled=sending
         errorMessage="Message is required."
         errors={errors}
         id="message"
@@ -182,6 +181,7 @@ let default = () => {
         multiline=true
         name="message"
         placeholder="Tell me more about your project, needs, or timeline."
+        readOnly=sending
         required=true
         rows={10}
       />

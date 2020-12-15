@@ -7,7 +7,6 @@ type formError = {
 let make = (
   ~className="",
   ~cols=?,
-  ~disabled=false,
   ~errorMessage="Required.",
   ~errors=[],
   ~id,
@@ -15,10 +14,11 @@ let make = (
   ~multiline=false,
   ~name,
   ~placeholder="",
+  ~readOnly=false,
   ~required=false,
   ~rows=?,
-  ~value=?,
   ~type_="text",
+  ~value=?,
 ) => {
   let error = Belt.Array.getBy(errors, e => e.subject === name)
   let textInput = ReactDOMRe.createElement(
@@ -29,11 +29,11 @@ let make = (
           ? "border-red-300 placeholder-red-400 text-red-500"
           : "border-gray-300 placeholder-gray-400 text-gray-900"
       ) ++
-      (disabled
+      (readOnly
         ? " cursor-not-allowed opacity-50"
         : "") ++ " bg-white shadow-none border rounded-md p-2 block w-full",
       ~cols?,
-      ~disabled,
+      ~readOnly,
       ~id,
       ~name,
       ~placeholder,
