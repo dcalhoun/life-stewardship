@@ -9,7 +9,7 @@ external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_
 
 @bs.new external createFormData: 'form => 'formData = "FormData"
 
-@decco type formError = {error: string}
+@decco.decode type formError = {error: string}
 
 type fetchError = {message: string}
 
