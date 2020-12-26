@@ -111,6 +111,13 @@ let default = () => {
       description="Contact Paul Calhoun, managing partner and founder of Life Stewardship LLC."
     />
     <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Contact"->React.string} </h1>
+    <address className="md:flex">
+      <ContactInfo>
+        {"1888 Main Street, "->React.string}
+        {"Suite C-198, "->React.string}
+        {"Madison, MS 39110"->React.string}
+      </ContactInfo>
+    </address>
     <Paragraph>
       {`If you’d like to receive more information or ask a question about my services, please fill out the form below.`->React.string}
     </Paragraph>
@@ -210,19 +217,5 @@ let default = () => {
           {toast->React.string}
         </Toast>
       : React.null}
-    <hr className="mb-5 border-gray-200" />
-    <address className="pb-16 md:pb-0 md:flex justify-evenly">
-      <ContactInfo icon=ContactInfo.Mail>
-        {"1888 Main Street"->React.string}
-        <br />
-        {"Suite C-198"->React.string}
-        <br />
-        {"Madison, MS 39110"->React.string}
-      </ContactInfo>
-      <ContactInfo icon=ContactInfo.Phone> {"601-624-5135"->React.string} </ContactInfo>
-      <ContactInfo icon=ContactInfo.Email>
-        <TextButton href={mailTo}> {email->React.string} </TextButton>
-      </ContactInfo>
-    </address>
   </Layout>
 }
