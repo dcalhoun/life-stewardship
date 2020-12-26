@@ -63,7 +63,7 @@ let make = (
       | Some(error) =>
         <span className="flex items-center text-base lg:text-xl text-red-500 font-serif">
           <svg
-            className="mr-1 h-6 w-6"
+            className="mr-1 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
