@@ -24,13 +24,9 @@ let make = (~children) => <>
     <nav className="flex flex-col lg:flex-row items-center lg:py-5 mb-5">
       <Next.Link href="/">
         <a className="w-64 self-center mb-5 lg:mb-0">
-          <div className="relative" style={ReactDOM.Style.make(~paddingBottom="21.0344828%", ())}>
-            <img
-              className="absolute h-full w-full object-contain"
-              src="/logo.png"
-              alt="Life Stewardship logo"
-            />
-          </div>
+          <Next.Image
+            className="absolute h-full w-full object-contain" height=54 src="/logo.png" width=256
+          />
         </a>
       </Next.Link>
       <div className="flex flex-1 justify-center lg:justify-end">
