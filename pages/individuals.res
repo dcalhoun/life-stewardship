@@ -8,7 +8,11 @@ let default = () =>
     <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Individuals"->React.string} </h1>
     <div className="mb-5">
       <Next.Image
-        className="rounded-lg bg-gray-500" src="/header-individuals.jpg" height=400 width=864
+        alt="The word begin written on a white coffee mug sitting on a wooden table"
+        className="rounded-lg bg-gray-500"
+        src="/header-individuals.jpg"
+        height=400
+        width=864
       />
     </div>
     <Paragraph>

@@ -16,7 +16,11 @@ let default = () =>
     <div className="lg:grid lg:grid-cols-2">
       <div className="mx-auto mb-5 lg:my-auto w-40 lg:w-80">
         <Next.Image
-          className="rounded-2xl bg-gray-500" src="/paul-calhoun.jpg" height=400 width=320
+          alt="Portrait of Paul Calhoun, managing member and founder of Life Stewardship LLC"
+          className="rounded-2xl bg-gray-500"
+          src="/paul-calhoun.jpg"
+          height=400
+          width=320
         />
       </div>
       <div className="max-w-xl mx-auto">

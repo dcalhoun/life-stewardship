@@ -48,6 +48,7 @@ type router = {
 module Image = {
   @bs.module("next/image") @react.component
   external make: (
+    ~alt: string=?,
     ~className: string=?,
     ~height: int,
     ~layout: [#fixed | #intrinsic | #responsive | #fill]=?,

@@ -25,7 +25,11 @@ let make = (~children) => <>
       <Next.Link href="/">
         <a className="w-64 self-center mb-5 lg:mb-0">
           <Next.Image
-            className="absolute h-full w-full object-contain" height=54 src="/logo.png" width=256
+            alt="Life Stewardship LLC logo"
+            className="absolute h-full w-full object-contain"
+            height=54
+            src="/logo.png"
+            width=256
           />
         </a>
       </Next.Link>
