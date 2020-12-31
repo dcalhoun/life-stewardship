@@ -19,7 +19,7 @@ let make = (~children) => <>
       {"Skip to content"->React.string}
     </a>
   </div>
-  <div className="bg-green-600 h-4 w-full" />
+  <div className="bg-green-700 h-4 w-full" />
   <div className="p-4 max-w-4xl mx-auto">
     <nav className="flex flex-col lg:flex-row items-center lg:py-5 mb-5">
       <Next.Link href="/">
