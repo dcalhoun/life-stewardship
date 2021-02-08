@@ -1,4 +1,4 @@
-@bs.module("@wp-headless/client") @bs.new
+@module("@wp-headless/client") @new
 external createWpClient: string => 'wpClient = "default"
 
 let apiUrl = "https://public-api.wordpress.com/rest/v1.1/"
