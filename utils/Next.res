@@ -1,3 +1,31 @@
+module GetServerSideProps = {
+  module Req = {
+    type t
+  }
+
+  module Res = {
+    type t
+
+    @send external setHeader: (t, string, string) => unit = "setHeader"
+    @send external write: (t, string) => unit = "write"
+    @send external end: t => unit = "end"
+  }
+
+  // See: https://github.com/zeit/next.js/blob/canary/packages/next/types/index.d.ts
+  type context<'props, 'params, 'previewData> = {
+    params: Js.t<'params>,
+    query: Js.Dict.t<string>,
+    preview: option<bool>, // preview is true if the page is in the preview mode and undefined otherwise.
+    previewData: Js.Nullable.t<'previewData>,
+    req: Req.t,
+    res: Res.t,
+  }
+
+  type t<'props, 'params, 'previewData> = context<'props, 'params, 'previewData> => Js.Promise.t<{
+    "props": 'props,
+  }>
+}
+
 module Link = {
   @bs.module("next/link") @react.component
   external make: (
