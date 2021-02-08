@@ -26,8 +26,8 @@ let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> 
 
 module Post = {
   @react.component
-  let make = (~excerpt, ~id, ~title) => {
-    <article key=id className="mb-8">
+  let make = (~excerpt, ~title) => {
+    <article className="mb-8">
       <h2 className=Heading.Styles.secondary> {title->React.string} </h2>
       <div dangerouslySetInnerHTML={{"__html": excerpt}} />
     </article>
@@ -40,7 +40,7 @@ let default = (props: props): React.element => {
     <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
     <div>
       {props.posts
-      ->Belt.Array.map(({excerpt, id, title}) => <Post excerpt id title />)
+      ->Belt.Array.map(({excerpt, id, title}) => <Post key=id excerpt title />)
       ->React.array}
     </div>
   </Layout>
