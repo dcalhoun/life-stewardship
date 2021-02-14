@@ -46,7 +46,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
+.post html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
@@ -57,14 +57,14 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-body {
+.post body {
   margin: 0;
 }
 
 /**
  * Render the `main` element consistently in IE.
  */
-main {
+.post main {
   display: block;
 }
 
@@ -72,7 +72,7 @@ main {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
+.post h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -84,7 +84,7 @@ h1 {
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
-hr {
+.post hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
@@ -94,7 +94,7 @@ hr {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-pre {
+.post pre {
   font-family: monospace, monospace;
   font-size: 1em;
 }
@@ -105,7 +105,7 @@ pre {
 /**
  * Remove the gray background on active links in IE 10.
  */
-a {
+.post a {
   background-color: transparent;
 }
 
@@ -113,7 +113,7 @@ a {
  * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
-abbr[title] {
+.post abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   text-decoration: underline dotted;
@@ -122,8 +122,8 @@ abbr[title] {
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-b,
-strong {
+.post b,
+.post strong {
   font-weight: bolder;
 }
 
@@ -131,9 +131,9 @@ strong {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-code,
-kbd,
-samp {
+.post code,
+.post kbd,
+.post samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
@@ -141,7 +141,7 @@ samp {
 /**
  * Add the correct font size in all browsers.
  */
-small {
+.post small {
   font-size: 80%;
 }
 
@@ -149,19 +149,19 @@ small {
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
-sub,
-sup {
+.post sub,
+.post sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub {
+.post sub {
   bottom: -0.25em;
 }
 
-sup {
+.post sup {
   top: -0.5em;
 }
 
@@ -171,7 +171,7 @@ sup {
 /**
  * Remove the border on images inside links in IE 10.
  */
-img {
+.post img {
   border-style: none;
 }
 
@@ -182,11 +182,11 @@ img {
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
-button,
-input,
-optgroup,
-select,
-textarea {
+.post button,
+.post input,
+.post optgroup,
+.post select,
+.post textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
@@ -197,8 +197,8 @@ textarea {
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
-button,
-input {
+.post button,
+.post input {
   overflow: visible;
 }
 
@@ -206,28 +206,28 @@ input {
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
-button,
-select {
+.post button,
+.post select {
   text-transform: none;
 }
 
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+.post button,
+.post [type="button"],
+.post [type="reset"],
+.post [type="submit"] {
   -webkit-appearance: button;
 }
 
 /**
  * Remove the inner border and padding in Firefox.
  */
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+.post button::-moz-focus-inner,
+.post [type="button"]::-moz-focus-inner,
+.post [type="reset"]::-moz-focus-inner,
+.post [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -235,17 +235,17 @@ button::-moz-focus-inner,
 /**
  * Restore the focus styles unset by the previous rule.
  */
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+.post button:-moz-focusring,
+.post [type="button"]:-moz-focusring,
+.post [type="reset"]:-moz-focusring,
+.post [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
 /**
  * Correct the padding in Firefox.
  */
-fieldset {
+.post fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
 
@@ -255,7 +255,7 @@ fieldset {
  * 3. Remove the padding so developers are not caught out when they zero out
  *		`fieldset` elements in all browsers.
  */
-legend {
+.post legend {
   box-sizing: border-box;
   color: inherit;
   display: table;
@@ -267,14 +267,14 @@ legend {
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
-progress {
+.post progress {
   vertical-align: baseline;
 }
 
 /**
  * Remove the default vertical scrollbar in IE 10+.
  */
-textarea {
+.post textarea {
   overflow: auto;
 }
 
@@ -282,8 +282,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type="checkbox"],
-[type="radio"] {
+.post [type="checkbox"],
+.post [type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
@@ -291,8 +291,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+.post [type="number"]::-webkit-inner-spin-button,
+.post [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -300,7 +300,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type="search"] {
+.post [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
@@ -308,7 +308,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type="search"]::-webkit-search-decoration {
+.post [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -327,14 +327,14 @@ textarea {
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
-details {
+.post details {
   display: block;
 }
 
 /*
  * Add the correct display in all browsers.
  */
-summary {
+.post summary {
   display: list-item;
 }
 
@@ -344,14 +344,14 @@ summary {
 /**
  * Add the correct display in IE 10+.
  */
-template {
+.post template {
   display: none;
 }
 
 /**
  * Add the correct display in IE 10.
  */
-[hidden] {
+.post [hidden] {
   display: none;
 }
 
@@ -366,7 +366,7 @@ template {
   box-sizing: inherit;
 }
 
-html {
+.post html {
   box-sizing: border-box;
 }
 
@@ -376,12 +376,12 @@ html {
 
 /* Typography
 --------------------------------------------- */
-body,
-button,
-input,
-select,
-optgroup,
-textarea {
+.post body,
+.post button,
+.post input,
+.post select,
+.post optgroup,
+.post textarea {
   color: #404040;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -389,35 +389,35 @@ textarea {
   line-height: 1.5;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
   clear: both;
 }
 
-p {
+.post p {
   margin-bottom: 1.5em;
 }
 
-dfn,
-cite,
-em,
-i {
+.post dfn,
+.post cite,
+.post em,
+.post i {
   font-style: italic;
 }
 
-blockquote {
+.post blockquote {
   margin: 0 1.5em;
 }
 
-address {
+.post address {
   margin: 0 0 1.5em;
 }
 
-pre {
+.post pre {
   background: #eee;
   font-family: "Courier 10 Pitch", courier, monospace;
   line-height: 1.6;
@@ -427,121 +427,121 @@ pre {
   padding: 1.6em;
 }
 
-code,
-kbd,
-tt,
-var {
+.post code,
+.post kbd,
+.post tt,
+.post var {
   font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 }
 
-abbr,
-acronym {
+.post abbr,
+.post acronym {
   border-bottom: 1px dotted #666;
   cursor: help;
 }
 
-mark,
-ins {
+.post mark,
+.post ins {
   background: #fff9c0;
   text-decoration: none;
 }
 
-big {
+.post big {
   font-size: 125%;
 }
 
 /* Elements
 --------------------------------------------- */
-body {
+.post body {
   background: #fff;
 }
 
-hr {
+.post hr {
   background-color: #ccc;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em;
 }
 
-ul,
-ol {
+.post ul,
+.post ol {
   margin: 0 0 1.5em 3em;
 }
 
-ul {
+.post ul {
   list-style: disc;
 }
 
-ol {
+.post ol {
   list-style: decimal;
 }
 
-li > ul,
-li > ol {
+.post li > ul,
+.post li > ol {
   margin-bottom: 0;
   margin-left: 1.5em;
 }
 
-dt {
+.post dt {
   font-weight: 700;
 }
 
-dd {
+.post dd {
   margin: 0 1.5em 1.5em;
 }
 
 /* Make sure embeds and iframes fit their containers. */
-embed,
-iframe,
-object {
+.post embed,
+.post iframe,
+.post object {
   max-width: 100%;
 }
 
-img {
+.post img {
   height: auto;
   max-width: 100%;
 }
 
-figure {
+.post figure {
   margin: 1em 0;
 }
 
-table {
+.post table {
   margin: 0 0 1.5em;
   width: 100%;
 }
 
 /* Links
 --------------------------------------------- */
-a {
+.post a {
   color: #4169e1;
 }
 
-a:visited {
+.post a:visited {
   color: #800080;
 }
 
-a:hover,
-a:focus,
-a:active {
+.post a:hover,
+.post a:focus,
+.post a:active {
   color: #191970;
 }
 
-a:focus {
+.post a:focus {
   outline: thin dotted;
 }
 
-a:hover,
-a:active {
+.post a:hover,
+.post a:active {
   outline: 0;
 }
 
 /* Forms
 --------------------------------------------- */
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+.post button,
+.post input[type="button"],
+.post input[type="reset"],
+.post input[type="submit"] {
   border: 1px solid;
   border-color: #ccc #ccc #bbb;
   border-radius: 3px;
@@ -551,70 +551,70 @@ input[type="submit"] {
   padding: 0.6em 1em 0.4em;
 }
 
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
+.post button:hover,
+.post input[type="button"]:hover,
+.post input[type="reset"]:hover,
+.post input[type="submit"]:hover {
   border-color: #ccc #bbb #aaa;
 }
 
-button:active,
-button:focus,
-input[type="button"]:active,
-input[type="button"]:focus,
-input[type="reset"]:active,
-input[type="reset"]:focus,
-input[type="submit"]:active,
-input[type="submit"]:focus {
+.post button:active,
+.post button:focus,
+.post input[type="button"]:active,
+.post input[type="button"]:focus,
+.post input[type="reset"]:active,
+.post input[type="reset"]:focus,
+.post input[type="submit"]:active,
+.post input[type="submit"]:focus {
   border-color: #aaa #bbb #bbb;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
+.post input[type="text"],
+.post input[type="email"],
+.post input[type="url"],
+.post input[type="password"],
+.post input[type="search"],
+.post input[type="number"],
+.post input[type="tel"],
+.post input[type="range"],
+.post input[type="date"],
+.post input[type="month"],
+.post input[type="week"],
+.post input[type="time"],
+.post input[type="datetime"],
+.post input[type="datetime-local"],
+.post input[type="color"],
+.post textarea {
   color: #666;
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 3px;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="range"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="color"]:focus,
-textarea:focus {
+.post input[type="text"]:focus,
+.post input[type="email"]:focus,
+.post input[type="url"]:focus,
+.post input[type="password"]:focus,
+.post input[type="search"]:focus,
+.post input[type="number"]:focus,
+.post input[type="tel"]:focus,
+.post input[type="range"]:focus,
+.post input[type="date"]:focus,
+.post input[type="month"]:focus,
+.post input[type="week"]:focus,
+.post input[type="time"]:focus,
+.post input[type="datetime"]:focus,
+.post input[type="datetime-local"]:focus,
+.post input[type="color"]:focus,
+.post textarea:focus {
   color: #111;
 }
 
-select {
+.post select {
   border: 1px solid #ccc;
 }
 
-textarea {
+.post textarea {
   width: 100%;
 }
 
@@ -628,19 +628,19 @@ textarea {
 
 /* Navigation
 --------------------------------------------- */
-.main-navigation {
+.post .main-navigation {
   display: block;
   width: 100%;
 }
 
-.main-navigation ul {
+.post .main-navigation ul {
   display: none;
   list-style: none;
   margin: 0;
   padding-left: 0;
 }
 
-.main-navigation ul ul {
+.post .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
   position: absolute;
@@ -649,38 +649,38 @@ textarea {
   z-index: 99999;
 }
 
-.main-navigation ul ul ul {
+.post .main-navigation ul ul ul {
   left: -999em;
   top: 0;
 }
 
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
+.post .main-navigation ul ul li:hover > ul,
+.post .main-navigation ul ul li.focus > ul {
   display: block;
   left: auto;
 }
 
-.main-navigation ul ul a {
+.post .main-navigation ul ul a {
   width: 200px;
 }
 
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
+.post .main-navigation ul li:hover > ul,
+.post .main-navigation ul li.focus > ul {
   left: auto;
 }
 
-.main-navigation li {
+.post .main-navigation li {
   position: relative;
 }
 
-.main-navigation a {
+.post .main-navigation a {
   display: block;
   text-decoration: none;
 }
 
 /* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
+.post .menu-toggle,
+.post .main-navigation.toggled ul {
   display: block;
 }
 
@@ -694,82 +694,82 @@ textarea {
   }
 }
 
-.site-main .comment-navigation,
-.site-main .posts-navigation,
-.site-main .post-navigation {
+.post .site-main .comment-navigation,
+.post .site-main .posts-navigation,
+.post .site-main .post-navigation {
   margin: 0 0 1.5em;
 }
 
-.comment-navigation .nav-links,
-.posts-navigation .nav-links,
-.post-navigation .nav-links {
+.post .comment-navigation .nav-links,
+.post .posts-navigation .nav-links,
+.post .post-navigation .nav-links {
   display: flex;
 }
 
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
+.post .comment-navigation .nav-previous,
+.post .posts-navigation .nav-previous,
+.post .post-navigation .nav-previous {
   flex: 1 0 50%;
 }
 
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
+.post .comment-navigation .nav-next,
+.post .posts-navigation .nav-next,
+.post .post-navigation .nav-next {
   text-align: end;
   flex: 1 0 50%;
 }
 
 /* Posts and pages
 --------------------------------------------- */
-.sticky {
+.post .sticky {
   display: block;
 }
 
-.post,
-.page {
+.post .post,
+.post .page {
   margin: 0 0 1.5em;
 }
 
-.updated:not(.published) {
+.post .updated:not(.published) {
   display: none;
 }
 
-.page-content,
-.entry-content,
-.entry-summary {
+.post .page-content,
+.post .entry-content,
+.post .entry-summary {
   margin: 1.5em 0 0;
 }
 
-.page-links {
+.post .page-links {
   clear: both;
   margin: 0 0 1.5em;
 }
 
 /* Comments
 --------------------------------------------- */
-.comment-content a {
+.post .comment-content a {
   word-wrap: break-word;
 }
 
-.bypostauthor {
+.post .bypostauthor {
   display: block;
 }
 
 /* Widgets
 --------------------------------------------- */
-.widget {
+.post .widget {
   margin: 0 0 1.5em;
 }
 
-.widget select {
+.post .widget select {
   max-width: 100%;
 }
 
 /* Media
 --------------------------------------------- */
-.page-content .wp-smiley,
-.entry-content .wp-smiley,
-.comment-content .wp-smiley {
+.post .page-content .wp-smiley,
+.post .entry-content .wp-smiley,
+.post .comment-content .wp-smiley {
   border: none;
   margin-bottom: 0;
   margin-top: 0;
@@ -777,78 +777,78 @@ textarea {
 }
 
 /* Make sure logo link wraps around logo image. */
-.custom-logo-link {
+.post .custom-logo-link {
   display: inline-block;
 }
 
 /* Captions
 --------------------------------------------- */
-.wp-caption {
+.post .wp-caption {
   margin-bottom: 1.5em;
   max-width: 100%;
 }
 
-.wp-caption img[class*="wp-image-"] {
+.post .wp-caption img[class*="wp-image-"] {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.wp-caption .wp-caption-text {
+.post .wp-caption .wp-caption-text {
   margin: 0.8075em 0;
 }
 
-.wp-caption-text {
+.post .wp-caption-text {
   text-align: center;
 }
 
 /* Galleries
 --------------------------------------------- */
-.gallery {
+.post .gallery {
   margin-bottom: 1.5em;
   display: grid;
   grid-gap: 1.5em;
 }
 
-.gallery-item {
+.post .gallery-item {
   display: inline-block;
   text-align: center;
   width: 100%;
 }
 
-.gallery-columns-2 {
+.post .gallery-columns-2 {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.gallery-columns-3 {
+.post .gallery-columns-3 {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.gallery-columns-4 {
+.post .gallery-columns-4 {
   grid-template-columns: repeat(4, 1fr);
 }
 
-.gallery-columns-5 {
+.post .gallery-columns-5 {
   grid-template-columns: repeat(5, 1fr);
 }
 
-.gallery-columns-6 {
+.post .gallery-columns-6 {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.gallery-columns-7 {
+.post .gallery-columns-7 {
   grid-template-columns: repeat(7, 1fr);
 }
 
-.gallery-columns-8 {
+.post .gallery-columns-8 {
   grid-template-columns: repeat(8, 1fr);
 }
 
-.gallery-columns-9 {
+.post .gallery-columns-9 {
   grid-template-columns: repeat(9, 1fr);
 }
 
-.gallery-caption {
+.post .gallery-caption {
   display: block;
 }
 
@@ -860,13 +860,13 @@ textarea {
 --------------------------------------------- */
 
 /* Hide the Posts Navigation and the Footer when Infinite Scroll is in use. */
-.infinite-scroll .posts-navigation,
-.infinite-scroll.neverending .site-footer {
+.post .infinite-scroll .posts-navigation,
+.post .infinite-scroll.neverending .site-footer {
   display: none;
 }
 
 /* Re-display the Theme Footer when Infinite Scroll has reached its end. */
-.infinity-end.neverending .site-footer {
+.post .infinity-end.neverending .site-footer {
   display: block;
 }
 
@@ -878,7 +878,7 @@ textarea {
 --------------------------------------------- */
 
 /* Text meant only for screen readers. */
-.screen-reader-text {
+.post .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
@@ -891,7 +891,7 @@ textarea {
   word-wrap: normal !important;
 }
 
-.screen-reader-text:focus {
+.post .screen-reader-text:focus {
   background-color: #f1f1f1;
   border-radius: 3px;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
@@ -918,7 +918,7 @@ textarea {
 
 /* Alignments
 --------------------------------------------- */
-.alignleft {
+.post .alignleft {
   /*rtl:ignore*/
   float: left;
 
@@ -927,7 +927,7 @@ textarea {
   margin-bottom: 1.5em;
 }
 
-.alignright {
+.post .alignright {
   /*rtl:ignore*/
   float: right;
 
@@ -936,7 +936,7 @@ textarea {
   margin-bottom: 1.5em;
 }
 
-.aligncenter {
+.post .aligncenter {
   clear: both;
   display: block;
   margin-left: auto;
