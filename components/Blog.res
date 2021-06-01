@@ -2,26 +2,48 @@
 external createWpClient: string => 'wpClient = "default"
 
 let apiUrl = "https://public-api.wordpress.com/rest/v1.1/"
-let apiNamespace = "sites/calhounchronicles.wordpress.com"
+let apiNamespace = "sites/lifestewardshipllc.wordpress.com"
 
 let client = createWpClient(apiUrl)
 
+type renderedContent = {rendered: string}
+
 type post = {
-  content: string,
+  content: renderedContent,
   date: string,
-  excerpt: string,
-  @as("ID") id: string,
+  excerpt: renderedContent,
+  id: string,
   slug: string,
-  title: string,
+  title: renderedContent,
 }
 
-type props = {posts: array<post>}
+type posts = array<post>
 
-let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> = _ctx => {
-  client["namespace"](apiNamespace)["posts"]()["get"]()->Js.Promise.then_(posts => {
-    let props = {posts: posts.posts}
-    Js.Promise.resolve({"props": props})
-  }, _)
+type props = {posts: posts}
+
+external decodePost: Js.Json.t => post = "%identity"
+
+let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> = ctx => {
+  let {req} = ctx
+  let baseUrl =
+    req.headers.xForwardProto->Belt.Option.getWithDefault("http") ++ "://" ++ req.headers.host
+  open Js.Promise
+  Fetch.fetch(baseUrl ++ "/api/posts")->then_(Fetch.Response.json, _)->then_(json => {
+    switch Js.Json.classify(json) {
+    | Js.Json.JSONArray(array) => resolve(Array.map(decodePost, array))
+    | _ => resolve([])
+    }
+  }, _)->then_(posts => {
+    let props = {posts: posts}
+    resolve({"props": props})
+  }, // Js.log2("> SUCCESS", posts)
+
+  _)->catch(_error => {
+    let props = {posts: []}
+    resolve({"props": props})
+  }, // Js.log2("> ERROR", error)
+
+  _)
 }
 
 module Post = {
@@ -29,9 +51,9 @@ module Post = {
   let make = (~excerpt, ~slug, ~title) => {
     <article className="mb-8">
       <Next.Link href={"/blog/" ++ slug}>
-        <a> <h2 className=Heading.Styles.secondary> {title->React.string} </h2> </a>
+        <a> <h2 className=Heading.Styles.secondary> {title.rendered->React.string} </h2> </a>
       </Next.Link>
-      <div dangerouslySetInnerHTML={{"__html": excerpt}} />
+      <div dangerouslySetInnerHTML={{"__html": excerpt.rendered}} />
     </article>
   }
 }

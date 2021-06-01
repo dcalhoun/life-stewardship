@@ -2,7 +2,7 @@
 external createWpClient: string => 'wpClient = "default"
 
 let apiUrl = "https://public-api.wordpress.com/wp/v2/"
-let apiNamespace = "sites/calhounchronicles.wordpress.com"
+let apiNamespace = "sites/lifestewardshipllc.wordpress.com"
 
 let client = createWpClient(apiUrl)
 
@@ -12,7 +12,7 @@ type props = {
   content: renderedContent,
   date: string,
   excerpt: string,
-  @as("ID") id: string,
+  id: string,
   slug: string,
   title: renderedContent,
 }

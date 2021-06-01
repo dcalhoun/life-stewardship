@@ -1,6 +1,11 @@
 module GetServerSideProps = {
   module Req = {
-    type t
+    type headers = {
+      @as("x-forward-proto") xForwardProto: option<string>,
+      host: string,
+    }
+
+    type t = {headers: headers}
   }
 
   module Res = {
