@@ -30,7 +30,9 @@ let getServerSideProps: Next.GetServerSideProps.t<props, params, 'previewData> =
 let default = (props: props): React.element => {
   <Layout>
     <SEO title=props.title.rendered />
-    <h1 className={Heading.Styles.primary ++ " mb-8"}> {props.title.rendered->React.string} </h1>
+    <h1 className={Heading.Styles.primary ++ " mb-8"}>
+      {props.title.rendered |> Js.String.replaceByRe(%re("/&nbsp;/g"), " ") |> React.string}
+    </h1>
     <div className="post" dangerouslySetInnerHTML={{"__html": props.content.rendered}} />
   </Layout>
 }

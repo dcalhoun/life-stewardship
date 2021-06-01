@@ -51,7 +51,11 @@ module Post = {
   let make = (~excerpt, ~slug, ~title) => {
     <article className="mb-8">
       <Next.Link href={"/blog/" ++ slug}>
-        <a> <h2 className=Heading.Styles.secondary> {title.rendered->React.string} </h2> </a>
+        <a>
+          <h2 className=Heading.Styles.secondary>
+            {title.rendered |> Js.String.replaceByRe(%re("/&nbsp;/g"), " ") |> React.string}
+          </h2>
+        </a>
       </Next.Link>
       <div dangerouslySetInnerHTML={{"__html": excerpt.rendered}} />
     </article>
