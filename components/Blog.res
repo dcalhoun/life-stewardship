@@ -1,13 +1,6 @@
-@module("@wp-headless/client") @new
-external createWpClient: string => 'wpClient = "default"
-
-let apiUrl = "https://public-api.wordpress.com/rest/v1.1/"
-let apiNamespace = "sites/lifestewardshipllc.wordpress.com"
-
-let client = createWpClient(apiUrl)
+let apiUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wordpress.com/posts"
 
 type renderedContent = {rendered: string}
-
 type post = {
   content: renderedContent,
   date: string,
@@ -16,34 +9,24 @@ type post = {
   slug: string,
   title: renderedContent,
 }
-
 type posts = array<post>
-
-type props = {posts: posts}
+type props = {error: Js.Nullable.t<string>, data: posts}
 
 external decodePost: Js.Json.t => post = "%identity"
 
-let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> = ctx => {
-  let {req} = ctx
-  let baseUrl =
-    req.headers.xForwardProto->Belt.Option.getWithDefault("http") ++ "://" ++ req.headers.host
+let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> = _ctx => {
   open Js.Promise
-  Fetch.fetch(baseUrl ++ "/api/posts")->then_(Fetch.Response.json, _)->then_(json => {
-    switch Js.Json.classify(json) {
-    | Js.Json.JSONArray(array) => resolve(Array.map(decodePost, array))
-    | _ => resolve([])
+  Fetch.fetch(apiUrl)->then_(Fetch.Response.json, _)->then_(json => {
+    let posts = switch Js.Json.classify(json) {
+    | Js.Json.JSONArray(array) => Array.map(decodePost, array)
+    | _ => []
     }
-  }, _)->then_(posts => {
-    let props = {posts: posts}
+    let props = {data: posts, error: Js.Nullable.null}
     resolve({"props": props})
-  }, // Js.log2("> SUCCESS", posts)
-
-  _)->catch(_error => {
-    let props = {posts: []}
+  }, _)->catch(_error => {
+    let props = {data: [], error: Js.Nullable.return("An error occurred.")}
     resolve({"props": props})
-  }, // Js.log2("> ERROR", error)
-
-  _)
+  }, _)
 }
 
 module Post = {
@@ -67,7 +50,7 @@ let default = (props: props): React.element => {
     <SEO title="Blog" description="The latest news from Life Stewardship LLC." />
     <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
     <div>
-      {props.posts
+      {props.data
       ->Belt.Array.map(({excerpt, id, slug, title}) => <Post key=id excerpt slug title />)
       ->React.array}
     </div>
