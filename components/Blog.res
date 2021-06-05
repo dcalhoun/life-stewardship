@@ -25,19 +25,21 @@ module PostExcerpt = {
 }
 
 let default = (props: props): React.element => {
+  let {data, error} = props
   <Layout>
     <SEO title="Blog" description="The latest news from Life Stewardship LLC." />
     <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
     <div>
-      {switch props.data->Js.Nullable.toOption {
-      | Some(posts) when Array.length(posts) > 0 =>
+      {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
+      | (None, Some(message)) => <div> {message->React.string} </div>
+      | (None, None) => "Loading..."->React.string
+      | (Some(posts), None) when Array.length(posts) > 0 =>
         posts
         ->Belt.Array.map(({excerpt, id, slug, title}) =>
           <PostExcerpt key=id excerpt=excerpt.rendered slug title=title.rendered />
         )
         ->React.array
-      | Some(_empty) => "No posts"->React.string
-      | None => "Loading..."->React.string
+      | (Some(_empty), _) => "No posts"->React.string
       }}
     </div>
   </Layout>
