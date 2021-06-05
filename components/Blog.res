@@ -30,13 +30,14 @@ let default = (props: props): React.element => {
     <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
     <div>
       {switch props.data->Js.Nullable.toOption {
-      | Some(posts) =>
+      | Some(posts) when Array.length(posts) > 0 =>
         posts
         ->Belt.Array.map(({excerpt, id, slug, title}) =>
           <PostExcerpt key=id excerpt=excerpt.rendered slug title=title.rendered />
         )
         ->React.array
-      | None => "No posts"->React.string
+      | Some(_empty) => "No posts"->React.string
+      | None => "Loading..."->React.string
       }}
     </div>
   </Layout>
