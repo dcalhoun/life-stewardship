@@ -9,8 +9,16 @@ type post = {
 }
 type posts = array<post>
 
+type errorData = {status: int}
+type error = {
+  code: string,
+  message: string,
+  data: option<errorData>,
+}
+
 module Api = {
   external decodePost: Js.Json.t => post = "%identity"
+  external decodeError: Js.Dict.t<Js.Json.t> => error = "%identity"
 
   let postsUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wordpress.com/posts"
 
@@ -25,9 +33,20 @@ module Api = {
       | Js.Json.JSONArray(array) => Array.map(decodePost, array)
       | _ => []
       }
-      resolve((Js.Nullable.return(posts), Js.Nullable.null))
+      let error = switch Js.Json.classify(json) {
+      | Js.Json.JSONObject(object) => object->decodeError->Js.Nullable.return
+      | _ => Js.Nullable.null
+      }
+      resolve((Js.Nullable.return(posts), error))
     }, _)->catch(_error => {
-      resolve((Js.Nullable.null, Js.Nullable.return("An error occurred.")))
+      resolve((
+        Js.Nullable.null,
+        Js.Nullable.return({
+          code: "network_request_failure",
+          message: "An error occurred.",
+          data: None,
+        }),
+      ))
     }, _)
   }
 }

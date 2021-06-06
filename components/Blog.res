@@ -1,4 +1,4 @@
-type props = {error: Js.Nullable.t<string>, data: Js.Nullable.t<WordPress.posts>}
+type props = {error: Js.Nullable.t<WordPress.error>, data: Js.Nullable.t<WordPress.posts>}
 
 let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> = _ctx => {
   open Js.Promise
@@ -31,7 +31,7 @@ let default = (props: props): React.element => {
     <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
     <div>
       {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
-      | (None, Some(message)) => <div> {message->React.string} </div>
+      | (_, Some({message})) => <div> {message->React.string} </div>
       | (None, None) => "Loading..."->React.string
       | (Some(posts), None) when Array.length(posts) > 0 =>
         posts
