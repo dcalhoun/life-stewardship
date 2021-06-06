@@ -1,8 +1,4 @@
-let getServerSideProps: Next.GetServerSideProps.t<
-  WordPress.response,
-  'params,
-  'previewData,
-> = _ctx => {
+let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewData> = _ctx => {
   open Js.Promise
   WordPress.Api.fetchPosts()->then_(((data, error)) => {
     let props: WordPress.response = {error: error, data: data}

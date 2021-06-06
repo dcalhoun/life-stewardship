@@ -1,15 +1,26 @@
 type params = {slug: string}
 
-let getServerSideProps: Next.GetServerSideProps.t<
-  WordPress.response,
-  params,
-  'previewData,
-> = ctx => {
+let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewData> = ctx => {
   let {params} = ctx
   open Js.Promise
   WordPress.Api.fetchPosts(~slug=params.slug, ())->then_(((data, error)) => {
     let props: WordPress.response = {error: error, data: data}
     resolve({"props": props})
+  }, _)
+}
+
+let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
+  open Js.Promise
+  WordPress.Api.fetchPosts()->then_(((data, _error)) => {
+    let paths = Array.map(post => {
+      let path: Next.GetStaticPaths.path<params> = {params: {slug: post.slug}}
+      path
+    }, data)
+    let return: Next.GetStaticPaths.return<params> = {
+      paths: paths,
+      fallback: true,
+    }
+    resolve(return)
   }, _)
 }
 
