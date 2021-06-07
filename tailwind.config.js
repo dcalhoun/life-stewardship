@@ -20,5 +20,6 @@ module.exports = {
   },
   variants: {
     accessibility: ({ after }) => after(["focus-within"]),
+    scale: ({ after }) => after(["group-hover", "group-focus"]),
   },
 };

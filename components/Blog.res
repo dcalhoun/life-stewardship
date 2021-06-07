@@ -15,15 +15,18 @@ module PostExcerpt = {
     <article role="listitem">
       <Next.Link href={"/blog/" ++ slug}>
         <a
-          className="flex items-center mb-4 lg:mb-8"
+          className="group flex items-center mb-4 lg:mb-8"
           title={filteredTitle ++ " - Posted on " ++ date->Date.format}>
           <div
             ariaHidden={true}
             className="w-16 h-16 lg:w-24 lg:h-24 mr-2 lg:mr-5 rounded-xl overflow-hidden"
-            style={ReactDOM.Style.make(~maxHeight="150px", ())}>
+            style={ReactDOM.Style.make(~maxHeight="150px", ())->ReactDOM.Style.unsafeAddProp(
+              "-webkit-mask-image",
+              "-webkit-radial-gradient(white, black)",
+            )}>
             <Next.Image
               alt="Placeholder"
-              className="align-top"
+              className="transform duration-300 transition-transform group-hover:scale-105 group-focus:scale-105"
               height=150
               layout=#responsive
               src="/android-chrome-512x512.png"
