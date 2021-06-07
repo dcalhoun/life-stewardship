@@ -10,7 +10,7 @@ let make = React.forwardRef((~children, ~className="", ~href: option<string>=?, 
   ReactDOMRe.createElement(
     element,
     ~props=ReactDOMRe.props(
-      ~className=className ++ " underline text-blue-600",
+      ~className=className ++ " underline text-green-700",
       ~href?,
       ~onClick?,
       ~type_?,

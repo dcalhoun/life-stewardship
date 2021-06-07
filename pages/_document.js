@@ -100,7 +100,7 @@ class Document extends NextDocument {
             content="mstile-310x310.png"
           />
         </Head>
-        <body className="bg-gray-100">
+        <body className="bg-gray-100 text-gray-900">
           <Main />
           <NextScript />
         </body>
