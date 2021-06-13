@@ -35,7 +35,5 @@ let format = dateString => {
 
 @react.component
 let make = (~dateString, ~ariaHidden=?) => {
-  <time className="inline-block text-gray-700 text-sm" dateTime=dateString ?ariaHidden>
-    {dateString->format->React.string}
-  </time>
+  <time dateTime=dateString ?ariaHidden> {dateString->format->React.string} </time>
 }
