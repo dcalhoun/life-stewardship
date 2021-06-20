@@ -91,3 +91,79 @@
 .has-text-align-right {
   @apply text-right;
 }
+
+/* Images */
+.wp-block-image {
+  @apply mb-5;
+}
+
+.wp-block-image * {
+  display: initial;
+}
+
+.wp-block-image::before {
+  display: none;
+  content: none;
+}
+
+.wp-block-image figcaption {
+  @apply block;
+  @apply font-serif;
+  @apply text-center;
+}
+
+/* Block Quote */
+.wp-block-quote {
+  @apply border-green-700;
+  @apply border-l-2;
+  @apply pl-4;
+  @apply mb-5;
+}
+
+.wp-block-quote * {
+  display: initial;
+}
+
+.wp-block-quote::before {
+  display: none;
+  content: none;
+}
+
+.wp-block-quote p {
+  @apply block;
+}
+
+.wp-block-quote cite {
+  @apply not-italic;
+  @apply text-sm;
+}
+
+/* Pull Quote */
+.wp-block-pullquote {
+  @apply border-green-700;
+  @apply border-t-2;
+  @apply border-b-2;
+  @apply mb-5;
+  @apply py-8;
+  @apply text-center;
+}
+
+.wp-block-pullquote * {
+  display: initial;
+}
+
+.wp-block-pullquote::before {
+  display: none;
+  content: none;
+}
+
+.wp-block-pullquote p {
+  @apply block;
+  @apply text-3xl;
+}
+
+.wp-block-pullquote cite {
+  @apply not-italic;
+  @apply text-sm;
+  @apply uppercase;
+}
