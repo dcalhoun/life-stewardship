@@ -1,0 +1,93 @@
+/**
+ * Disable all blocks by default; will enable indviduals as supported
+ */
+*[class^="wp-"] * {
+  display: none;
+}
+
+*[class^="wp-"]::before {
+  @apply bg-gray-200;
+  @apply block;
+  @apply p-4;
+  @apply rounded-md;
+  @apply text-center;
+  @apply mb-5;
+  content: "⚠️ Block type not supported.";
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6,
+.post p,
+.post li {
+  @apply font-serif;
+}
+
+.post p,
+.post li {
+  @apply text-base;
+  @apply lg:text-xl;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+  @apply text-base;
+  @apply lg:text-xl;
+  @apply mb-5;
+}
+
+.post h1 {
+  @apply text-3xl;
+  @apply lg:text-6xl;
+  @apply font-serif;
+  @apply font-bold;
+  @apply leading-tight;
+}
+.post h2 {
+  @apply text-base;
+  @apply lg:text-3xl;
+  @apply font-serif;
+  @apply font-bold;
+}
+.post h3 {
+  @apply text-base;
+  @apply lg:text-lg;
+  @apply font-serif;
+  @apply uppercase;
+  @apply tracking-wider;
+}
+.post h4 {
+  @apply text-base;
+  @apply lg:text-lg;
+}
+
+.post a {
+  @apply underline;
+  @apply text-green-700;
+}
+
+.post p,
+.post ul,
+.post ol {
+  @apply mb-5;
+}
+
+.post ul {
+  @apply list-disc;
+  @apply pl-6;
+}
+
+.has-text-align-center {
+  @apply text-center;
+}
+
+.has-text-align-right {
+  @apply text-right;
+}
