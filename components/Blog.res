@@ -37,9 +37,9 @@ module PostExcerpt = {
             <h2 className={Heading.Styles.secondary ++ " truncate"} ariaHidden={true}>
               {Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title)->React.string}
             </h2>
-            <Paragraph className="text-gray-600">
+            <p className="text-gray-600 text-base lg:text-xl font-serif">
               <Date dateString=date ariaHidden={true} />
-            </Paragraph>
+            </p>
           </div>
         </a>
       </Next.Link>
