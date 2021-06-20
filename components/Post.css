@@ -167,3 +167,19 @@
   @apply text-sm;
   @apply uppercase;
 }
+
+/* YouTube Embed */
+.wp-block-embed {
+  @apply mb-5;
+}
+
+.wp-block-embed *,
+.wp-block-embed__wrapper * {
+  display: initial;
+}
+
+.wp-block-embed::before,
+.wp-block-embed__wrapper::before {
+  content: none;
+  display: none;
+}
