@@ -15,6 +15,11 @@
   content: "⚠️ Block type not supported.";
 }
 
+*[class^="wp-"] *::before {
+  display: none;
+  content: none;
+}
+
 .post h1,
 .post h2,
 .post h3,
@@ -187,4 +192,27 @@
 .wp-block-embed__wrapper::before {
   content: none;
   display: none;
+}
+
+/* File Embed */
+.post .wp-block-file {
+  @apply mb-5;
+}
+
+.post .wp-block-file * {
+  display: initial;
+}
+
+.post .wp-block-file::before {
+  content: none;
+  display: none;
+}
+
+.post .wp-block-file__button {
+  @apply inline-block;
+  @apply rounded-md;
+  @apply bg-green-700;
+  @apply text-white;
+  @apply p-4;
+  @apply no-underline;
 }
