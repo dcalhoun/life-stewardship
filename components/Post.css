@@ -81,7 +81,12 @@
 
 .post ul {
   @apply list-disc;
-  @apply pl-6;
+  @apply pl-7;
+}
+
+.post ol {
+  @apply list-decimal;
+  @apply pl-7;
 }
 
 .has-text-align-center {
