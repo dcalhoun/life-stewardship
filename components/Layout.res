@@ -33,7 +33,7 @@ let make = (~children) => <>
           />
         </a>
       </Next.Link>
-      <div className="flex flex-1 justify-center lg:justify-end">
+      <div className="flex flex-1 justify-center lg:justify-end flex-wrap">
         <Next.Link href="/nonprofit" passHref=true>
           <NavItem> {"Nonprofit"->React.string} </NavItem>
         </Next.Link>
