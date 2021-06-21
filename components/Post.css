@@ -35,6 +35,7 @@
 .post li {
   @apply text-base;
   @apply lg:text-xl;
+  max-width: 30em;
 }
 
 .post h1,

@@ -24,7 +24,7 @@ let default = (props: props): React.element => {
           <h1 className={Heading.Styles.primary ++ " mb-8 text-center"}>
             {filteredTitle->React.string}
           </h1>
-          <Paragraph className="block text-center text-gray-700 ">
+          <Paragraph className="block mx-auto text-center text-gray-700 ">
             <Date dateString=date />
           </Paragraph>
           {switch featuredImage->String.length {
