@@ -20,6 +20,12 @@
   content: none;
 }
 
+.post .aligncenter {
+  @apply block;
+  @apply mx-auto;
+  @apply text-center;
+}
+
 .post h1,
 .post h2,
 .post h3,
@@ -121,6 +127,7 @@
   @apply block;
   @apply font-serif;
   @apply text-center;
+  @apply text-sm;
 }
 
 /* Block Quote */
