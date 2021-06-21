@@ -1,6 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  plugins: [require("@tailwindcss/aspect-ratio")],
   purge: ["./pages/**/*.{js,res,bs.js}", "./components/**/*.{js,res,bs.js}"],
   theme: {
     colors: {

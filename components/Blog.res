@@ -10,7 +10,7 @@ let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> 
 
 module PostExcerpt = {
   @react.component
-  let make = (~date, ~slug, ~title) => {
+  let make = (~date, ~featuredImage, ~slug, ~title) => {
     let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title)
     <article role="listitem">
       <Next.Link href={"/blog/" ++ slug}>
@@ -19,7 +19,7 @@ module PostExcerpt = {
           title={filteredTitle ++ " - Posted on " ++ date->Date.format}>
           <div
             ariaHidden={true}
-            className="flex-shrink-0 w-16 h-16 lg:w-24 lg:h-24 mr-2 lg:mr-5 rounded-xl overflow-hidden"
+            className="flex-shrink-0 aspect-w-1 w-16 h-16 lg:w-24 lg:h-24 mr-2 lg:mr-5 rounded-xl overflow-hidden"
             style={ReactDOM.Style.make(~maxHeight="150px", ())->ReactDOM.Style.unsafeAddProp(
               "-webkit-mask-image",
               "-webkit-radial-gradient(white, black)",
@@ -27,10 +27,8 @@ module PostExcerpt = {
             <Next.Image
               alt="Placeholder"
               className="transform duration-300 transition-transform group-hover:scale-105 group-focus:scale-105"
-              height=150
-              layout=#responsive
-              src="/android-chrome-512x512.png"
-              width=150
+              layout=#fill
+              src={featuredImage == "" ? "/android-chrome-512x512.png" : featuredImage}
             />
           </div>
           <div className="flex-1 max-w-full py-2 lg:py-5">
@@ -58,8 +56,8 @@ let default = (props: props): React.element => {
       | (None, None) => "Loading..."->React.string
       | (Some(posts), None) when Array.length(posts) > 0 =>
         posts
-        ->Belt.Array.map(({date, id, slug, title}) =>
-          <PostExcerpt key=id date slug title=title.rendered />
+        ->Belt.Array.map(({date, featuredImage, id, slug, title}) =>
+          <PostExcerpt key=id date featuredImage slug title=title.rendered />
         )
         ->React.array
       | (Some(_empty), _) => "No posts"->React.string

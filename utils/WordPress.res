@@ -3,6 +3,7 @@ type post = {
   content: renderedContent,
   date: string,
   excerpt: renderedContent,
+  @as("jetpack_featured_media_url") featuredImage: string,
   id: string,
   slug: string,
   title: renderedContent,

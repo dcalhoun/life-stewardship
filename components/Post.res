@@ -17,7 +17,7 @@ let default = (props: props): React.element => {
     | (_, Some({message})) => <div> {message->React.string} </div>
     | (None, None) => <div> {"Loading"->React.string} </div>
     | (Some(posts), _) when Array.length(posts) > 0 => {
-        let {title, date, content} = posts->Array.get(0)
+        let {title, featuredImage, date, content} = posts->Array.get(0)
         let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
         <>
           <SEO title=filteredTitle />
@@ -27,6 +27,13 @@ let default = (props: props): React.element => {
           <Paragraph className="block text-center text-gray-700 ">
             <Date dateString=date />
           </Paragraph>
+          {switch featuredImage->String.length {
+          | 0 => React.null
+          | _ =>
+            <div className="aspect-w-16 aspect-h-9 mb-5">
+              <Next.Image alt="Placeholder" layout=#fill src={featuredImage} />
+            </div>
+          }}
           <div className="post" dangerouslySetInnerHTML={{"__html": content.rendered}} />
         </>
       }

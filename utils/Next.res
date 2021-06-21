@@ -78,7 +78,7 @@ module Image = {
   external make: (
     ~alt: string=?,
     ~className: string=?,
-    ~height: int,
+    ~height: int=?,
     ~layout: [#fixed | #intrinsic | #responsive | #fill]=?,
     ~loading: [#\"lazy" | #eager]=?,
     ~objectFit: string=?,
@@ -88,6 +88,6 @@ module Image = {
     ~sizes: string=?,
     ~src: string,
     ~unoptimized: bool=?,
-    ~width: int,
+    ~width: int=?,
   ) => React.element = "default"
 }
