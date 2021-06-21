@@ -60,7 +60,7 @@ let default = (props: props): React.element => {
           <PostExcerpt key=id date featuredImage slug title=title.rendered />
         )
         ->React.array
-      | (Some(_empty), _) => "No posts"->React.string
+      | (Some(_empty), _) => "No posts found."->React.string
       }}
     </div>
   </Layout>
