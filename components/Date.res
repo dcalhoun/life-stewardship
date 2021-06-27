@@ -35,5 +35,7 @@ let format = dateString => {
 
 @react.component
 let make = (~dateString, ~ariaHidden=?) => {
-  <time dateTime=dateString ?ariaHidden> {dateString->format->React.string} </time>
+  <time dateTime={dateString->Js.String2.substrAtMost(~from=0, ~length=10)} ?ariaHidden>
+    {dateString->format->React.string}
+  </time>
 }
