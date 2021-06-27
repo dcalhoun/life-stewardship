@@ -198,8 +198,15 @@
   max-width: 600px;
 }
 
+@screen lg {
+  .post .wp-block-quote {
+    @apply mb-8;
+  }
+}
+
 .post .wp-block-quote p {
   @apply block;
+  @apply italic;
 }
 
 .post .wp-block-quote cite {
@@ -217,8 +224,15 @@
   @apply text-center;
 }
 
+@screen lg {
+  .post .wp-block-pullquote {
+    @apply mb-8;
+  }
+}
+
 .post .wp-block-pullquote p {
   @apply block;
+  @apply italic;
   @apply text-3xl;
 }
 
