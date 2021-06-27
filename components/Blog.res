@@ -23,7 +23,7 @@ module PostExcerpt = {
             ariaHidden={true}
             className="flex-shrink-0 aspect-w-1 w-16 h-16 lg:w-24 lg:h-24 mr-2 lg:mr-5 rounded-xl overflow-hidden"
             style={ReactDOM.Style.make(~maxHeight="150px", ())->ReactDOM.Style.unsafeAddProp(
-              "-webkit-mask-image",
+              "WebkitMaskImage",
               "-webkit-radial-gradient(white, black)",
             )}>
             <Next.Image
