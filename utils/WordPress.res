@@ -17,6 +17,8 @@ type error = {
   data: option<errorData>,
 }
 
+type response = {error: Js.Nullable.t<error>, data: Js.Nullable.t<posts>}
+
 module Api = {
   external decodePost: Js.Json.t => post = "%identity"
   external decodeError: Js.Dict.t<Js.Json.t> => error = "%identity"

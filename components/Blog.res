@@ -1,9 +1,11 @@
-type props = {error: Js.Nullable.t<WordPress.error>, data: Js.Nullable.t<WordPress.posts>}
-
-let getServerSideProps: Next.GetServerSideProps.t<props, 'params, 'previewData> = _ctx => {
+let getServerSideProps: Next.GetServerSideProps.t<
+  WordPress.response,
+  'params,
+  'previewData,
+> = _ctx => {
   open Js.Promise
   WordPress.Api.fetchPosts()->then_(((data, error)) => {
-    let props = {error: error, data: data}
+    let props: WordPress.response = {error: error, data: data}
     resolve({"props": props})
   }, _)
 }
@@ -45,7 +47,7 @@ module PostExcerpt = {
   }
 }
 
-let default = (props: props): React.element => {
+let default = (props: WordPress.response): React.element => {
   let {data, error} = props
   <Layout>
     <SEO title="Blog" description="The latest news from Life Stewardship LLC." />

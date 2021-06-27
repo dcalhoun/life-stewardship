@@ -1,16 +1,19 @@
-type props = {error: Js.Nullable.t<WordPress.error>, data: Js.Nullable.t<WordPress.posts>}
 type params = {slug: string}
 
-let getServerSideProps: Next.GetServerSideProps.t<props, params, 'previewData> = ctx => {
+let getServerSideProps: Next.GetServerSideProps.t<
+  WordPress.response,
+  params,
+  'previewData,
+> = ctx => {
   let {params} = ctx
   open Js.Promise
   WordPress.Api.fetchPosts(~slug=params.slug, ())->then_(((data, error)) => {
-    let props = {error: error, data: data}
+    let props: WordPress.response = {error: error, data: data}
     resolve({"props": props})
   }, _)
 }
 
-let default = (props: props): React.element => {
+let default = (props: WordPress.response): React.element => {
   let {data, error} = props
   <Layout>
     {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
