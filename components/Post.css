@@ -55,6 +55,17 @@
   @apply mb-5;
 }
 
+@screen lg {
+  .post h1,
+  .post h2,
+  .post h3,
+  .post h4,
+  .post h5,
+  .post h6 {
+    @apply mb-8;
+  }
+}
+
 .post h1 {
   @apply text-3xl;
   @apply lg:text-6xl;
@@ -89,6 +100,14 @@
 .post ul,
 .post ol {
   @apply mb-5;
+}
+
+@screen lg {
+  .post p,
+  .post ul,
+  .post ol {
+    @apply mb-8;
+  }
 }
 
 .post ul {

@@ -21,12 +21,8 @@ let default = (props: props): React.element => {
         let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
         <>
           <SEO title=filteredTitle />
-          <h1 className={Heading.Styles.primary ++ " mb-8 text-center"}>
-            {filteredTitle->React.string}
-          </h1>
-          <Paragraph className="block mx-auto text-center text-gray-700 ">
-            <Date dateString=date />
-          </Paragraph>
+          <h1 className={Heading.Styles.primary ++ " mb-5"}> {filteredTitle->React.string} </h1>
+          <Paragraph className="text-gray-700"> <Date dateString=date /> </Paragraph>
           {switch featuredImage->String.length {
           | 0 => React.null
           | _ =>
