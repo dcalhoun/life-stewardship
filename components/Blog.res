@@ -21,7 +21,7 @@ module PostExcerpt = {
           title={filteredTitle ++ " - Posted on " ++ date->Date.format}>
           <div
             ariaHidden={true}
-            className="flex-shrink-0 aspect-w-1 w-16 h-16 lg:w-24 lg:h-24 mr-2 lg:mr-5 rounded-xl overflow-hidden"
+            className="flex-shrink-0 aspect-w-1 w-16 h-16 lg:w-24 lg:h-24 mr-2 lg:mr-5 rounded-xl overflow-hidden bg-gray-500"
             style={ReactDOM.Style.make(~maxHeight="150px", ())->ReactDOM.Style.unsafeAddProp(
               "WebkitMaskImage",
               "-webkit-radial-gradient(white, black)",
