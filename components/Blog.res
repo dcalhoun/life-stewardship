@@ -49,19 +49,21 @@ let default = (props: props): React.element => {
   let {data, error} = props
   <Layout>
     <SEO title="Blog" description="The latest news from Life Stewardship LLC." />
-    <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
-    <div role="list">
-      {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
-      | (_, Some({message})) => <div> {message->React.string} </div>
-      | (None, None) => "Loading..."->React.string
-      | (Some(posts), None) when Array.length(posts) > 0 =>
-        posts
-        ->Belt.Array.map(({date, featuredImage, id, slug, title}) =>
-          <PostExcerpt key=id date featuredImage slug title=title.rendered />
-        )
-        ->React.array
-      | (Some(_empty), _) => "No posts found."->React.string
-      }}
+    <div className="mx-auto" style={ReactDOM.Style.make(~maxWidth="600px", ())}>
+      <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
+      <div role="list">
+        {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
+        | (_, Some({message})) => <div> {message->React.string} </div>
+        | (None, None) => "Loading..."->React.string
+        | (Some(posts), None) when Array.length(posts) > 0 =>
+          posts
+          ->Belt.Array.map(({date, featuredImage, id, slug, title}) =>
+            <PostExcerpt key=id date featuredImage slug title=title.rendered />
+          )
+          ->React.array
+        | (Some(_empty), _) => "No posts found."->React.string
+        }}
+      </div>
     </div>
   </Layout>
 }

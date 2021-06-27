@@ -110,112 +110,116 @@ let default = () => {
       title="Contact"
       description="Contact Paul Calhoun, managing partner and founder of Life Stewardship LLC."
     />
-    <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Contact"->React.string} </h1>
-    <address className="md:flex">
-      <ContactInfo>
-        {"1888 Main Street, "->React.string}
-        {"Suite C-198, "->React.string}
-        {"Madison, MS 39110"->React.string}
-      </ContactInfo>
-    </address>
-    <Paragraph>
-      {`If you’d like to receive more information or ask a question about my services, please fill out the form below.`->React.string}
-    </Paragraph>
-    {switch reCaptchaLoadAttempts {
-    | 0 => React.null
-    | 1 | 2 =>
-      <Paragraph>
-        {"Loading the contact form failed. "->React.string}
-        <button type_="button" onClick={loadReCaptcha}>
-          {"Please try again."->React.string}
-        </button>
+    <div className="mx-auto" style={ReactDOM.Style.make(~maxWidth="600px", ())}>
+      <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Contact"->React.string} </h1>
+      <address className="md:flex">
+        <ContactInfo>
+          {"1888 Main Street, "->React.string}
+          {"Suite C-198, "->React.string}
+          {"Madison, MS 39110"->React.string}
+        </ContactInfo>
+      </address>
+      <Paragraph align={Paragraph.Left}>
+        {`If you’d like to receive more information or ask a question about my services, please fill out the form below.`->React.string}
       </Paragraph>
-    | _ =>
-      <Paragraph>
-        {"Multiple attempts to load the contact form failed. We recommend
+      {switch reCaptchaLoadAttempts {
+      | 0 => React.null
+      | 1 | 2 =>
+        <Paragraph>
+          {"Loading the contact form failed. "->React.string}
+          <button type_="button" onClick={loadReCaptcha}>
+            {"Please try again."->React.string}
+          </button>
+        </Paragraph>
+      | _ =>
+        <Paragraph>
+          {"Multiple attempts to load the contact form failed. We recommend
           emailing us directly at"->React.string}
-        <a href={mailTo}> {email->React.string} </a>
-        {"."->React.string}
-      </Paragraph>
-    }}
-    <form
-      action={formspreeEndpoint->Belt.Option.getUnsafe}
-      method="POST"
-      noValidate=true
-      onSubmit={handleFormSubmit}>
-      <TextInput
-        className="mb-5 lg:mb-10"
-        errorMessage="Name is required."
-        errors={errors}
-        id="name"
-        label="Name (required)"
-        name="name"
-        placeholder="Jane Doe"
-        readOnly=sending
-        required=true
-        type_="text"
-      />
-      <TextInput
-        className="mb-5 lg:mb-10"
-        errorMessage="Valid email is required."
-        errors={errors}
-        id="_replyto"
-        label="Email (required)"
-        name="_replyto"
-        placeholder="jane.doe@example.com"
-        readOnly=sending
-        required=true
-        type_="email"
-      />
-      <TextInput id="subject" name="_subject" type_="hidden" value="Life Stewardship LLC Inquiry" />
-      <TextInput
-        className="mb-5 lg:mb-10"
-        errors={errors}
-        id="phone"
-        label="Phone"
-        name="phone"
-        placeholder="555-555-5555"
-        readOnly=sending
-        type_="tel"
-      />
-      <TextInput
-        className="mb-5 lg:mb-10"
-        cols={30}
-        errorMessage="Message is required."
-        errors={errors}
-        id="message"
-        label="Message (required)"
-        multiline=true
-        name="message"
-        placeholder="Tell me more about your project, needs, or timeline."
-        readOnly=sending
-        required=true
-        rows={10}
-      />
-      <Button className="block mx-auto mb-5 lg:mb-10" loading=sending type_="submit">
-        {"Send Message"->React.string}
-      </Button>
-      <div id="js-reCaptcha" className="g-recaptcha" />
-    </form>
-    {formErrors->Belt.Array.length > 0
-      ? <Toast
-          className="fixed top-10 left-2/4 w-11/12 lg:w-2/4 transform -translate-x-1/2"
-          context=Toast.Error
-          onDismiss={_ => setErrors(_ => [])}>
-          {Belt.Array.mapWithIndex(formErrors, (index, {TextInput.message: message}) =>
-            <span key={index->Belt.Int.toString}> {message->React.string} <br /> </span>
-          )->React.array}
-        </Toast>
-      : React.null}
-    {toast->Js.String.length > 0
-      ? <Toast
-          className="fixed top-10 left-2/4 w-11/12 lg:w-2/4 transform -translate-x-1/2"
-          context=Toast.Success
-          onDismiss={_ => {
-            setToast(_ => "")
-          }}>
-          {toast->React.string}
-        </Toast>
-      : React.null}
+          <a href={mailTo}> {email->React.string} </a>
+          {"."->React.string}
+        </Paragraph>
+      }}
+      <form
+        action={formspreeEndpoint->Belt.Option.getUnsafe}
+        method="POST"
+        noValidate=true
+        onSubmit={handleFormSubmit}>
+        <TextInput
+          className="mb-5 lg:mb-10"
+          errorMessage="Name is required."
+          errors={errors}
+          id="name"
+          label="Name (required)"
+          name="name"
+          placeholder="Jane Doe"
+          readOnly=sending
+          required=true
+          type_="text"
+        />
+        <TextInput
+          className="mb-5 lg:mb-10"
+          errorMessage="Valid email is required."
+          errors={errors}
+          id="_replyto"
+          label="Email (required)"
+          name="_replyto"
+          placeholder="jane.doe@example.com"
+          readOnly=sending
+          required=true
+          type_="email"
+        />
+        <TextInput
+          id="subject" name="_subject" type_="hidden" value="Life Stewardship LLC Inquiry"
+        />
+        <TextInput
+          className="mb-5 lg:mb-10"
+          errors={errors}
+          id="phone"
+          label="Phone"
+          name="phone"
+          placeholder="555-555-5555"
+          readOnly=sending
+          type_="tel"
+        />
+        <TextInput
+          className="mb-5 lg:mb-10"
+          cols={30}
+          errorMessage="Message is required."
+          errors={errors}
+          id="message"
+          label="Message (required)"
+          multiline=true
+          name="message"
+          placeholder="Tell me more about your project, needs, or timeline."
+          readOnly=sending
+          required=true
+          rows={10}
+        />
+        <Button className="block mx-auto mb-5 lg:mb-10" loading=sending type_="submit">
+          {"Send Message"->React.string}
+        </Button>
+        <div id="js-reCaptcha" className="g-recaptcha" />
+      </form>
+      {formErrors->Belt.Array.length > 0
+        ? <Toast
+            className="fixed top-10 left-2/4 w-11/12 lg:w-2/4 transform -translate-x-1/2"
+            context=Toast.Error
+            onDismiss={_ => setErrors(_ => [])}>
+            {Belt.Array.mapWithIndex(formErrors, (index, {TextInput.message: message}) =>
+              <span key={index->Belt.Int.toString}> {message->React.string} <br /> </span>
+            )->React.array}
+          </Toast>
+        : React.null}
+      {toast->Js.String.length > 0
+        ? <Toast
+            className="fixed top-10 left-2/4 w-11/12 lg:w-2/4 transform -translate-x-1/2"
+            context=Toast.Success
+            onDismiss={_ => {
+              setToast(_ => "")
+            }}>
+            {toast->React.string}
+          </Toast>
+        : React.null}
+    </div>
   </Layout>
 }

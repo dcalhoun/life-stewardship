@@ -5,7 +5,11 @@ let default = () =>
       title="Nonprofit"
       description="Life Stewardship LLC assists nonprofits with financial planning and coaching."
     />
-    <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Nonprofit"->React.string} </h1>
+    <h1
+      className={Heading.Styles.primary ++ " mb-5 mx-auto"}
+      style={ReactDOM.Style.make(~maxWidth="600px", ())}>
+      {"Nonprofit"->React.string}
+    </h1>
     <div className="mb-5">
       <Next.Image
         alt="The phrase do something great glowing from a neon light sign"
