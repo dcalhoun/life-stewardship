@@ -73,6 +73,7 @@ type router = {
 
 @bs.module("next/router") external useRouter: unit => router = "useRouter"
 
+// TODO: Height and width should be required if layout is not fill
 module Image = {
   @bs.module("next/image") @react.component
   external make: (
