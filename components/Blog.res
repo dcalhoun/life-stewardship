@@ -55,15 +55,15 @@ let default = (props: WordPress.response): React.element => {
       <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>
       <div role="list">
         {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
-        | (_, Some({message})) => <div> {message->React.string} </div>
-        | (None, None) => "Loading..."->React.string
+        | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
+        | (None, None) => <Paragraph> {"Loading..."->React.string} </Paragraph>
         | (Some(posts), None) when Array.length(posts) > 0 =>
           posts
           ->Belt.Array.map(({date, featuredImage, id, slug, title}) =>
             <PostExcerpt key=id date featuredImage slug title=title.rendered />
           )
           ->React.array
-        | (Some(_empty), _) => "No posts found."->React.string
+        | (Some(_empty), _) => <Paragraph> {"No posts found."->React.string} </Paragraph>
         }}
       </div>
     </div>

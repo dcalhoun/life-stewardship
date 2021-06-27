@@ -17,8 +17,8 @@ let default = (props: WordPress.response): React.element => {
   let {data, error} = props
   <Layout>
     {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
-    | (_, Some({message})) => <div> {message->React.string} </div>
-    | (None, None) => <div> {"Loading"->React.string} </div>
+    | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
+    | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
     | (Some(posts), _) when Array.length(posts) > 0 => {
         let {title, featuredImage, date, content} = posts->Array.get(0)
         let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
@@ -40,7 +40,7 @@ let default = (props: WordPress.response): React.element => {
           <div className="post" dangerouslySetInnerHTML={{"__html": content.rendered}} />
         </>
       }
-    | (Some(_empty), _) => <div> {"Not found."->React.string} </div>
+    | (Some(_empty), _) => <Paragraph> {"Not found."->React.string} </Paragraph>
     }}
     <ContactCTA />
   </Layout>
