@@ -48,7 +48,7 @@ let default = () =>
       {`If you want more information or need help fulfilling your fiduciary
           responsibilities, let’s talk. I can assist you with:`->React.string}
     </Paragraph>
-    <UnorderedList>
+    <OrderedList>
       <ListItem> {"Assisting with Board Governance & Oversight"->React.string} </ListItem>
       <ListItem> {"Board of Director Training"->React.string} </ListItem>
       <ListItem> {"Financial Statement Preparation"->React.string} </ListItem>
@@ -56,6 +56,6 @@ let default = () =>
       <ListItem> {"Grant Compliance"->React.string} </ListItem>
       <ListItem> {"Internal Controls"->React.string} </ListItem>
       <ListItem> {"Tax Compliance"->React.string} </ListItem>
-    </UnorderedList>
+    </OrderedList>
     <ContactCTA />
   </Layout>

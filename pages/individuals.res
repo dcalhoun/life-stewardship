@@ -39,7 +39,7 @@ let default = () =>
     <Paragraph>
       {`If you are ready to get begin, let’s talk. I can assist you with:`->React.string}
     </Paragraph>
-    <UnorderedList>
+    <OrderedList>
       <ListItem> {"Clarifying Your Financial Goals"->React.string} </ListItem>
       <ListItem> {"Budgeting & Tracking"->React.string} </ListItem>
       <ListItem> {"Cash Management & Planning"->React.string} </ListItem>
@@ -47,6 +47,6 @@ let default = () =>
       <ListItem> {"Education Funding"->React.string} </ListItem>
       <ListItem> {"Retirement Planning"->React.string} </ListItem>
       <ListItem> {"Social Security"->React.string} </ListItem>
-    </UnorderedList>
+    </OrderedList>
     <ContactCTA />
   </Layout>
