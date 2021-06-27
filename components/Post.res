@@ -30,7 +30,7 @@ let default = (props: props): React.element => {
           {switch featuredImage->String.length {
           | 0 => React.null
           | _ =>
-            <div className="aspect-w-16 aspect-h-9 mb-5 lg:mb-8">
+            <div className="aspect-w-16 aspect-h-9 mb-5 lg:mb-8 rounded overflow-hidden">
               <Next.Image alt="Placeholder" layout=#fill src={featuredImage} />
             </div>
           }}
