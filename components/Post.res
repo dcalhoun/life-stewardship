@@ -35,5 +35,6 @@ let default = (props: props): React.element => {
       }
     | (Some(_empty), _) => <div> {"Not found."->React.string} </div>
     }}
+    <ContactCTA />
   </Layout>
 }
