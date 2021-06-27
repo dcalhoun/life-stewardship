@@ -232,12 +232,21 @@
 .post .wp-block-embed {
   @apply mb-5;
   @apply mx-auto;
-  max-width: 600px;
 }
 
-/* TODO: Video aspect ratio is not preserved */
+.post .wp-embed-aspect-16-9 {
+  @apply relative;
+  /* Tailwind's apply is broken for aspect ratio https://git.io/JckJG  */
+  padding-top: 56.25%;
+}
+
+.post .wp-block-embed__wrapper,
+.post .wp-block-embed__wrapper span,
 .post .wp-block-embed iframe {
-  max-width: 100%;
+  @apply absolute;
+  @apply inset-0;
+  @apply w-full;
+  @apply h-full;
 }
 
 /* File Embed */
