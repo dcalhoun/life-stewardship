@@ -194,6 +194,8 @@
   @apply border-l-2;
   @apply pl-4;
   @apply mb-5;
+  @apply mx-auto;
+  max-width: 600px;
 }
 
 .post .wp-block-quote p {
@@ -229,6 +231,13 @@
 /* YouTube Embed */
 .post .wp-block-embed {
   @apply mb-5;
+  @apply mx-auto;
+  max-width: 600px;
+}
+
+/* TODO: Video aspect ratio is not preserved */
+.post .wp-block-embed iframe {
+  max-width: 100%;
 }
 
 /* File Embed */
