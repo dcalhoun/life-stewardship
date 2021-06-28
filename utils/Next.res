@@ -27,7 +27,7 @@ module GetServerSideProps = {
 }
 
 module Link = {
-  @bs.module("next/link") @react.component
+  @module("next/link") @react.component
   external make: (
     ~href: string=?,
     ~_as: string=?,
@@ -40,7 +40,7 @@ module Link = {
 }
 
 module Head = {
-  @bs.module("next/head") @react.component
+  @module("next/head") @react.component
   external make: (~children: React.element) => React.element = "default"
 }
 
@@ -71,11 +71,11 @@ type router = {
   replace: (string, string, {"shallow": bool}),
 }
 
-@bs.module("next/router") external useRouter: unit => router = "useRouter"
+@module("next/router") external useRouter: unit => router = "useRouter"
 
 // TODO: Height and width should be required if layout is not fill
 module Image = {
-  @bs.module("next/image") @react.component
+  @module("next/image") @react.component
   external make: (
     ~alt: string=?,
     ~className: string=?,

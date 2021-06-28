@@ -35,7 +35,9 @@ let default = (props: WordPress.response): React.element => {
           | _ =>
             <div
               className="aspect-w-16 aspect-h-9 mb-5 lg:mb-8 rounded overflow-hidden bg-gray-500">
-              <Next.Image alt="Placeholder" layout=#fill src={featuredImage} />
+              <Spread props={{"aria-hidden": true}}>
+                <Next.Image layout=#fill src={featuredImage} />
+              </Spread>
             </div>
           }}
           <div className="post" dangerouslySetInnerHTML={{"__html": content.rendered}} />
