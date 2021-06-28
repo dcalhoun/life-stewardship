@@ -40,9 +40,6 @@ let make = (~children) => <>
         <Next.Link href="/individuals" passHref=true>
           <NavItem> {"Individuals"->React.string} </NavItem>
         </Next.Link>
-        <Next.Link href="/blog" passHref=true>
-          <NavItem> {"Blog"->React.string} </NavItem>
-        </Next.Link>
         <Next.Link href="/contact" passHref=true>
           <NavItem> {"Contact"->React.string} </NavItem>
         </Next.Link>
