@@ -1,8 +1,14 @@
+type align = Left | Center | Right
+
 @react.component
-let make = (~className=?, ~children) =>
+let make = (~className="", ~children, ~align=Center) => {
+  let alignment = switch align {
+  | Center => " mx-auto"
+  | _ => ""
+  }
   <p
-    className={className->Belt.Option.getWithDefault(
-      "",
-    ) ++ " text-base lg:text-xl text-gray-900 font-serif mb-5"}>
+    className={className ++ alignment ++ " text-base lg:text-xl font-serif mb-5 lg:mb-8"}
+    style={ReactDOM.Style.make(~maxWidth="30em", ())}>
     children
   </p>
+}

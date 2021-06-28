@@ -1,5 +1,5 @@
 @react.component
-let default = () =>
+let default = () => {
   <Layout>
     <SEO />
     <div
@@ -60,3 +60,4 @@ let default = () =>
     </div>
     <ContactCTA />
   </Layout>
+}

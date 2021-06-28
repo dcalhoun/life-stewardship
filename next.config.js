@@ -6,4 +6,7 @@ const withTM = require("next-transpile-modules")(
 
 module.exports = withTM({
   pageExtensions: ["js", "bs.js"],
+  images: {
+    domains: ["lifestewardshipllc.files.wordpress.com"],
+  },
 });

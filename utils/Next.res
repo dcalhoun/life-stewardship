@@ -1,5 +1,33 @@
+module GetServerSideProps = {
+  module Req = {
+    type t
+  }
+
+  module Res = {
+    type t
+
+    @send external setHeader: (t, string, string) => unit = "setHeader"
+    @send external write: (t, string) => unit = "write"
+    @send external end: t => unit = "end"
+  }
+
+  // See: https://github.com/zeit/next.js/blob/canary/packages/next/types/index.d.ts
+  type context<'props, 'params, 'previewData> = {
+    params: 'params,
+    query: Js.Dict.t<string>,
+    preview: option<bool>, // preview is true if the page is in the preview mode and undefined otherwise.
+    previewData: Js.Nullable.t<'previewData>,
+    req: Req.t,
+    res: Res.t,
+  }
+
+  type t<'props, 'params, 'previewData> = context<'props, 'params, 'previewData> => Js.Promise.t<{
+    "props": 'props,
+  }>
+}
+
 module Link = {
-  @bs.module("next/link") @react.component
+  @module("next/link") @react.component
   external make: (
     ~href: string=?,
     ~_as: string=?,
@@ -12,7 +40,7 @@ module Link = {
 }
 
 module Head = {
-  @bs.module("next/head") @react.component
+  @module("next/head") @react.component
   external make: (~children: React.element) => React.element = "default"
 }
 
@@ -43,14 +71,15 @@ type router = {
   replace: (string, string, {"shallow": bool}),
 }
 
-@bs.module("next/router") external useRouter: unit => router = "useRouter"
+@module("next/router") external useRouter: unit => router = "useRouter"
 
+// TODO: Height and width should be required if layout is not fill
 module Image = {
-  @bs.module("next/image") @react.component
+  @module("next/image") @react.component
   external make: (
     ~alt: string=?,
     ~className: string=?,
-    ~height: int,
+    ~height: int=?,
     ~layout: [#fixed | #intrinsic | #responsive | #fill]=?,
     ~loading: [#\"lazy" | #eager]=?,
     ~objectFit: string=?,
@@ -60,6 +89,6 @@ module Image = {
     ~sizes: string=?,
     ~src: string,
     ~unoptimized: bool=?,
-    ~width: int,
+    ~width: int=?,
   ) => React.element = "default"
 }

@@ -5,7 +5,11 @@ let default = () =>
       title="Individuals"
       description="Life Stewardship LLC assists individuals with financial planning and coaching."
     />
-    <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Individuals"->React.string} </h1>
+    <h1
+      className={Heading.Styles.primary ++ " mb-5 mx-auto"}
+      style={ReactDOM.Style.make(~maxWidth="600px", ())}>
+      {"Individuals"->React.string}
+    </h1>
     <div className="mb-5">
       <Next.Image
         alt="The word begin written on a white coffee mug sitting on a wooden table"
@@ -39,7 +43,7 @@ let default = () =>
     <Paragraph>
       {`If you are ready to get begin, let’s talk. I can assist you with:`->React.string}
     </Paragraph>
-    <UnorderedList>
+    <OrderedList>
       <ListItem> {"Clarifying Your Financial Goals"->React.string} </ListItem>
       <ListItem> {"Budgeting & Tracking"->React.string} </ListItem>
       <ListItem> {"Cash Management & Planning"->React.string} </ListItem>
@@ -47,6 +51,6 @@ let default = () =>
       <ListItem> {"Education Funding"->React.string} </ListItem>
       <ListItem> {"Retirement Planning"->React.string} </ListItem>
       <ListItem> {"Social Security"->React.string} </ListItem>
-    </UnorderedList>
+    </OrderedList>
     <ContactCTA />
   </Layout>

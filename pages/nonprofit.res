@@ -5,7 +5,11 @@ let default = () =>
       title="Nonprofit"
       description="Life Stewardship LLC assists nonprofits with financial planning and coaching."
     />
-    <h1 className={Heading.Styles.primary ++ " mb-5"}> {"Nonprofit"->React.string} </h1>
+    <h1
+      className={Heading.Styles.primary ++ " mb-5 mx-auto"}
+      style={ReactDOM.Style.make(~maxWidth="600px", ())}>
+      {"Nonprofit"->React.string}
+    </h1>
     <div className="mb-5">
       <Next.Image
         alt="The phrase do something great glowing from a neon light sign"
@@ -48,7 +52,7 @@ let default = () =>
       {`If you want more information or need help fulfilling your fiduciary
           responsibilities, let’s talk. I can assist you with:`->React.string}
     </Paragraph>
-    <UnorderedList>
+    <OrderedList>
       <ListItem> {"Assisting with Board Governance & Oversight"->React.string} </ListItem>
       <ListItem> {"Board of Director Training"->React.string} </ListItem>
       <ListItem> {"Financial Statement Preparation"->React.string} </ListItem>
@@ -56,6 +60,6 @@ let default = () =>
       <ListItem> {"Grant Compliance"->React.string} </ListItem>
       <ListItem> {"Internal Controls"->React.string} </ListItem>
       <ListItem> {"Tax Compliance"->React.string} </ListItem>
-    </UnorderedList>
+    </OrderedList>
     <ContactCTA />
   </Layout>

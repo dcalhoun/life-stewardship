@@ -1,6 +1,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  plugins: [require("@tailwindcss/aspect-ratio")],
   purge: ["./pages/**/*.{js,res,bs.js}", "./components/**/*.{js,res,bs.js}"],
   theme: {
     colors: {
@@ -20,5 +21,6 @@ module.exports = {
   },
   variants: {
     accessibility: ({ after }) => after(["focus-within"]),
+    scale: ({ after }) => after(["group-hover", "group-focus"]),
   },
 };
