@@ -25,8 +25,6 @@ module Api = {
 
   let postsUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wordpress.com/posts"
 
-  type fetchPosts<'return, 'error> = (~slug: option<string>) => ('return, 'error)
-
   let fetchPosts = (~slug=?, ()) => {
     let url = switch slug {
     | Some(slug) => postsUrl ++ "?slug=" ++ slug
