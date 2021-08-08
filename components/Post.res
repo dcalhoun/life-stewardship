@@ -12,10 +12,13 @@ let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewDa
 let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
   open Js.Promise
   WordPress.Api.fetchPosts()->then_(((data, _error)) => {
-    let paths = Array.map(post => {
-      let path: Next.GetStaticPaths.path<params> = {params: {slug: post.slug}}
-      path
-    }, data)
+    let paths = switch data->Js.Nullable.toOption {
+    | Some(posts) => Array.map(post => {
+        let path: Next.GetStaticPaths.path<params> = {params: {slug: post.slug}}
+        path
+      }, posts)
+    | None => []
+    }
     let return: Next.GetStaticPaths.return<params> = {
       paths: paths,
       fallback: true,
