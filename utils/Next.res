@@ -37,6 +37,7 @@ module GetStaticProps = {
   // The definition of a getStaticProps function
   type t<'props, 'params, 'previewData> = context<'props, 'params, 'previewData> => Js.Promise.t<{
     "props": 'props,
+    "revalidate": Js.Nullable.t<int>,
   }>
 }
 
