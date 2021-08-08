@@ -2,9 +2,9 @@ open Document
 
 type onReCaptchaLoad = unit => unit
 
-@bs.set external setOnReCaptchaLoad: (Dom.window, onReCaptchaLoad) => unit = "onReCaptchaLoad"
+@set external setOnReCaptchaLoad: (Dom.window, onReCaptchaLoad) => unit = "onReCaptchaLoad"
 
-@bs.val external onReCaptchaLoad: onReCaptchaLoad = "onReCaptchaLoad"
+@val external onReCaptchaLoad: onReCaptchaLoad = "onReCaptchaLoad"
 
 type renderProps = {
   callback: unit => unit,
@@ -18,7 +18,7 @@ type grecaptcha = {
   reset: string => unit,
 }
 
-@bs.val external grecaptcha: grecaptcha = "grecaptcha"
+@val external grecaptcha: grecaptcha = "grecaptcha"
 
 let useReCaptcha = (~key, ~callback) => {
   let reCaptchaId = React.useRef(Js.Nullable.null)

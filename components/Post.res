@@ -13,7 +13,8 @@ let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
   open Promise
   WordPress.Api.fetchPosts()->then(((data, _error)) => {
     let paths = switch data->Js.Nullable.toOption {
-    | Some(posts) => Belt.Array.map(posts, post => {
+    | Some(posts) =>
+      Belt.Array.map(posts, post => {
         let path: Next.GetStaticPaths.path<params> = {params: {slug: post.slug}}
         path
       })
@@ -33,7 +34,7 @@ let default = (props: WordPress.response): React.element => {
     {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
     | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
-    | (Some(posts), _) when Belt.Array.length(posts) > 0 => {
+    | (Some(posts), _) if Belt.Array.length(posts) > 0 => {
         let {title, featuredImage, date, content} = posts[0]
         let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
         <>

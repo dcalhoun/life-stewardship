@@ -6,10 +6,10 @@
     { "dir": "utils", "subdirs": true }
   ],
   "bs-dependencies": [
-    "reason-react",
+    "@rescript/react",
+    "@ryyppy/rescript-promise",
     "bs-fetch",
-    "decco",
-    "@ryyppy/rescript-promise"
+    "decco"
   ],
   "ppx-flags": ["decco/ppx"],
   "reason": { "react-jsx": 3 },
