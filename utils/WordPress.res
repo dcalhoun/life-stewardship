@@ -32,10 +32,10 @@ module Api = {
     | Some(slug) => postsUrl ++ "?slug=" ++ slug
     | _ => postsUrl
     }
-    open Js.Promise
-    Fetch.fetch(url)->then_(Fetch.Response.json, _)->then_(json => {
+    open Promise
+    Fetch.fetch(url)->then(Fetch.Response.json)->then(json => {
       let posts = switch Js.Json.classify(json) {
-      | Js.Json.JSONArray(array) => Array.map(decodePost, array)
+      | Js.Json.JSONArray(array) => Belt.Array.map(array, decodePost)
       | _ => []
       }
       let error = switch Js.Json.classify(json) {
@@ -43,7 +43,7 @@ module Api = {
       | _ => Js.Nullable.null
       }
       resolve((Js.Nullable.return(posts), error))
-    }, _)->catch(_error => {
+    })->catch(_error => {
       resolve((
         Js.Nullable.null,
         Js.Nullable.return({
@@ -52,6 +52,6 @@ module Api = {
           data: None,
         }),
       ))
-    }, _)
+    })
   }
 }

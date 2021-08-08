@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ryyppy/rescript-promise": "^2.1.0",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "autoprefixer": "^10.0.4",
     "bs-fetch": "^0.6.2",
