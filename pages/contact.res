@@ -1,13 +1,13 @@
 let email = "Paul@LifeStewardshipLLC.com"
 let mailTo = "mailto:Paul%20Calhoun<" ++ email ++ "?subject=Life%20Stewardship%20LLC%20Inquiry"
 
-@bs.val
+@val
 external reCaptchaSiteKey: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
 
-@bs.val
+@val
 external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT"
 
-@bs.new external createFormData: 'form => 'formData = "FormData"
+@new external createFormData: 'form => 'formData = "FormData"
 
 @decco.decode type formError = {error: string}
 
@@ -53,18 +53,18 @@ let default = () => {
         )
         ->Js.Promise.then_(response => {
           let _ = response->Fetch.Response.json->Js.Promise.then_(json => {
-            setSending(_ => false)
-            if response->Fetch.Response.ok {
-              setToast(_ => "Your message was sent successfully.")
-            } else {
-              let {error} =
-                json
-                ->formError_decode
-                ->Belt.Result.getWithDefault({error: "Network request failed."})
-              setErrors(_ => [{TextInput.subject: "form", message: error}])
-            }
-            ()->Js.Promise.resolve
-          }, _)
+              setSending(_ => false)
+              if response->Fetch.Response.ok {
+                setToast(_ => "Your message was sent successfully.")
+              } else {
+                let {error} =
+                  json
+                  ->formError_decode
+                  ->Belt.Result.getWithDefault({error: "Network request failed."})
+                setErrors(_ => [{TextInput.subject: "form", message: error}])
+              }
+              ()->Js.Promise.resolve
+            }, _)
           ()->Js.Promise.resolve
         }, _)
         ->Js.Promise.catch(error => {

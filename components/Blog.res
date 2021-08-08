@@ -53,7 +53,7 @@ let default = (props: WordPress.response): React.element => {
         {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
         | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
         | (None, None) => <Paragraph> {"Loading..."->React.string} </Paragraph>
-        | (Some(posts), None) when Array.length(posts) > 0 =>
+        | (Some(posts), None) if Array.length(posts) > 0 =>
           posts
           ->Belt.Array.map(({date, featuredImage, id, slug, title}) =>
             <PostExcerpt key=id date featuredImage slug title=title.rendered />
