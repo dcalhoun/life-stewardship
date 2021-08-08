@@ -5,7 +5,7 @@ let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewDa
   open Js.Promise
   WordPress.Api.fetchPosts(~slug=params.slug, ())->then_(((data, error)) => {
     let props: WordPress.response = {error: error, data: data}
-    resolve({"props": props, "revalidate": Js.Nullable.return(60)})
+    resolve({"props": props, "revalidate": Some(60)})
   }, _)
 }
 
