@@ -26,6 +26,34 @@ module GetServerSideProps = {
   }>
 }
 
+module GetStaticProps = {
+  // See: https://github.com/zeit/next.js/blob/canary/packages/next/types/index.d.ts
+  type context<'props, 'params, 'previewData> = {
+    params: 'params,
+    preview: option<bool>, // preview is true if the page is in the preview mode and undefined otherwise.
+    previewData: Js.Nullable.t<'previewData>,
+  }
+
+  // The definition of a getStaticProps function
+  type t<'props, 'params, 'previewData> = context<'props, 'params, 'previewData> => Js.Promise.t<{
+    "props": 'props,
+  }>
+}
+
+module GetStaticPaths = {
+  // 'params: dynamic route params used in dynamic routing paths
+  // Example: pages/[id].js would result in a 'params = { id: string }
+  type path<'params> = {params: 'params}
+
+  type return<'params> = {
+    paths: array<path<'params>>,
+    fallback: bool,
+  }
+
+  // The definition of a getStaticPaths function
+  type t<'params> = unit => Js.Promise.t<return<'params>>
+}
+
 module Link = {
   @module("next/link") @react.component
   external make: (

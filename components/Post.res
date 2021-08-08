@@ -1,10 +1,6 @@
 type params = {slug: string}
 
-let getServerSideProps: Next.GetServerSideProps.t<
-  WordPress.response,
-  params,
-  'previewData,
-> = ctx => {
+let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewData> = ctx => {
   let {params} = ctx
   open Js.Promise
   WordPress.Api.fetchPosts(~slug=params.slug, ())->then_(((data, error)) => {
@@ -13,14 +9,32 @@ let getServerSideProps: Next.GetServerSideProps.t<
   }, _)
 }
 
+let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
+  open Promise
+  WordPress.Api.fetchPosts()->then(((data, _error)) => {
+    let paths = switch data->Js.Nullable.toOption {
+    | Some(posts) => Belt.Array.map(posts, post => {
+        let path: Next.GetStaticPaths.path<params> = {params: {slug: post.slug}}
+        path
+      })
+    | None => []
+    }
+    let return: Next.GetStaticPaths.return<params> = {
+      paths: paths,
+      fallback: true,
+    }
+    resolve(return)
+  })
+}
+
 let default = (props: WordPress.response): React.element => {
   let {data, error} = props
   <Layout>
     {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
     | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
-    | (Some(posts), _) when Array.length(posts) > 0 => {
-        let {title, featuredImage, date, content} = posts->Array.get(0)
+    | (Some(posts), _) when Belt.Array.length(posts) > 0 => {
+        let {title, featuredImage, date, content} = posts[0]
         let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
         <>
           <SEO title=filteredTitle />

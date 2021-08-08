@@ -1,13 +1,9 @@
-let getServerSideProps: Next.GetServerSideProps.t<
-  WordPress.response,
-  'params,
-  'previewData,
-> = _ctx => {
-  open Js.Promise
-  WordPress.Api.fetchPosts()->then_(((data, error)) => {
+let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewData> = _ctx => {
+  open Promise
+  WordPress.Api.fetchPosts()->then(((data, error)) => {
     let props: WordPress.response = {error: error, data: data}
     resolve({"props": props})
-  }, _)
+  })
 }
 
 module PostExcerpt = {
