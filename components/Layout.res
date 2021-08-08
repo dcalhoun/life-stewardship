@@ -2,7 +2,7 @@ module NavItem = {
   @react.component
   let make = React.forwardRef((~children, ~className="", ~onClick=_event => (), ~href="", _ref) => {
     <a
-      className={className ++ " tracking-wider font-semibold text-gray-700 mx-4 lg:ml-12 lg:mr-0"}
+      className={className ++ " flex-1 lg:flex-initial mx-4 lg:ml-12 lg:mr-0 py-2 lg:py-0 text-center tracking-wider font-semibold text-gray-700"}
       href
       onClick>
       children
@@ -33,7 +33,7 @@ let make = (~children) => <>
           />
         </a>
       </Next.Link>
-      <div className="flex flex-1 justify-center lg:justify-end flex-wrap">
+      <div className="flex flex-1 justify-between lg:justify-end flex-wrap">
         <Next.Link href="/nonprofit" passHref=true>
           <NavItem> {"Nonprofit"->React.string} </NavItem>
         </Next.Link>
