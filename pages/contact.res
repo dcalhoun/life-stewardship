@@ -90,8 +90,8 @@ let default = () => {
     | (Some(form), false) => {
         let errors =
           form["elements"]
-          ->Js.Array.from
-          ->Belt.Array.keep(el => !el["checkValidity"]())
+          ->Js.Array2.from
+          ->Belt.Array.keep(el => !el["checkValidity"](.))
           ->Belt.Array.map(el => {
             {TextInput.subject: el["name"], message: el["dataset"]["errorMessage"]}
           })
