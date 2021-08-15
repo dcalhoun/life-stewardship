@@ -1,6 +1,3 @@
-let email = "Paul@LifeStewardshipLLC.com"
-let mailTo = "mailto:Paul%20Calhoun<" ++ email ++ "?subject=Life%20Stewardship%20LLC%20Inquiry"
-
 @val
 external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT"
 
