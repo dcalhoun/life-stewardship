@@ -22,16 +22,6 @@ let default = () => {
   let (sending, setSending) = React.useState(_ => false)
   let formErrors = Belt.Array.keep(errors, ({TextInput.subject: subject}) => subject === "form")
 
-  // Clear toast message
-  React.useEffect1(() => {
-    switch toast->Js.String.length > 0 {
-    | false => None
-    | true =>
-      let toastTO = Js.Global.setTimeout(() => {setToast(_ => "")}, 5000)
-      Some(() => Js.Global.clearTimeout(toastTO))
-    }
-  }, [toast])
-
   let formRef = React.useRef(Js.Nullable.null)
 
   let sendMessage = _ => {
