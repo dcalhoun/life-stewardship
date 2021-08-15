@@ -53,7 +53,7 @@ let useReCaptcha = (~key, ~callback) => {
       ->Belt.Array.get(0)
       ->Belt.Option.getExn
       ->Document.appendChild(scriptTag)
-    | (Some(_), Some(_), "object") => onReCaptchaLoad()
+    | (None, Some(_), "object") => onReCaptchaLoad()
     | _ => ()
     }
 
