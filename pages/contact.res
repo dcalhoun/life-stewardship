@@ -2,9 +2,6 @@ let email = "Paul@LifeStewardshipLLC.com"
 let mailTo = "mailto:Paul%20Calhoun<" ++ email ++ "?subject=Life%20Stewardship%20LLC%20Inquiry"
 
 @val
-external reCaptchaSiteKey: option<string> = "process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
-
-@val
 external formspreeEndpoint: option<string> = "process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT"
 
 @new external createFormData: 'form => 'formData = "FormData"
@@ -65,17 +62,6 @@ let default = () => {
     }
   }
 
-  let (grecaptcha, reCaptchaLoadAttempts, loadReCaptcha) = ReCaptcha.useReCaptcha(
-    ~callback=sendMessage,
-    ~key=reCaptchaSiteKey,
-  )
-
-  // Set sending to false on ReCaptcha failure
-  React.useEffect1(() => {
-    setSending(_ => false)
-    None
-  }, [reCaptchaLoadAttempts])
-
   let handleFormSubmit = event => {
     event->ReactEvent.Form.preventDefault
     setSending(_ => true)
@@ -97,7 +83,7 @@ let default = () => {
           setSending(_ => false)
           setErrors(_ => errors)
         } else {
-          grecaptcha()
+          sendMessage()
         }
       }
     }
@@ -120,23 +106,6 @@ let default = () => {
       <Paragraph align={Paragraph.Left}>
         {`If you’d like to receive more information or ask a question about my services, please fill out the form below.`->React.string}
       </Paragraph>
-      {switch reCaptchaLoadAttempts {
-      | 0 => React.null
-      | 1 | 2 =>
-        <Paragraph>
-          {"Loading the contact form failed. "->React.string}
-          <button type_="button" onClick={loadReCaptcha}>
-            {"Please try again."->React.string}
-          </button>
-        </Paragraph>
-      | _ =>
-        <Paragraph>
-          {"Multiple attempts to load the contact form failed. We recommend
-          emailing us directly at"->React.string}
-          <a href={mailTo}> {email->React.string} </a>
-          {"."->React.string}
-        </Paragraph>
-      }}
       <form
         action={formspreeEndpoint->Belt.Option.getUnsafe}
         method="POST"
@@ -196,7 +165,6 @@ let default = () => {
         <Button className="block mx-auto mb-5 lg:mb-10" loading=sending type_="submit">
           {"Send Message"->React.string}
         </Button>
-        <div id="js-reCaptcha" className="g-recaptcha" />
       </form>
       {formErrors->Belt.Array.length > 0
         ? <Toast
