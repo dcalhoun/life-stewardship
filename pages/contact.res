@@ -30,7 +30,6 @@ let default = () => {
     switch form->Js.Nullable.toOption {
     | None => ()
     | Some(form) =>
-      setSending(_ => true)
       let _ =
         Fetch.fetchWithInit(
           form["action"],
@@ -71,8 +70,16 @@ let default = () => {
     ~key=reCaptchaSiteKey,
   )
 
+  // Set sending to false on ReCaptcha failure
+  React.useEffect1(() => {
+    setSending(_ => false)
+    None
+  }, [reCaptchaLoadAttempts])
+
   let handleFormSubmit = event => {
     event->ReactEvent.Form.preventDefault
+    setSending(_ => true)
+    setErrors(_ => [])
     formRef.current = event->ReactEvent.Form.currentTarget->Js.Nullable.return
     let form = formRef.current
     switch (form->Js.Nullable.toOption, sending) {
@@ -87,6 +94,7 @@ let default = () => {
           })
 
         if errors->Belt.Array.length > 0 {
+          setSending(_ => false)
           setErrors(_ => errors)
         } else {
           grecaptcha()
