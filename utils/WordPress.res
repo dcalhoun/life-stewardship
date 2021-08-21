@@ -35,7 +35,6 @@ module Api = {
   let postsUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wordpress.com/posts"
   let previewStatus = "status=publish,private,draft,pending,future"
 
-  // TODO: Conditionally fetch token if preview is enabled
   let fetchToken = () => {
     let url = "https://public-api.wordpress.com/oauth2/token"
     let params =
@@ -73,9 +72,9 @@ module Api = {
     }
 
     open Promise
-    fetchToken()->then(({accessToken}) => {
-      let postsFetch = switch preview {
-      | true =>
+    let postsFetch = switch preview {
+    | true =>
+      fetchToken()->then(({accessToken}) => {
         Fetch.fetchWithInit(
           url,
           Fetch.RequestInit.make(
@@ -86,33 +85,33 @@ module Api = {
             (),
           ),
         )
-      | false => Fetch.fetch(url)
-      }
+      })
+    | false => Fetch.fetch(url)
+    }
 
-      // TODO: Avoid displaying cryptic error messages like "client_id missing"
-      postsFetch
-      ->then(Fetch.Response.json)
-      ->then(json => {
-        let posts = switch Js.Json.classify(json) {
-        | Js.Json.JSONArray(array) => Belt.Array.map(array, decodePost)
-        | _ => []
-        }
-        let error = switch Js.Json.classify(json) {
-        | Js.Json.JSONObject(object) => object->decodeError->Js.Nullable.return
-        | _ => Js.Nullable.null
-        }
-        resolve((Js.Nullable.return(posts), error))
-      })
-      ->catch(_error => {
-        resolve((
-          Js.Nullable.null,
-          Js.Nullable.return({
-            code: "network_request_failure",
-            message: "An error occurred.",
-            data: None,
-          }),
-        ))
-      })
+    // TODO: Avoid displaying cryptic error messages like "client_id missing"
+    postsFetch
+    ->then(Fetch.Response.json)
+    ->then(json => {
+      let posts = switch Js.Json.classify(json) {
+      | Js.Json.JSONArray(array) => Belt.Array.map(array, decodePost)
+      | _ => []
+      }
+      let error = switch Js.Json.classify(json) {
+      | Js.Json.JSONObject(object) => object->decodeError->Js.Nullable.return
+      | _ => Js.Nullable.null
+      }
+      resolve((Js.Nullable.return(posts), error))
+    })
+    ->catch(_error => {
+      resolve((
+        Js.Nullable.null,
+        Js.Nullable.return({
+          code: "network_request_failure",
+          message: "An error occurred.",
+          data: None,
+        }),
+      ))
     })
   }
 }
