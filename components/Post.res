@@ -3,7 +3,7 @@ type params = {slug: string}
 let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewData> = ctx => {
   let {params} = ctx
   open Js.Promise
-  WordPress.Api.fetchPosts(~slug=params.slug, ())->then_(((data, error)) => {
+  WordPress.Api.fetchPosts(~slug=params.slug, ~preview=true, ())->then_(((data, error)) => {
     let props: WordPress.response = {error: error, data: data}
     resolve({"props": props, "revalidate": Some(60)})
   }, _)
@@ -11,7 +11,7 @@ let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewDa
 
 let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
   open Promise
-  WordPress.Api.fetchPosts()->then(((data, _error)) => {
+  WordPress.Api.fetchPosts(~preview=true, ())->then(((data, _error)) => {
     let paths = switch data->Js.Nullable.toOption {
     | Some(posts) =>
       Belt.Array.map(posts, post => {
