@@ -1,6 +1,11 @@
-let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewData> = _ctx => {
+let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewData> = ({
+  preview,
+}) => {
   open Promise
-  WordPress.Api.fetchPosts(~preview=true, ())->then(((data, error)) => {
+  WordPress.Api.fetchPosts(~preview=preview->Belt.Option.getWithDefault(false), ())->then(((
+    data,
+    error,
+  )) => {
     let props: WordPress.response = {error: error, data: data}
     resolve({"props": props, "revalidate": Some(60)})
   })
