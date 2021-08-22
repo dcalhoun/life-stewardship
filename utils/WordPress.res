@@ -70,26 +70,21 @@ module Api = {
     | _ => postsUrl
     }
 
-    open Promise
-    let postsFetch = switch preview {
-    | true =>
-      fetchToken()->then(({accessToken}) => {
-        Fetch.fetchWithInit(
-          url,
-          Fetch.RequestInit.make(
-            ~headers=Fetch.HeadersInit.make({
-              "Authorization": "Bearer " ++ accessToken,
-              "Accept": "application/json",
-            }),
-            (),
-          ),
-        )
-      })
-    | false => Fetch.fetch(url)
-    }
-
     // TODO: Avoid displaying cryptic error messages like "client_id missing"
-    postsFetch
+    open Promise
+    fetchToken()
+    ->then(({accessToken}) => {
+      Fetch.fetchWithInit(
+        url,
+        Fetch.RequestInit.make(
+          ~headers=Fetch.HeadersInit.make({
+            "Authorization": "Bearer " ++ accessToken,
+            "Accept": "application/json",
+          }),
+          (),
+        ),
+      )
+    })
     ->then(Fetch.Response.json)
     ->then(json => {
       let posts = switch Js.Json.classify(json) {
