@@ -74,5 +74,6 @@ let default = (props: WordPress.response): React.element => {
         }}
       </div>
     </div>
+    <ContactCTA />
   </Layout>
 }
