@@ -39,14 +39,18 @@ let default = (props: WordPress.response): React.element => {
     | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
     | (Some(posts), _) if Belt.Array.length(posts) > 0 => {
-        let {title, featuredImage, date, content} = posts[0]
+        let {title, featuredImage, date, status, content} = posts[0]
         let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
         <>
           <SEO title=filteredTitle />
+          {switch status {
+          | "publish" => React.null
+          | _ => <div className="text-center mb-5"> <Badge> {status->React.string} </Badge> </div>
+          }}
           <h1 className={Heading.Styles.primary ++ " mb-5 text-center"}>
             {filteredTitle->React.string}
           </h1>
-          <Paragraph className="block mx-auto text-center text-gray-700">
+          <Paragraph className="block text-center text-gray-700">
             <Date dateString=date />
           </Paragraph>
           {switch featuredImage->String.length {

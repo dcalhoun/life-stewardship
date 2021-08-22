@@ -14,6 +14,7 @@ type post = {
   @as("jetpack_featured_media_url") featuredImage: string,
   id: string,
   slug: string,
+  status: string,
   title: renderedContent,
 }
 type posts = array<post>

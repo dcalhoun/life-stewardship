@@ -13,7 +13,7 @@ let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewD
 
 module PostExcerpt = {
   @react.component
-  let make = (~date, ~featuredImage, ~slug, ~title) => {
+  let make = (~date, ~featuredImage, ~slug, ~status, ~title) => {
     let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title)
     <article role="listitem">
       <Next.Link href={"/blog/" ++ slug}>
@@ -38,9 +38,15 @@ module PostExcerpt = {
             <h2 className={Heading.Styles.secondary ++ " truncate"} ariaHidden={true}>
               {Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title)->React.string}
             </h2>
-            <p className="text-gray-600 text-base lg:text-xl font-serif">
-              <Date dateString=date ariaHidden={true} />
-            </p>
+            <div className="flex items-center">
+              <p className="text-gray-600 text-base lg:text-xl font-serif">
+                <Date dateString=date ariaHidden={true} />
+              </p>
+              {switch status {
+              | "publish" => React.null
+              | _ => <Badge className="ml-2"> {status->React.string} </Badge>
+              }}
+            </div>
           </div>
         </a>
       </Next.Link>
@@ -60,8 +66,8 @@ let default = (props: WordPress.response): React.element => {
         | (None, None) => <Paragraph> {"Loading..."->React.string} </Paragraph>
         | (Some(posts), None) if Array.length(posts) > 0 =>
           posts
-          ->Belt.Array.map(({date, featuredImage, id, slug, title}) =>
-            <PostExcerpt key=id date featuredImage slug title=title.rendered />
+          ->Belt.Array.map(({date, featuredImage, id, slug, status, title}) =>
+            <PostExcerpt key=id date featuredImage slug status title=title.rendered />
           )
           ->React.array
         | (Some(_empty), _) => <Paragraph> {"No posts found."->React.string} </Paragraph>
