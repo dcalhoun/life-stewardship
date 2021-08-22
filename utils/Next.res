@@ -1,5 +1,8 @@
 module Req = {
-  type t = {query: Js.Dict.t<string>}
+  type t = {
+    headers: Js.Dict.t<string>,
+    query: Js.Dict.t<string>,
+  }
 }
 
 module Res = {
