@@ -11,7 +11,7 @@ module NavItem = {
 }
 
 @react.component
-let make = (~children) => <>
+let make = (~children, ~preview=false) => <>
   <div className="sr-only focus-within:not-sr-only">
     <a
       className="inline-block bg-gray-600 border-solid rounded-lg m-5 mt-9 p-4 text-gray-200 absolute z-10"
@@ -19,6 +19,18 @@ let make = (~children) => <>
       {"Skip to content"->React.string}
     </a>
   </div>
+  {switch preview {
+  | true =>
+    <div className="bg-yellow-300 w-full p-3 text-center">
+      {"Preview mode enabled. "->React.string}
+      <TextButton className="font-bold" href="/api/preview?disable" theme=TextButton.Secondary>
+        {"Disable"->React.string}
+      </TextButton>
+      {"."->React.string}
+    </div>
+
+  | false => React.null
+  }}
   <div className="bg-green-700 h-4 w-full" />
   <div className="p-4 max-w-4xl mx-auto">
     <nav className="flex flex-col lg:flex-row items-center lg:py-5 mb-5">

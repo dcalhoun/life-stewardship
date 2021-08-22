@@ -1,12 +1,16 @@
-let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewData> = ({
-  preview,
-}) => {
+type props = {
+  error: Js.Nullable.t<WordPress.error>,
+  data: Js.Nullable.t<WordPress.posts>,
+  preview: bool,
+}
+
+let getStaticProps: Next.GetStaticProps.t<props, 'params, 'previewData> = ({preview}) => {
   open Promise
   WordPress.Api.fetchPosts(~preview=preview->Belt.Option.getWithDefault(false), ())->then(((
     data,
     error,
   )) => {
-    let props: WordPress.response = {error: error, data: data}
+    let props = {error: error, data: data, preview: preview->Belt.Option.getWithDefault(false)}
     resolve({"props": props, "revalidate": Some(60)})
   })
 }
@@ -55,9 +59,9 @@ module PostExcerpt = {
   }
 }
 
-let default = (props: WordPress.response): React.element => {
-  let {data, error} = props
-  <Layout>
+let default = (props: props): React.element => {
+  let {data, error, preview} = props
+  <Layout preview={preview}>
     <SEO title="Blog" description="The latest news from Life Stewardship LLC." />
     <div className="mx-auto" style={ReactDOM.Style.make(~maxWidth="600px", ())}>
       <h1 className={Heading.Styles.primary ++ " mb-8"}> {"Blog"->React.string} </h1>

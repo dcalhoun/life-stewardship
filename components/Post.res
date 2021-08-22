@@ -1,6 +1,11 @@
 type params = {slug: string}
+type props = {
+  error: Js.Nullable.t<WordPress.error>,
+  data: Js.Nullable.t<WordPress.posts>,
+  preview: bool,
+}
 
-let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewData> = ctx => {
+let getStaticProps: Next.GetStaticProps.t<props, params, 'previewData> = ctx => {
   let {params, preview} = ctx
   open Js.Promise
   WordPress.Api.fetchPosts(
@@ -8,7 +13,7 @@ let getStaticProps: Next.GetStaticProps.t<WordPress.response, params, 'previewDa
     ~preview=preview->Belt.Option.getWithDefault(false),
     (),
   )->then_(((data, error)) => {
-    let props: WordPress.response = {error: error, data: data}
+    let props = {error: error, data: data, preview: preview->Belt.Option.getWithDefault(false)}
     resolve({"props": props, "revalidate": Some(60)})
   }, _)
 }
@@ -32,9 +37,9 @@ let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
   })
 }
 
-let default = (props: WordPress.response): React.element => {
-  let {data, error} = props
-  <Layout>
+let default = (props: props): React.element => {
+  let {data, error, preview} = props
+  <Layout preview={preview}>
     {switch (data->Js.Nullable.toOption, error->Js.Nullable.toOption) {
     | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
