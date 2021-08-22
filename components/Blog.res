@@ -44,7 +44,7 @@ module PostExcerpt = {
               </p>
               {switch status {
               | "publish" => React.null
-              | _ => <Badge className="ml-2"> {status->React.string} </Badge>
+              | _ => <Badge ariaHidden={true} className="ml-2"> {status->React.string} </Badge>
               }}
             </div>
           </div>

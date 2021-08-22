@@ -45,7 +45,10 @@ let default = (props: WordPress.response): React.element => {
           <SEO title=filteredTitle />
           {switch status {
           | "publish" => React.null
-          | _ => <div className="text-center mb-5"> <Badge> {status->React.string} </Badge> </div>
+          | _ =>
+            <div className="text-center mb-5">
+              <Badge ariaHidden={true}> {status->React.string} </Badge>
+            </div>
           }}
           <h1 className={Heading.Styles.primary ++ " mb-5 text-center"}>
             {filteredTitle->React.string}
