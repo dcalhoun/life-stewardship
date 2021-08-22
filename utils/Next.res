@@ -9,6 +9,7 @@ module Res = {
   @send external write: (t, string) => unit = "write"
   @send external end: t => unit = "end"
   @send external setPreviewData: (t, {.}) => t = "setPreviewData"
+  @send external clearPreviewData: t => t = "clearPreviewData"
   @send external redirect: (t, string) => t = "redirect"
   @send external status: (t, int) => t = "status"
   @send external json: (t, Js.Dict.t<string>) => t = "json"
