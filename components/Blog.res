@@ -14,7 +14,7 @@ let getStaticProps: Next.GetStaticProps.t<WordPress.response, 'params, 'previewD
 module PostExcerpt = {
   @react.component
   let make = (~date, ~featuredImage, ~slug, ~status, ~title) => {
-    let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title)
+    let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;|Private:\s/g"), " ", title)
     <article role="listitem">
       <Next.Link href={"/blog/" ++ slug}>
         <a
@@ -36,14 +36,15 @@ module PostExcerpt = {
           </div>
           <div className="flex-initial min-w-0 py-2 lg:py-5">
             <h2 className={Heading.Styles.secondary ++ " truncate"} ariaHidden={true}>
-              {Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title)->React.string}
+              {filteredTitle->React.string}
             </h2>
             <div className="flex items-center">
               <p className="text-gray-600 text-base lg:text-xl font-serif">
                 <Date dateString=date ariaHidden={true} />
               </p>
               {switch status {
-              | "publish" => React.null
+              | "publish"
+              | "private" => React.null
               | _ => <Badge ariaHidden={true} className="ml-2"> {status->React.string} </Badge>
               }}
             </div>

@@ -40,11 +40,12 @@ let default = (props: WordPress.response): React.element => {
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
     | (Some(posts), _) if Belt.Array.length(posts) > 0 => {
         let {title, featuredImage, date, status, content} = posts[0]
-        let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;/g"), " ", title.rendered)
+        let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;|Private:\s/g"), " ", title.rendered)
         <>
           <SEO title=filteredTitle />
           {switch status {
-          | "publish" => React.null
+          | "publish"
+          | "private" => React.null
           | _ =>
             <div className="text-center mb-5">
               <Badge ariaHidden={true}> {status->React.string} </Badge>

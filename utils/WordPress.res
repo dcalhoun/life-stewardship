@@ -34,7 +34,8 @@ module Api = {
   external decodeError: Js.Dict.t<Js.Json.t> => error = "%identity"
 
   let postsUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wordpress.com/posts"
-  let previewStatus = "status=publish,private,draft,pending,future"
+  let publicStatus = "status=publish,private"
+  let previewStatus = publicStatus ++ ",draft,pending,future"
 
   let fetchToken = () => {
     let url = "https://public-api.wordpress.com/oauth2/token"
@@ -66,9 +67,9 @@ module Api = {
   let fetchPosts = (~slug=?, ~preview=false, ()) => {
     let url = switch (slug, preview) {
     | (Some(slug), true) => postsUrl ++ "?slug=" ++ slug ++ "&" ++ previewStatus
-    | (Some(slug), false) => postsUrl ++ "?slug=" ++ slug
+    | (Some(slug), false) => postsUrl ++ "?slug=" ++ slug ++ "&" ++ publicStatus
     | (None, true) => postsUrl ++ "?" ++ previewStatus
-    | _ => postsUrl
+    | _ => postsUrl ++ "?" ++ publicStatus
     }
 
     // TODO: Avoid displaying cryptic error messages like "client_id missing"
