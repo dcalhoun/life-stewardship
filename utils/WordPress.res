@@ -48,7 +48,6 @@ module Api = {
       "&password=" ++
       wpAppPassword
 
-    // TODO: Cache token in HTTP-only, SSL cookie. Validate its freshness?
     // TODO: Add error handling
     open Promise
     Fetch.fetchWithInit(
