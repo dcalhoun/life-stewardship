@@ -1,16 +1,20 @@
+module Req = {
+  type t = {query: Js.Dict.t<string>}
+}
+
+module Res = {
+  type t
+
+  @send external setHeader: (t, string, string) => unit = "setHeader"
+  @send external write: (t, string) => unit = "write"
+  @send external end: t => unit = "end"
+  @send external setPreviewData: (t, {.}) => t = "setPreviewData"
+  @send external redirect: (t, string) => t = "redirect"
+  @send external status: (t, int) => t = "status"
+  @send external json: (t, Js.Dict.t<string>) => t = "json"
+}
+
 module GetServerSideProps = {
-  module Req = {
-    type t
-  }
-
-  module Res = {
-    type t
-
-    @send external setHeader: (t, string, string) => unit = "setHeader"
-    @send external write: (t, string) => unit = "write"
-    @send external end: t => unit = "end"
-  }
-
   // See: https://github.com/zeit/next.js/blob/canary/packages/next/types/index.d.ts
   type context<'props, 'params, 'previewData> = {
     params: 'params,
@@ -120,4 +124,8 @@ module Image = {
     ~unoptimized: bool=?,
     ~width: int=?,
   ) => React.element = "default"
+}
+
+module Api = {
+  type t = (Req.t, Res.t) => Res.t
 }
