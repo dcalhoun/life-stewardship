@@ -64,12 +64,14 @@ module Api = {
     ->then(json => json->decodeToken->resolve)
   }
 
-  let fetchPosts = (~slug=?, ~preview=false, ()) => {
-    let url = switch (slug, preview) {
-    | (Some(slug), true) => postsUrl ++ "?slug=" ++ slug ++ "&" ++ previewStatus
-    | (Some(slug), false) => postsUrl ++ "?slug=" ++ slug ++ "&" ++ publicStatus
-    | (None, true) => postsUrl ++ "?" ++ previewStatus
-    | _ => postsUrl ++ "?" ++ publicStatus
+  let fetchPosts = (~id=?, ~slug=?, ~preview=false, ()) => {
+    let url = switch (id, slug, preview) {
+    | (Some(id), _, true) => postsUrl ++ "?id=" ++ id ++ "&" ++ previewStatus
+    | (Some(id), _, false) => postsUrl ++ "?id=" ++ id ++ "&" ++ publicStatus
+    | (None, Some(slug), true) => postsUrl ++ "?slug=" ++ slug ++ "&" ++ previewStatus
+    | (None, Some(slug), false) => postsUrl ++ "?slug=" ++ slug ++ "&" ++ publicStatus
+    | (_, _, true) => postsUrl ++ "?" ++ previewStatus
+    | (_, _, _) => postsUrl ++ "?" ++ publicStatus
     }
 
     // TODO: Avoid displaying cryptic error messages like "client_id missing"
