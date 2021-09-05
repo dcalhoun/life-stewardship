@@ -10,7 +10,10 @@ let make = (
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
     | (Some(posts), _) if Belt.Array.length(posts) > 0 => {
         let {title, featuredImage, date, status, content} = posts[0]
-        let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;|Private:\s/g"), " ", title.rendered)
+        let filteredTitle =
+          title.rendered
+          ->Js.String2.replaceByRe(%re("/&nbsp;/g"), " ")
+          ->Js.String2.replaceByRe(%re("/Private:\s/g"), "")
         <>
           <SEO title=filteredTitle />
           {switch status {
