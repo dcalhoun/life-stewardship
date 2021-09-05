@@ -40,7 +40,7 @@ module PostExcerpt = {
             )}>
             <Next.Image
               alt="Placeholder"
-              className="transform duration-300 transition-transform group-hover:scale-105 group-focus:scale-105"
+              className="transform duration-300 transition-transform group-hover:scale-105 group-focus:scale-105 object-cover"
               layout=#fill
               src={featuredImage == "" ? "/android-chrome-512x512.png" : featuredImage}
             />
