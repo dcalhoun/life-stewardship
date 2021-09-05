@@ -43,7 +43,15 @@ let make = (
           <div className="post" dangerouslySetInnerHTML={{"__html": content.rendered}} />
         </>
       }
-    | (Some(_empty), _) => <Paragraph> {"Not found."->React.string} </Paragraph>
+    | (Some(_empty), _) => <>
+        <SEO title="Page Not Found" />
+        <h1
+          className={Heading.Styles.primary ++ " mb-5 mx-auto"}
+          style={ReactDOM.Style.make(~maxWidth="600px", ())}>
+          {"Page Not Found"->React.string}
+        </h1>
+        <Paragraph> {"The page you are looking for cannot be found."->React.string} </Paragraph>
+      </>
     }}
     <ContactCTA />
   </Layout>
