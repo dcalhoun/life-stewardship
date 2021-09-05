@@ -17,10 +17,17 @@ let getStaticProps: Next.GetStaticProps.t<props, 'params, 'previewData> = ({prev
 
 module PostExcerpt = {
   @react.component
-  let make = (~date, ~featuredImage, ~slug, ~status, ~title) => {
-    let filteredTitle = Js.String.replaceByRe(%re("/&nbsp;|Private:\s/g"), " ", title)
+  let make = (~date, ~featuredImage, ~id, ~slug, ~status, ~title) => {
+    let postUrl = switch slug->Js.String2.length {
+    | 0 => "/blog/draft/" ++ id
+    | _ => "/blog/" ++ slug
+    }
+    let filteredTitle =
+      title
+      ->Js.String2.replaceByRe(%re("/&nbsp;/g"), " ")
+      ->Js.String2.replaceByRe(%re("/Private:\s/g"), "")
     <article role="listitem">
-      <Next.Link href={"/blog/" ++ slug}>
+      <Next.Link href={postUrl}>
         <a
           className="group flex items-center mb-4 lg:mb-8"
           title={filteredTitle ++ " - Posted on " ++ date->Date.format}>
@@ -72,7 +79,7 @@ let default = (props: props): React.element => {
         | (Some(posts), None) if Array.length(posts) > 0 =>
           posts
           ->Belt.Array.map(({date, featuredImage, id, slug, status, title}) =>
-            <PostExcerpt key=id date featuredImage slug status title=title.rendered />
+            <PostExcerpt key=id date featuredImage id slug status title=title.rendered />
           )
           ->React.array
         | (Some(_empty), _) => <Paragraph> {"No posts found."->React.string} </Paragraph>
