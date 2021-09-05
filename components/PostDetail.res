@@ -9,13 +9,16 @@ let make = (
     | (_, Some({message})) => <Paragraph> {message->React.string} </Paragraph>
     | (None, None) => <Paragraph> {"Loading"->React.string} </Paragraph>
     | (Some(posts), _) if Belt.Array.length(posts) > 0 => {
-        let {title, featuredImage, date, status, content} = posts[0]
+        let {title, featuredImage, date, status, content, excerpt} = posts[0]
         let filteredTitle =
           title.rendered
           ->Js.String2.replaceByRe(%re("/&nbsp;/g"), " ")
           ->Js.String2.replaceByRe(%re("/Private:\s/g"), "")
         <>
-          <SEO title=filteredTitle />
+          {switch featuredImage->String.length {
+          | 0 => <SEO description=excerpt.rendered title=filteredTitle />
+          | _ => <SEO description=excerpt.rendered title=filteredTitle image=featuredImage />
+          }}
           {switch status {
           | "publish"
           | "private" => React.null
