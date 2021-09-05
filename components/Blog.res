@@ -10,11 +10,7 @@ let getStaticProps: Next.GetStaticProps.t<props, 'params, 'previewData> = ({prev
     data,
     error,
   )) => {
-    let props = {
-      error: error,
-      data: data,
-      preview: preview->Belt.Option.getWithDefault(false),
-    }
+    let props = {error: error, data: data, preview: preview->Belt.Option.getWithDefault(false)}
     resolve({"props": props, "revalidate": Some(60)})
   })
 }
