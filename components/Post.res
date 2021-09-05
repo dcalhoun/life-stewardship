@@ -8,22 +8,11 @@ type props = {
 let getStaticProps: Next.GetStaticProps.t<props, params, 'previewData> = ctx => {
   let {params, preview} = ctx
   open Js.Promise
-  let postFetch = switch Js.Re.fromString("^\d+$")->Js.Re.test_(params.slug) {
-  | true =>
-    WordPress.Api.fetchPosts(
-      ~id=params.slug,
-      ~preview=preview->Belt.Option.getWithDefault(false),
-      (),
-    )
-
-  | false =>
-    WordPress.Api.fetchPosts(
-      ~slug=params.slug,
-      ~preview=preview->Belt.Option.getWithDefault(false),
-      (),
-    )
-  }
-  postFetch->then_(((data, error)) => {
+  WordPress.Api.fetchPosts(
+    ~slug=params.slug,
+    ~preview=preview->Belt.Option.getWithDefault(false),
+    (),
+  )->then_(((data, error)) => {
     let props = {error: error, data: data, preview: preview->Belt.Option.getWithDefault(false)}
     resolve({"props": props, "revalidate": Some(60)})
   }, _)
@@ -35,11 +24,7 @@ let getStaticPaths: Next.GetStaticPaths.t<params> = () => {
     let paths = switch data->Js.Nullable.toOption {
     | Some(posts) =>
       Belt.Array.map(posts, post => {
-        let identifier = switch post.slug->Js.String2.length {
-        | 0 => post.id
-        | _ => post.slug
-        }
-        let path: Next.GetStaticPaths.path<params> = {params: {slug: identifier}}
+        let path: Next.GetStaticPaths.path<params> = {params: {slug: post.slug}}
         path
       })
     | None => []
