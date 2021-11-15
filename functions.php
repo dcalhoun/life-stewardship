@@ -60,5 +60,10 @@ function life_stewardship_styles() {
         get_stylesheet_uri(),
         wp_get_theme()->get("Version"),
     );
+    wp_enqueue_style(
+        "tailwind",
+        "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css",
+        wp_get_theme()->get("Version"),
+    );
 }
 add_action("wp_enqueue_scripts", "life_stewardship_styles");
