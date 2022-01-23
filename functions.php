@@ -28,12 +28,6 @@ if (!function_exists("life_stewardship_support")) {
         add_theme_support("automatic-feed-links");
         add_theme_support("wp-block-styles");
 
-        // Register two nav menus
-        register_nav_menus([
-            "primary" => __("Primary Navigation", "blockbase"),
-            "social" => __("Social Navigation", "blockbase"),
-        ]);
-
         add_filter("block_editor_settings_all", function ($settings) {
             $settings["defaultBlockTemplate"] =
                 '<!-- wp:group {"layout":{"inherit":true}} --><div class="wp-block-group"><!-- wp:post-content /--></div><!-- /wp:group -->';
