@@ -61,3 +61,11 @@ function life_stewardship_styles() {
     );
 }
 add_action("wp_enqueue_scripts", "life_stewardship_styles");
+
+/**
+ * Disable embeds script to improve performance.
+ */
+function disable_embeds() {
+    wp_dequeue_script("wp-embed");
+}
+add_action("wp_footer", "disable_embeds");
