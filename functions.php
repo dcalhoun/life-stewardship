@@ -12,21 +12,27 @@ if (!function_exists("life_stewardship_support")) {
     function life_stewardship_support() {
         // Alignwide and alignfull classes in the block editor.
         add_theme_support("align-wide");
+
         // Add support for experimental link color control.
         add_theme_support("experimental-link-color");
+
         // Add support for responsive embedded content.
         // https://github.com/WordPress/gutenberg/issues/26901
         add_theme_support("responsive-embeds");
-        // Add support for post thumbnails.
-        add_theme_support("post-thumbnails");
-        // Declare that there are no <title> tags and allow WordPress to provide them
-        add_theme_support("title-tag");
-        // Experimental support for adding blocks inside nav menus
-        add_theme_support("block-nav-menus");
+
         // Add support for editor styles.
         add_theme_support("editor-styles");
-        add_theme_support("automatic-feed-links");
 
+        // Add support for post thumbnails.
+        add_theme_support("post-thumbnails");
+
+        // Declare that there are no <title> tags and allow WordPress to provide them
+        add_theme_support("title-tag");
+
+        // Experimental support for adding blocks inside nav menus
+        add_theme_support("block-nav-menus");
+
+        // Set default content for site editor.
         add_filter("block_editor_settings_all", function ($settings) {
             $settings["defaultBlockTemplate"] =
                 '<!-- wp:group {"layout":{"inherit":true}} --><div class="wp-block-group"><!-- wp:post-content /--></div><!-- /wp:group -->';
@@ -40,6 +46,12 @@ if (!function_exists("life_stewardship_support")) {
             "flex-width" => true,
             "flex-height" => true,
         ]);
+
+        // Enqueue editor styles.
+        add_editor_style(["/assets/global.css"]);
+
+        // Enable RSS feed links.
+        add_theme_support("automatic-feed-links");
     }
 }
 add_action("after_setup_theme", "life_stewardship_support");
@@ -60,6 +72,31 @@ function life_stewardship_styles() {
     );
 }
 add_action("wp_enqueue_scripts", "life_stewardship_styles");
+
+/**
+ * Reload menus to avoid stale customizer.
+ */
+add_action("customize_controls_enqueue_scripts", static function () {
+    wp_enqueue_script(
+        "wp-customize-nav-menu-refresh",
+        get_template_directory_uri() .
+            "/inc/customizer/wp-customize-nav-menu-refresh.js",
+        ["customize-nav-menus"],
+        wp_get_theme()->get("Version"),
+        true,
+    );
+});
+
+/**
+ * Disable the fallback for the core/navigation block.
+ */
+function blockbase_core_navigation_render_fallback() {
+    return null;
+}
+add_filter(
+    "block_core_navigation_render_fallback",
+    "blockbase_core_navigation_render_fallback",
+);
 
 /**
  * Disable embeds script to improve performance.
