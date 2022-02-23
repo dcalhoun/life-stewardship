@@ -26,7 +26,6 @@ if (!function_exists("life_stewardship_support")) {
         // Add support for editor styles.
         add_theme_support("editor-styles");
         add_theme_support("automatic-feed-links");
-        add_theme_support("wp-block-styles");
 
         add_filter("block_editor_settings_all", function ($settings) {
             $settings["defaultBlockTemplate"] =
