@@ -48,7 +48,7 @@ if (!function_exists("life_stewardship_support")) {
         ]);
 
         // Enqueue editor styles.
-        add_editor_style(["/assets/global.css"]);
+        add_editor_style(["/assets/theme.css"]);
 
         // Enable RSS feed links.
         add_theme_support("automatic-feed-links");
@@ -61,13 +61,8 @@ add_action("after_setup_theme", "life_stewardship_support");
  */
 function life_stewardship_styles() {
     wp_enqueue_style(
-        "global",
-        get_stylesheet_uri(),
-        wp_get_theme()->get("Version"),
-    );
-    wp_enqueue_style(
-        "tailwind",
-        "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css",
+        "theme",
+        get_template_directory_uri() . "/assets/theme.css",
         wp_get_theme()->get("Version"),
     );
 }
