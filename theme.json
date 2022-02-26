@@ -26,6 +26,25 @@
     }
   ],
   "settings": {
+    "color": {
+      "palette": [
+        {
+          "slug": "foreground",
+          "color": "rgba(28,25,23,1)",
+          "name": "Foreground"
+        },
+        {
+          "slug": "background",
+          "color": "rgba(245,245,244,1)",
+          "name": "Background"
+        },
+        {
+          "slug": "primary",
+          "color": "rgba(4,120,87,1)",
+          "name": "Primary"
+        }
+      ]
+    },
     "custom": {
       "body": {
         "typography": {
@@ -91,6 +110,20 @@
     }
   },
   "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--background)",
+      "text": "var(--wp--preset--color--foreground)"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--primary)"
+        },
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--base)"
+        }
+      }
+    },
     "typography": {
       "lineHeight": "var(--wp--custom--body--typography--line-height)",
       "fontFamily": "var(--wp--preset--font-family--body-font)",
