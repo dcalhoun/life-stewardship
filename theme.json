@@ -1,13 +1,27 @@
 {
   "$schema": "https://json.schemastore.org/theme-v1.json",
   "version": 1,
+  "customTemplates": [
+    {
+      "name": "blank",
+      "postTypes": ["page", "post"],
+      "title": "Blank"
+    },
+    {
+      "name": "header-footer-only",
+      "postTypes": ["page", "post"],
+      "title": "Header & Footer Only"
+    }
+  ],
   "templateParts": [
     {
       "name": "header",
+      "title": "Header",
       "area": "header"
     },
     {
       "name": "footer",
+      "title": "Footer",
       "area": "footer"
     }
   ],
