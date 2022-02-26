@@ -41,7 +41,7 @@
       "customFontSize": false,
       "fontFamilies": [
         {
-          "fontFamily": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+          "fontFamily": "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
           "slug": "body-font",
           "name": "Body (System Font)"
         },
@@ -49,6 +49,11 @@
           "fontFamily": "ui-serif, Georgia, Cambria, Times New Roman, Times, serif",
           "slug": "heading-font",
           "name": "Headings (System Font)"
+        },
+        {
+          "fontFamily": "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+          "slug": "alternate",
+          "name": "Alternate (System Font)"
         }
       ],
       "fontSizes": [
