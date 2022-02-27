@@ -42,6 +42,11 @@
           "slug": "primary",
           "color": "rgba(4,120,87,1)",
           "name": "Primary"
+        },
+        {
+          "slug": "secondary",
+          "color": "rgb(68, 64, 60)",
+          "name": "Secondary"
         }
       ]
     },
@@ -118,9 +123,6 @@
       "link": {
         "color": {
           "text": "var(--wp--preset--color--primary)"
-        },
-        "typography": {
-          "fontSize": "var(--wp--preset--font-size--base)"
         }
       }
     },

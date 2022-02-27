@@ -1,0 +1,11 @@
+.wp-block-navigation .wp-block-navigation-item {
+  font-family: var(--wp--preset--font-family--alternate);
+  font-size: var(--wp--preset--font-size--small);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-left: 3rem;
+}
+
+.wp-block-navigation .wp-block-navigation-item__content {
+  color: var(--wp--preset--color--secondary);
+}
