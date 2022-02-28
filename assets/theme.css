@@ -9,3 +9,7 @@
 .wp-block-navigation .wp-block-navigation-item__content {
   color: var(--wp--preset--color--secondary);
 }
+
+.wp-block-image.is-style-circle-mask img, .wp-block-image.is-style-rounded img {
+  border-radius: 0.5rem;
+}
