@@ -108,7 +108,7 @@
         },
         {
           "name": "Extra Large",
-          "size": "32px",
+          "size": "3.75rem",
           "slug": "x-large"
         }
       ]
@@ -119,7 +119,17 @@
       "background": "var(--wp--preset--color--background)",
       "text": "var(--wp--preset--color--foreground)"
     },
+    "blocks": {
+      "core/post-title": {
+        "spacing": { "margin": { "bottom": "0" } }
+      }
+    },
     "elements": {
+      "h1": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--x-large)"
+        }
+      },
       "link": {
         "color": {
           "text": "var(--wp--preset--color--primary)"
