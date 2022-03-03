@@ -141,3 +141,84 @@ function disable_emojis_remove_dns_prefetch($urls, $relation_type) {
 
     return $urls;
 }
+
+/**
+ * Add styled page post type to contains non-removable Featured Image block.
+ */
+function register_page_featured_image_post_type() {
+    $args = [
+        "public" => true,
+        "label" => "Page",
+        "hierarchical" => true,
+        "labels" => [
+            "name" => _x("Pages", "post type general name"),
+            "singular_name" => _x("Page", "post type singular name"),
+            "add_new" => _x("Add New", "page"),
+            "add_new_item" => __("Add New Page"),
+            "edit_item" => __("Edit Page"),
+            "new_item" => __("New Page"),
+            "view_item" => __("View Page"),
+            "view_items" => __("View Pages"),
+            "search_items" => __("Search Pages"),
+            "not_found" => __("No pages found."),
+            "not_found_in_trash" => __("No pages found in Trash."),
+            "parent_item_colon" => __("Parent Page:"),
+            "all_items" => __("All Pages"),
+            "archives" => __("Page Archives"),
+            "attributes" => __("Page Attributes"),
+            "insert_into_item" => __("Insert into page"),
+            "uploaded_to_this_item" => __("Uploaded to this page"),
+            "featured_image" => _x("Featured image", "page"),
+            "set_featured_image" => _x("Set featured image", "page"),
+            "remove_featured_image" => _x("Remove featured image", "page"),
+            "use_featured_image" => _x("Use as featured image", "page"),
+            "filter_items_list" => __("Filter pages list"),
+            "filter_by_date" => __("Filter by date"),
+            "items_list_navigation" => __("Pages list navigation"),
+            "items_list" => __("Pages list"),
+            "item_published" => __("Page published."),
+            "item_published_privately" => __("Page published privately."),
+            "item_reverted_to_draft" => __("Page reverted to draft."),
+            "item_scheduled" => __("Page scheduled."),
+            "item_updated" => __("Page updated."),
+            "item_link" => _x("Page Link", "navigation link block title"),
+            "item_link_description" => _x(
+                "A link to a page.",
+                "navigation link block description",
+            ),
+        ],
+        "menu_position" => 10,
+        "menu_icon" => "dashicons-admin-page",
+        "show_in_rest" => true,
+        "supports" => [
+            "title",
+            "editor",
+            "thumbnail",
+            "author",
+            "discussion",
+            "page-attributes",
+            "comments",
+        ],
+        "template" => [
+            [
+                "core/post-featured-image",
+                [
+                    "align" => "wide",
+                    "lock" => ["remove" => "true", "move" => "true"],
+                ],
+            ],
+            ["core/paragraph"],
+        ],
+    ];
+    register_post_type("page_featured_image", $args);
+}
+add_action("init", "register_page_featured_image_post_type");
+
+/**
+ * Remove default page menu item in favor of styled page post type.
+ */
+function remove_default_post_type() {
+    remove_menu_page("edit.php?post_type=page");
+}
+
+add_action("admin_menu", "remove_default_post_type");
