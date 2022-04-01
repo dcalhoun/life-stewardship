@@ -143,20 +143,23 @@ function disable_emojis_remove_dns_prefetch($urls, $relation_type) {
 }
 
 /**
- * Add  non-removable Featured Image block to Pages so the block editor more
- * closely resembles the website presentation.
+ * Add non-movable Post Featured Image block to further align block editor and
+ * website presentation.
  */
-function inline_page_featured_image() {
-    $page_post_type = get_post_type_object("page");
-    $page_post_type->template = [
+function inline_post_featured_image($post_type) {
+    $post_type_object = get_post_type_object($post_type);
+    $post_type_object->template = [
         [
             "core/post-featured-image",
             [
                 "align" => "wide",
-                "lock" => ["remove" => "true", "move" => "true"],
+                "lock" => ["move" => "true"],
             ],
         ],
         ["core/paragraph"],
     ];
 }
-add_action("init", "inline_page_featured_image");
+add_action("init", function () {
+    inline_post_featured_image("page");
+    inline_post_featured_image("post");
+});
