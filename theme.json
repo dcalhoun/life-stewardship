@@ -61,6 +61,10 @@
       "contentSize": "840px",
       "wideSize": "1100px"
     },
+    "spacing": {
+      "customPadding": true,
+      "units": ["px", "em", "rem", "vh", "vw", "%"]
+    },
     "typography": {
       "customFontSize": false,
       "fontFamilies": [
