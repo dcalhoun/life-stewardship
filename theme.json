@@ -26,27 +26,47 @@
     }
   ],
   "settings": {
+    "blocks": {
+      "core/group": {
+        "border": {
+          "customRadius": true
+        }
+      },
+      "core/heading": {
+        "typography": { "customLineHeight": true }
+      }
+    },
     "color": {
       "palette": [
         {
           "slug": "foreground",
           "color": "rgba(28,25,23,1)",
-          "name": "Foreground"
+          "name": "Foreground (Primary)"
+        },
+        {
+          "slug": "foreground-secondary",
+          "color": "rgba(120,113,108,1)",
+          "name": "Foreground (Secondary)"
         },
         {
           "slug": "background",
           "color": "rgba(245,245,244,1)",
-          "name": "Background"
+          "name": "Background (Primary)"
+        },
+        {
+          "slug": "background-secondary",
+          "color": "rgb(255, 255, 255)",
+          "name": "Background (Secondary)"
         },
         {
           "slug": "primary",
           "color": "rgba(4,120,87,1)",
-          "name": "Primary"
+          "name": "Action (Primary)"
         },
         {
           "slug": "secondary",
           "color": "rgb(68, 64, 60)",
-          "name": "Secondary"
+          "name": "Action (Secondary)"
         }
       ]
     },
@@ -55,6 +75,9 @@
         "typography": {
           "lineHeight": 1.75
         }
+      },
+      "component": {
+        "drop-shadow": "0 0 #0000,0 0 #0000,0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)"
       }
     },
     "layout": {
@@ -62,6 +85,7 @@
       "wideSize": "1100px"
     },
     "spacing": {
+      "customMargin": true,
       "customPadding": true,
       "units": ["px", "em", "rem", "vh", "vw", "%"]
     },
@@ -87,27 +111,27 @@
       "fontSizes": [
         {
           "name": "Extra Small",
-          "size": "12px",
+          "size": "0.75rem",
           "slug": "x-small"
         },
         {
           "name": "Small",
-          "size": "16px",
+          "size": "1rem",
           "slug": "small"
         },
         {
           "name": "Base",
-          "size": "20px",
+          "size": "1.25rem",
           "slug": "base"
         },
         {
           "name": "Medium",
-          "size": "24px",
+          "size": "1.5rem",
           "slug": "medium"
         },
         {
           "name": "Large",
-          "size": "28px",
+          "size": "2.25rem",
           "slug": "large"
         },
         {

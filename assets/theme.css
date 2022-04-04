@@ -21,3 +21,11 @@
 .wp-block-post-featured-image img {
   border-radius: var(--rounded);
 }
+
+.ls-callout {
+  box-shadow: var(--wp--custom--component--drop-shadow);
+}
+
+.ls-callout__heading {
+  font-family: var(--wp--preset--font-family--alternate);
+}
