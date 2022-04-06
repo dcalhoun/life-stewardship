@@ -8,12 +8,22 @@
       "title": "Blank"
     },
     {
+      "name": "hide-footer",
+      "postTypes": ["page"],
+      "title": "Hide footer"
+    },
+    {
       "name": "hide-title",
       "postTypes": ["page"],
       "title": "Hide title"
     }
   ],
   "templateParts": [
+    {
+      "name": "credit",
+      "title": "Credit",
+      "area": "footer"
+    },
     {
       "name": "header",
       "title": "Header",
