@@ -175,6 +175,14 @@
           "lineHeight": "1.75rem"
         }
       },
+      "core/post-content": {
+        "spacing": {
+          "padding": {
+            "left": "1rem",
+            "right": "1rem"
+          }
+        }
+      },
       "core/post-title": {
         "spacing": { "margin": { "bottom": "0" } }
       }
