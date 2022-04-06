@@ -8,9 +8,9 @@
       "title": "Blank"
     },
     {
-      "name": "header-footer-only",
-      "postTypes": ["page", "post"],
-      "title": "Header & Footer Only"
+      "name": "hide-title",
+      "postTypes": ["page"],
+      "title": "Hide title"
     }
   ],
   "templateParts": [
