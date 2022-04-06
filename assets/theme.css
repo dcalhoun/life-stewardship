@@ -13,10 +13,10 @@
   border-radius: var(--wp--custom--image--rounded);
 }
 
-.ls-callout {
+.ls-drop-shadow {
   box-shadow: var(--wp--custom--component--drop-shadow);
 }
 
-.ls-callout__heading {
+.ls-font-alternate {
   font-family: var(--wp--preset--font-family--alternate);
 }

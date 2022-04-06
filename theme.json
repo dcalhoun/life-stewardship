@@ -27,6 +27,11 @@
   ],
   "settings": {
     "blocks": {
+      "core/columns": {
+        "border": {
+          "customRadius": true
+        }
+      },
       "core/group": {
         "border": {
           "customRadius": true
