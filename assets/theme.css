@@ -13,6 +13,14 @@
   width: 864px;
 }
 
+/* @TODO: https://github.com/Automattic/jetpack/pull/19527#issuecomment-871541169 */
+.wp-block-jetpack-button.wp-block-jetpack-button button {
+  font-family: var(--wp--preset--font-family--alternate);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+}
+
 .ls-drop-shadow {
   box-shadow: var(--wp--custom--component--drop-shadow);
 }
