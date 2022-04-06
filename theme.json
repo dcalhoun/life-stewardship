@@ -170,6 +170,11 @@
           "letterSpacing": "0.05em"
         }
       },
+      "core/paragraph": {
+        "typography": {
+          "lineHeight": "1.75rem"
+        }
+      },
       "core/post-title": {
         "spacing": { "margin": { "bottom": "0" } }
       }
