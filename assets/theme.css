@@ -1,11 +1,16 @@
 /* @TODO: Find documentation to modify `is-styled-rounded` radius. */
 .wp-block-image.is-style-circle-mask img, .wp-block-image.is-style-rounded img {
-  border-radius: var(--wp--custom--image--rounded);
+  border-radius: var(--wp--custom--component--rounded);
 }
 
 /* @TODO: https://github.com/WordPress/gutenberg/issues/39074 */
 .wp-block-post-featured-image img {
-  border-radius: var(--wp--custom--image--rounded);
+  border-radius: var(--wp--custom--component--rounded);
+}
+
+/* @TODO: Default style erroneously renders at 100%. Fix? Change width? */
+.wp-block-separator.is-style-default {
+  width: 864px;
 }
 
 .ls-drop-shadow {
