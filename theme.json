@@ -38,7 +38,9 @@
         }
       },
       "core/heading": {
-        "typography": { "customLineHeight": true }
+        "typography": {
+          "customLineHeight": true
+        }
       }
     },
     "color": {
