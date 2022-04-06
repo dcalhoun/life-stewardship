@@ -152,6 +152,17 @@
       "text": "var(--wp--preset--color--foreground)"
     },
     "blocks": {
+      "core/navigation-link": {
+        "color": {
+          "text": "var(--wp--preset--color--secondary)"
+        },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--alternate)",
+          "fontSize": "var(--wp--preset--font-size--small)",
+          "fontWeight": "600",
+          "letterSpacing": "0.05em"
+        }
+      },
       "core/post-title": {
         "spacing": { "margin": { "bottom": "0" } }
       }
