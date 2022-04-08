@@ -69,20 +69,6 @@ function life_stewardship_styles() {
 add_action("wp_enqueue_scripts", "life_stewardship_styles");
 
 /**
- * Reload menus to avoid stale customizer.
- */
-add_action("customize_controls_enqueue_scripts", static function () {
-    wp_enqueue_script(
-        "wp-customize-nav-menu-refresh",
-        get_template_directory_uri() .
-            "/inc/customizer/wp-customize-nav-menu-refresh.js",
-        ["customize-nav-menus"],
-        wp_get_theme()->get("Version"),
-        true,
-    );
-});
-
-/**
  * Disable the fallback for the core/navigation block.
  */
 function life_stewardship_core_navigation_render_fallback() {
