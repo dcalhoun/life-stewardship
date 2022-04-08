@@ -1,5 +1,6 @@
 /* @TODO: Find documentation to modify `is-styled-rounded` radius. */
-.wp-block-image.is-style-circle-mask img, .wp-block-image.is-style-rounded img {
+.wp-block-image.is-style-circle-mask img,
+.wp-block-image.is-style-rounded img {
   border-radius: var(--wp--custom--component--rounded);
 }
 
