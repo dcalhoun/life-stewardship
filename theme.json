@@ -33,6 +33,10 @@
       "name": "footer",
       "title": "Footer",
       "area": "footer"
+    },
+    {
+      "name": "post-meta",
+      "title": "Post Meta"
     }
   ],
   "settings": {
