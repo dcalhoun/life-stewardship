@@ -8,14 +8,14 @@
       "title": "Blank"
     },
     {
-      "name": "hide-footer",
+      "name": "page-without-footer",
       "postTypes": ["page"],
-      "title": "Hide footer"
+      "title": "Page without footer"
     },
     {
-      "name": "hide-title",
+      "name": "page-without-title",
       "postTypes": ["page"],
-      "title": "Hide title"
+      "title": "Page without title"
     }
   ],
   "templateParts": [
