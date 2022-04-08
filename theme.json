@@ -80,12 +80,12 @@
           "name": "Background (Secondary)"
         },
         {
-          "slug": "primary",
+          "slug": "action",
           "color": "rgba(4,120,87,1)",
           "name": "Action (Primary)"
         },
         {
-          "slug": "secondary",
+          "slug": "action-secondary",
           "color": "rgb(68, 64, 60)",
           "name": "Action (Secondary)"
         }
@@ -175,6 +175,9 @@
         "border": {
           "radius": "var(--wp--custom--component--rounded)"
         },
+        "color": {
+          "background": "var(--wp--preset--color--action)"
+        },
         "spacing": {
           "padding": {
             "bottom": "0.75rem",
@@ -192,7 +195,7 @@
       },
       "core/navigation-link": {
         "color": {
-          "text": "var(--wp--preset--color--secondary)"
+          "text": "var(--wp--preset--color--action-secondary)"
         },
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--alternate)",
@@ -239,7 +242,7 @@
       },
       "link": {
         "color": {
-          "text": "var(--wp--preset--color--primary)"
+          "text": "var(--wp--preset--color--action)"
         }
       }
     },
