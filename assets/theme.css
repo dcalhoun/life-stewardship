@@ -11,7 +11,7 @@
 
 /* @TODO: Default style erroneously renders at 100%. Fix? Change width? */
 .wp-block-separator.is-style-default {
-  width: 864px;
+  width: 54rem;
 }
 
 /* @TODO: https://github.com/Automattic/jetpack/pull/19527#issuecomment-871541169 */
