@@ -1,5 +1,14 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
+<!-- wp:group {"layout":{"inherit":true}} -->
+<div class="wp-block-group">
+  <!-- @TODO: This heading duplicates wp:query-title https://github.com/WordPress/gutenberg/issues/33476 -->
+  <!-- wp:heading {"level":1} -->
+  <h1>Blog</h1>
+  <!-- /wp:heading -->
+</div>
+<!-- /wp:group -->
+
 <!-- wp:query {"tagName":"main","layout":{"inherit":true}} -->
 <main class="wp-block-query">
   <!-- wp:query-title {"type":"archive","style":{"spacing":{"margin":{"bottom":"100px"}}}} /-->
