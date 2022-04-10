@@ -68,3 +68,7 @@
 .ls-font-alternate {
   font-family: var(--wp--preset--font-family--alternate);
 }
+
+.ls-shrink-0 {
+  flex-shrink: 0;
+}
