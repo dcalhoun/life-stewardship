@@ -193,6 +193,14 @@
           "lineHeight": "1.5rem"
         }
       },
+      "core/post-comments": {
+        "spacing": {
+          "padding": {
+            "left": "1rem",
+            "right": "1rem"
+          }
+        }
+      },
       "core/navigation-link": {
         "color": {
           "text": "var(--wp--preset--color--action-secondary)"
@@ -231,6 +239,14 @@
         "border": {
           "color": "rgba(231,229,228,1)",
           "width": "0.5px"
+        }
+      },
+      "core/query": {
+        "spacing": {
+          "padding": {
+            "left": "1rem",
+            "right": "1rem"
+          }
         }
       }
     },
