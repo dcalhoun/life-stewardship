@@ -55,9 +55,7 @@
       margin-bottom: 0px;
       margin-left: 0px;
     "
-  >
-    <em></em>
-  </h2>
+  ></h2>
   <!-- /wp:heading -->
 </div>
 <!-- /wp:group -->
