@@ -1,3 +1,9 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
 /* @TODO: Find documentation to modify `is-styled-rounded` radius. */
 .wp-block-image.is-style-circle-mask img,
 .wp-block-image.is-style-rounded img {
