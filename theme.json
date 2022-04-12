@@ -235,6 +235,11 @@
           "lineHeight": "1"
         }
       },
+      "core/query-title": {
+        "typography": {
+          "lineHeight": "1"
+        }
+      },
       "core/separator": {
         "border": {
           "color": "rgba(231,229,228,1)",
