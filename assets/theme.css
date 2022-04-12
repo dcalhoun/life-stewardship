@@ -78,3 +78,34 @@
 .ls-shrink-0 {
   flex-shrink: 0;
 }
+
+.wp-block-pullquote cite,
+.wp-block-quote cite {
+  font-family: var(--wp--preset--font-family--alternate);
+  font-style: normal;
+}
+
+.wp-block-pullquote blockquote {
+  border-top: 2px solid var(--wp--preset--color--action);
+  border-bottom: 2px solid var(--wp--preset--color--action);
+  font-style: italic;
+  padding-bottom: var(--wp--style--block-gap);
+}
+
+.wp-block-pullquote cite {
+  font-size: var(--wp--preset--font-size--small);
+  text-transform: uppercase;
+}
+
+.wp-block-quote {
+  border-left: 2px solid var(--wp--preset--color--action);
+  padding-left: 1rem;
+}
+
+.wp-block-quote p {
+  font-style: italic;
+}
+
+.wp-block-quote cite {
+  font-size: var(--wp--preset--font-size--small);
+}
