@@ -5,11 +5,11 @@
  */
 ?>
 
-<!-- wp:group {"style":{"border":{"radius":"0.5rem"},"spacing":{"padding":{"top":"2.5rem","right":"1rem","bottom":"2.5rem","left":"1rem"}}},"backgroundColor":"background-secondary","className":"ls-drop-shadow","layout":{"contentSize":"672px","wideSize":"864px"}} -->
+<!-- wp:group {"style":{"border":{"radius":"0.5rem"},"spacing":{"padding":{"top":"2.5rem","right":"1rem","bottom":"2.5rem","left":"1rem"}}},"backgroundColor":"background-secondary","className":"drop-shadow","layout":{"contentSize":"672px","wideSize":"864px"}} -->
 <div
   class="
     wp-block-group
-    ls-drop-shadow
+    drop-shadow
     has-background-secondary-background-color has-background
   "
   style="
@@ -20,11 +20,11 @@
     padding-left: 1rem;
   "
 >
-  <!-- wp:heading {"placeholder":"Primary heading","textAlign":"center","level":1,"style":{"typography":{"fontStyle":"normal","fontWeight":"300","lineHeight":1.1},"spacing":{"margin":{"top":"0px","right":"0px","bottom":"20px","left":"0px"}}},"textColor":"secondary","className":"ls-font-alternate","fontSize":"large","lock":{"move":true,"remove":true}} -->
+  <!-- wp:heading {"placeholder":"Primary heading","textAlign":"center","level":1,"style":{"typography":{"fontStyle":"normal","fontWeight":"300","lineHeight":1.1},"spacing":{"margin":{"top":"0px","right":"0px","bottom":"20px","left":"0px"}}},"textColor":"secondary","className":"font-alternate","fontSize":"large","lock":{"move":true,"remove":true}} -->
   <h1
     class="
       has-text-align-center
-      ls-font-alternate
+      font-alternate
       has-secondary-color has-text-color has-large-font-size
     "
     style="
@@ -39,11 +39,11 @@
   ></h1>
   <!-- /wp:heading -->
 
-  <!-- wp:heading {"placeholder":"Secondary heading","textAlign":"center","style":{"typography":{"fontStyle":"normal","fontWeight":"400","lineHeight":"1.3"},"spacing":{"margin":{"top":"0px","right":"0px","bottom":"0px","left":"0px"}}},"textColor":"foreground-secondary","className":"ls-font-alternate","fontSize":"medium","lock":{"move":true,"remove":true}} -->
+  <!-- wp:heading {"placeholder":"Secondary heading","textAlign":"center","style":{"typography":{"fontStyle":"normal","fontWeight":"400","lineHeight":"1.3"},"spacing":{"margin":{"top":"0px","right":"0px","bottom":"0px","left":"0px"}}},"textColor":"foreground-secondary","className":"font-alternate","fontSize":"medium","lock":{"move":true,"remove":true}} -->
   <h2
     class="
       has-text-align-center
-      ls-font-alternate
+      font-alternate
       has-foreground-secondary-color has-text-color has-medium-font-size
     "
     style="
