@@ -5,12 +5,12 @@
  */
 ?>
 
-<!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"padding":{"top":"2.5rem","right":"2.5rem","bottom":"2.5rem","left":"2.5rem"}},"border":{"radius":"0.5rem"}},"backgroundColor":"background-secondary","className":"ls-drop-shadow"} -->
+<!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"padding":{"top":"2.5rem","right":"2.5rem","bottom":"2.5rem","left":"2.5rem"}},"border":{"radius":"0.5rem"}},"backgroundColor":"background-secondary","className":"ls-drop-shadow ls-h-full"} -->
 <div
   class="
     wp-block-columns
     is-not-stacked-on-mobile
-    ls-drop-shadow
+    ls-drop-shadow ls-h-full
     has-background-secondary-background-color has-background
   "
   style="
@@ -21,7 +21,7 @@
     padding-left: 2.5rem;
   "
 >
-  <!-- wp:column {"verticalAlignment":"center","width":"48px","lock":{"move":true,"remove":true},"className":"ls-shrink-0"} -->
+  <!-- wp:column {"verticalAlignment":"center","width":"48px","className":"ls-shrink-0","lock":{"move":true,"remove":true}} -->
   <div
     class="wp-block-column is-vertically-aligned-center ls-shrink-0"
     style="flex-basis: 48px"

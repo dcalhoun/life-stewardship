@@ -75,6 +75,10 @@
   font-family: var(--wp--preset--font-family--alternate);
 }
 
+.ls-h-full {
+  height: 100%;
+}
+
 .ls-shrink-0 {
   flex-shrink: 0;
 }
