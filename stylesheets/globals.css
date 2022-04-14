@@ -3,3 +3,8 @@
 :before {
   box-sizing: border-box;
 }
+
+ol,
+ul {
+  padding-left: 1.75rem;
+}
