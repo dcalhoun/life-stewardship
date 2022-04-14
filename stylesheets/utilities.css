@@ -1,0 +1,15 @@
+.drop-shadow {
+  box-shadow: var(--wp--custom--presentation--drop-shadow);
+}
+
+.font-alternate {
+  font-family: var(--wp--preset--font-family--alternate);
+}
+
+.h-full {
+  height: 100%;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}

@@ -29,7 +29,7 @@
     <!-- wp:image {"width":48,"height":48,"lock":{"move":true,"remove":true}} -->
     <figure class="wp-block-image is-resized">
       <img
-        src="<?php echo get_stylesheet_directory_uri(); ?>/assets/check.svg"
+        src="<?php echo get_stylesheet_directory_uri(); ?>/images/check.svg"
         alt=""
         width="48"
         height="48"
