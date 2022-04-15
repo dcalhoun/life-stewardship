@@ -91,3 +91,8 @@
 .wp-block-quote cite {
   font-size: var(--wp--preset--font-size--small);
 }
+
+figcaption {
+  font-size: var(--wp--preset--font-size--x-small);
+  font-family: var(--wp--preset--font-family--alternate);
+}
