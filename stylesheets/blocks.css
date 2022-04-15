@@ -71,6 +71,7 @@
   border-top: 2px solid var(--wp--preset--color--action);
   border-bottom: 2px solid var(--wp--preset--color--action);
   font-style: italic;
+  margin: 0 1rem;
   padding-bottom: var(--wp--style--block-gap);
 }
 
