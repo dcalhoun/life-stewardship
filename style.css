@@ -19,11 +19,6 @@ Text Domain: life-stewardship
   box-sizing: border-box;
 }
 
-ol,
-ul {
-  padding-left: 1.75rem;
-}
-
 .drop-shadow {
   box-shadow: var(--wp--custom--presentation--drop-shadow);
 }
