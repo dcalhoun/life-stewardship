@@ -93,7 +93,8 @@
     },
     "custom": {
       "alignment": {
-        "lineHeight": 1.75
+        "lineHeight": 1.75,
+        "edgeGap": "1rem"
       },
       "presentation": {
         "dropShadow": "0 0 #0000,0 0 #0000,0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)",
@@ -205,8 +206,8 @@
       "core/post-content": {
         "spacing": {
           "padding": {
-            "left": "1rem",
-            "right": "1rem"
+            "left": "var(--wp--custom--alignment--edge-gap)",
+            "right": "var(--wp--custom--alignment--edge-gap)"
           }
         }
       },
@@ -234,8 +235,8 @@
       "core/query": {
         "spacing": {
           "padding": {
-            "left": "1rem",
-            "right": "1rem"
+            "left": "var(--wp--custom--alignment--edge-gap)",
+            "right": "var(--wp--custom--alignment--edge-gap)"
           }
         }
       }
