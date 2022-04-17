@@ -8,8 +8,8 @@
 /**
  * Enqueue theme support.
  */
-if (!function_exists("life_stewardship_support")) {
-    function life_stewardship_support() {
+if (!function_exists("lifestewardship_support")) {
+    function lifestewardship_support() {
         // Alignwide and alignfull classes in the block editor.
         add_theme_support("align-wide");
 
@@ -54,29 +54,29 @@ if (!function_exists("life_stewardship_support")) {
         add_theme_support("automatic-feed-links");
     }
 }
-add_action("after_setup_theme", "life_stewardship_support");
+add_action("after_setup_theme", "lifestewardship_support");
 
 /**
  * Enqueue the styles.
  */
-function life_stewardship_styles() {
+function lifestewardship_styles() {
     wp_enqueue_style(
-        "life-stewardship-style",
+        "lifestewardship-style",
         get_template_directory_uri() . "/style.css",
         wp_get_theme()->get("Version"),
     );
 }
-add_action("wp_enqueue_scripts", "life_stewardship_styles");
+add_action("wp_enqueue_scripts", "lifestewardship_styles");
 
 /**
  * Disable the fallback for the core/navigation block.
  */
-function life_stewardship_core_navigation_render_fallback() {
+function lifestewardship_core_navigation_render_fallback() {
     return null;
 }
 add_filter(
     "block_core_navigation_render_fallback",
-    "life_stewardship_core_navigation_render_fallback",
+    "lifestewardship_core_navigation_render_fallback",
 );
 
 /**

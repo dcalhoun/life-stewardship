@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Affiliation
- * Slug: life-stewardship/affiliation
+ * Slug: lifestewardship/affiliation
  */
 ?>
 

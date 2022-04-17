@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Callout
- * Slug: life-stewardship/callout
+ * Slug: lifestewardship/callout
  */
 ?>
 
