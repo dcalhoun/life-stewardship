@@ -254,7 +254,7 @@
       }
     },
     "spacing": {
-      "blockGap": "clamp(1rem, 5vw, 1.5rem)"
+      "blockGap": "1.5rem"
     },
     "typography": {
       "lineHeight": "var(--wp--custom--alignment--line-height)",
