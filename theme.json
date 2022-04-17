@@ -143,7 +143,7 @@
         },
         {
           "name": "Base",
-          "size": "1.25rem",
+          "size": "clamp(1rem, 3vw, 1.25rem)",
           "slug": "base"
         },
         {
@@ -153,12 +153,12 @@
         },
         {
           "name": "Large",
-          "size": "2.25rem",
+          "size": "clamp(1.75rem, 3vw, 2.25rem)",
           "slug": "large"
         },
         {
           "name": "Extra Large",
-          "size": "3.75rem",
+          "size": "clamp(2rem, 7vw, 3.75rem)",
           "slug": "x-large"
         }
       ]
@@ -218,7 +218,7 @@
           }
         },
         "typography": {
-          "lineHeight": "1"
+          "lineHeight": "1.25"
         }
       },
       "core/query-title": {
@@ -254,7 +254,7 @@
       }
     },
     "spacing": {
-      "blockGap": "1.5rem"
+      "blockGap": "clamp(1rem, 5vw, 1.5rem)"
     },
     "typography": {
       "lineHeight": "var(--wp--custom--alignment--line-height)",
