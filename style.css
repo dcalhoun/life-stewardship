@@ -60,23 +60,23 @@ body {
 }
 
 .post-meta-icon__author:before {
-  -webkit-mask-image: url(../images/person.svg);
-  mask-image: url(../images/person.svg);
+  -webkit-mask-image: url(./images/person.svg);
+  mask-image: url(./images/person.svg);
 }
 
 .post-meta-icon__date:before {
-  -webkit-mask-image: url(../images/calendar.svg);
-  mask-image: url(../images/calendar.svg);
+  -webkit-mask-image: url(./images/calendar.svg);
+  mask-image: url(./images/calendar.svg);
 }
 
 .post-meta-icon__category:before {
-  -webkit-mask-image: url(../images/folder.svg);
-  mask-image: url(../images/folder.svg);
+  -webkit-mask-image: url(./images/folder.svg);
+  mask-image: url(./images/folder.svg);
 }
 
 .post-meta-icon__tag:before {
-  -webkit-mask-image: url(../images/tag.svg);
-  mask-image: url(../images/tag.svg);
+  -webkit-mask-image: url(./images/tag.svg);
+  mask-image: url(./images/tag.svg);
 }
 
 /* @TODO: Find documentation to modify `is-styled-rounded` radius. */
