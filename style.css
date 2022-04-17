@@ -24,6 +24,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* @TODO: Style with theme.json once supported - https://github.com/WordPress/gutenberg/issues/29167 */
+/* `!important` required to override Jetpack plugin styles. */
+input:not([type="submit"]),
+select,
+textarea {
+  background-color: var(--wp--preset--color--background-secondary) !important;
+  border: 1px solid var(--wp--preset--color--foreground-secondary) !important;
+  border-radius: var(--wp--custom--presentation--rounded) !important;
+  font-family: var(--wp--preset--font-family--alternate) !important;
+  font-size: var(--wp--preset--font-size--small) !important;
+  line-height: 1.5 !important;
+  padding: 0.5rem !important;
+}
+
 .drop-shadow {
   box-shadow: var(--wp--custom--presentation--drop-shadow);
 }
