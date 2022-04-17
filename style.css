@@ -93,6 +93,18 @@ textarea {
   mask-image: url(./images/tag.svg);
 }
 
+/*
+ * Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+
+.wp-block-search__button:hover,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-button__link:hover {
+  opacity: 0.9;
+}
+
 /* @TODO: Find documentation to modify `is-styled-rounded` radius. */
 .wp-block-image.is-style-circle-mask img,
 .wp-block-image.is-style-rounded img {
