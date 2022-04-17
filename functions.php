@@ -5,12 +5,6 @@
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  */
 
-$life_stewardship_stylesheets = [
-    "/stylesheets/globals.css",
-    "/stylesheets/blocks.css",
-    "/stylesheets/utilities.css",
-];
-
 /**
  * Enqueue theme support.
  */
@@ -54,8 +48,7 @@ if (!function_exists("life_stewardship_support")) {
         ]);
 
         // Enqueue editor styles.
-        global $life_stewardship_stylesheets;
-        add_editor_style($life_stewardship_stylesheets);
+        add_editor_style("style.css");
 
         // Enable RSS feed links.
         add_theme_support("automatic-feed-links");
@@ -67,14 +60,11 @@ add_action("after_setup_theme", "life_stewardship_support");
  * Enqueue the styles.
  */
 function life_stewardship_styles() {
-    global $life_stewardship_stylesheets;
-    foreach ($life_stewardship_stylesheets as $stylesheet) {
-        wp_enqueue_style(
-            $stylesheet,
-            get_template_directory_uri() . $stylesheet,
-            wp_get_theme()->get("Version"),
-        );
-    }
+    wp_enqueue_style(
+        "life-stewardship-style",
+        get_template_directory_uri() . "/style.css",
+        wp_get_theme()->get("Version"),
+    );
 }
 add_action("wp_enqueue_scripts", "life_stewardship_styles");
 
