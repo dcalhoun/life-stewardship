@@ -33,7 +33,7 @@ module Api = {
   external decodePost: Js.Json.t => post = "%identity"
   external decodeError: Js.Dict.t<Js.Json.t> => error = "%identity"
 
-  let postsUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wordpress.com/posts"
+  let postsUrl = "https://public-api.wordpress.com/wp/v2/sites/lifestewardshipllc.wpcomstaging.com/posts"
   let publicStatus = "status=publish,private"
   let previewStatus = publicStatus ++ ",draft,pending,future"
 
