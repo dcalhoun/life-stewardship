@@ -1,4 +1,4 @@
-# Life Stewardship WordPress
+# Life Stewardship
 
 A WordPress theme for the Life Stewardship LLC marketing site.
 
