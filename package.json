@@ -13,5 +13,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Calhoun",
-  "license": "MIT"
+  "license": "GPL-2.0-or-later"
 }
