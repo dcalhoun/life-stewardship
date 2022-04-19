@@ -105,9 +105,13 @@ body {
   opacity: 0.9;
 }
 
-/* @TODO: Find documentation to modify `is-styled-rounded` radius. */
-.wp-block-image.is-style-circle-mask img,
-.wp-block-image.is-style-rounded img {
+/*
+ * @TODO: Find documentation to modify `is-styled-rounded` radius.
+ * Duplicate selector required due to order of stylesheet loading on
+ * WordPress.com.
+ */
+.wp-block-image.is-style-circle-mask.is-style-circle-mask img,
+.wp-block-image.is-style-rounded.is-style-rounded img {
   border-radius: var(--wp--custom--presentation--rounded);
 }
 
@@ -123,6 +127,7 @@ body {
 
 /* @TODO: https://github.com/Automattic/jetpack/pull/19527#issuecomment-871541169 */
 .wp-block-jetpack-button.wp-block-jetpack-button button {
+  border: none;
   font-family: var(--wp--preset--font-family--alternate);
   font-size: 1rem;
   font-weight: 600;
