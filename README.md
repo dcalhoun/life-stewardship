@@ -1,9 +1,13 @@
 # Life Stewardship
 
-Marketing website for Life Stewardship LLC, financial planning & coaching.
+A WordPress theme for the Life Stewardship LLC marketing site.
 
-## Project Set Up
+## Requirements
 
-1. `yarn install`
-1. `yarn dev:rescript`
-1. `yarn dev:next`
+- Docker
+- WordPress Docker image
+
+## Setup
+
+1. `npm install`
+1. `npm run wp-env start`

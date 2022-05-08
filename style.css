@@ -1,0 +1,172 @@
+/*
+Theme Name: Life Stewardship
+Theme URI: https://github.com/dcalhoun/life-stewardship
+Author: David Calhoun
+Author URI: https://davidcalhoun.me
+Description: WordPress theme for the Life Stewardship LLC marketing site.
+Version: 0.0.1
+Requires at least: 5.7
+Tested up to: 5.8
+Requires PHP: 5.7
+License: GPL-2.0-or-later
+License URI: https://raw.githubusercontent.com/dcalhoun/life-stewardship/main/LICENSE
+Text Domain: lifestewardship
+*/
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* @TODO: Style with theme.json once supported - https://github.com/WordPress/gutenberg/issues/29167 */
+/* `!important` required to override Jetpack plugin styles. */
+.wp-block-jetpack-contact-form input:not([type="submit"]),
+.wp-block-jetpack-contact-form select,
+.wp-block-jetpack-contact-form textarea {
+  background-color: var(--wp--preset--color--background-secondary) !important;
+  border: 1px solid var(--wp--preset--color--foreground-secondary) !important;
+  border-radius: var(--wp--custom--presentation--rounded) !important;
+  font-family: var(--wp--preset--font-family--alternate) !important;
+  font-size: var(--wp--preset--font-size--small) !important;
+  line-height: 1.5 !important;
+  padding: 0.5rem !important;
+}
+
+.drop-shadow {
+  box-shadow: var(--wp--custom--presentation--drop-shadow);
+}
+
+.font-alternate {
+  font-family: var(--wp--preset--font-family--alternate);
+}
+
+.h-full {
+  height: 100%;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.post-meta-icon {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-meta-icon:before {
+  align-self: center;
+  content: "";
+  display: inline-block;
+  margin-right: calc(0.25 * var(--wp--style--block-gap));
+  height: 1rem;
+  width: 1rem;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  background-color: currentColor;
+}
+
+.post-meta-icon__author:before {
+  -webkit-mask-image: url(./images/person.svg);
+  mask-image: url(./images/person.svg);
+}
+
+.post-meta-icon__date:before {
+  -webkit-mask-image: url(./images/calendar.svg);
+  mask-image: url(./images/calendar.svg);
+}
+
+.post-meta-icon__category:before {
+  -webkit-mask-image: url(./images/folder.svg);
+  mask-image: url(./images/folder.svg);
+}
+
+.post-meta-icon__tag:before {
+  -webkit-mask-image: url(./images/tag.svg);
+  mask-image: url(./images/tag.svg);
+}
+
+/*
+ * Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+
+.wp-block-search__button:hover,
+.wp-block-file .wp-block-file__button:hover,
+.wp-block-button__link:hover {
+  opacity: 0.9;
+}
+
+/*
+ * @TODO: Find documentation to modify `is-styled-rounded` radius.
+ * Duplicate selector required due to order of stylesheet loading on
+ * WordPress.com.
+ */
+.wp-block-image.is-style-circle-mask.is-style-circle-mask img,
+.wp-block-image.is-style-rounded.is-style-rounded img {
+  border-radius: var(--wp--custom--presentation--rounded);
+}
+
+/* @TODO: https://github.com/WordPress/gutenberg/issues/39074 */
+.wp-block-post-featured-image img {
+  border-radius: var(--wp--custom--presentation--rounded);
+}
+
+/* @TODO: Default style erroneously renders at 100%. Fix? Change width? */
+.wp-block-separator.is-style-default {
+  max-width: 54rem;
+}
+
+/* @TODO: https://github.com/Automattic/jetpack/pull/19527#issuecomment-871541169 */
+.wp-block-jetpack-button.wp-block-jetpack-button button {
+  border: none;
+  font-family: var(--wp--preset--font-family--alternate);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+}
+
+.wp-block-pullquote cite,
+.wp-block-quote cite {
+  font-family: var(--wp--preset--font-family--alternate);
+  font-style: normal;
+}
+
+.wp-block-pullquote blockquote {
+  border-top: 2px solid var(--wp--preset--color--action);
+  border-bottom: 2px solid var(--wp--preset--color--action);
+  font-style: italic;
+  margin: 0 1rem;
+  padding-bottom: var(--wp--style--block-gap);
+}
+
+.wp-block-pullquote cite {
+  font-size: var(--wp--preset--font-size--small);
+  text-transform: uppercase;
+}
+
+.wp-block-quote {
+  border-left: 2px solid var(--wp--preset--color--action);
+  padding-left: 1rem;
+}
+
+.wp-block-quote p {
+  font-style: italic;
+}
+
+.wp-block-quote cite {
+  font-size: var(--wp--preset--font-size--small);
+}
+
+figcaption {
+  font-size: var(--wp--preset--font-size--x-small);
+  font-family: var(--wp--preset--font-family--alternate);
+}

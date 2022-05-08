@@ -1,0 +1,42 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- @TODO: This heading duplicates query-title https://github.com/WordPress/gutenberg/issues/33476 -->
+<!-- wp:group {"style":{"spacing":{"padding":{"right":"1rem","left":"1rem"}}},"layout":{"inherit":true}} -->
+<div class="wp-block-group" style="padding-right: 1rem; padding-left: 1rem">
+  <!-- wp:heading {"level":1,"className":"wp-block-post-title"} -->
+  <h1 class="wp-block-post-title">Blog</h1>
+  <!-- /wp:heading -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:query {"tagName":"main","layout":{"inherit":true}} -->
+<main class="wp-block-query">
+  <!-- wp:query-title {"type":"archive","style":{"spacing":{"margin":{"bottom":"100px"}}}} /-->
+  <!-- wp:post-template -->
+  <!-- wp:group -->
+  <div class="wp-block-group">
+    <!-- wp:post-title {"isLink":true} /-->
+    <!-- wp:post-featured-image {"isLink":true} /-->
+    <!-- wp:post-excerpt /-->
+    <!-- wp:template-part {"slug":"post-meta","layout":{"inherit":true}} /-->
+    <!-- wp:spacer {"height":40} -->
+    <div style="height: 40px" aria-hidden="true" class="wp-block-spacer"></div>
+    <!-- /wp:spacer -->
+  </div>
+  <!-- /wp:group -->
+  <!-- /wp:post-template -->
+  <!-- wp:group {"layout":{"inherit":true}} -->
+  <div class="wp-block-group">
+    <!-- wp:query-pagination -->
+    <!-- wp:query-pagination-previous /-->
+
+    <!-- wp:query-pagination-numbers /-->
+
+    <!-- wp:query-pagination-next /-->
+    <!-- /wp:query-pagination -->
+  </div>
+  <!-- /wp:group -->
+</main>
+<!-- /wp:query -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer","layout":{"inherit":true},"className":"site-footer-container"} /-->
