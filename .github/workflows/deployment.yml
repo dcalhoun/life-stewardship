@@ -1,7 +1,7 @@
 name: Deployment
 on:
   push:
-    branches: [add-deployment-workflow]
+    branches: [main]
   workflow_dispatch:
 jobs:
   deploy:
