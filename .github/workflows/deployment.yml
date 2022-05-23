@@ -18,7 +18,7 @@ jobs:
       - name: Sync Files
         uses: Automattic/FTP-Deploy-Action@3.0.1
         with:
-          ftp-server: sftp://sftp.wp.com/htdocs/
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/life-stewardship/
           ftp-username: ${{ secrets.FTP_USER }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
           known-hosts: "sftp.wp.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQAB\
@@ -29,4 +29,4 @@ jobs:
             YCtcKbHS+Yy4RwcO9PxZUBkeMXUrejms027bRcdVfwf55hWSD9xYEHpE\
             HupkSL4ofWs3UKeRGz+jCCzl7Nu0S6VSwK4Zzll0auHI0Hwh8WKTJbSn\
             1gxCdF93/rmP"
-          git-ftp-args: --dry-run --remote-root /htdocs/wp-content/themes/life-stewardship/
+          git-ftp-args: --dry-run
