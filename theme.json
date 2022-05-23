@@ -93,12 +93,15 @@
     },
     "custom": {
       "alignment": {
-        "lineHeight": 1.75,
-        "edgeGap": "1rem"
+        "lineHeight": 1.75
       },
       "presentation": {
         "dropShadow": "0 0 #0000,0 0 #0000,0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)",
         "rounded": "0.5rem"
+      },
+      "spacing": {
+        "large": "5rem",
+        "outer": "max(1rem, 5vw)"
       }
     },
     "layout": {
@@ -203,14 +206,6 @@
           "letterSpacing": "0.05em"
         }
       },
-      "core/post-content": {
-        "spacing": {
-          "padding": {
-            "left": "var(--wp--custom--alignment--edge-gap)",
-            "right": "var(--wp--custom--alignment--edge-gap)"
-          }
-        }
-      },
       "core/post-title": {
         "spacing": {
           "margin": {
@@ -230,14 +225,6 @@
         "border": {
           "color": "rgba(231,229,228,1)",
           "width": "0.5px"
-        }
-      },
-      "core/query": {
-        "spacing": {
-          "padding": {
-            "left": "var(--wp--custom--alignment--edge-gap)",
-            "right": "var(--wp--custom--alignment--edge-gap)"
-          }
         }
       }
     },
