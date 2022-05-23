@@ -29,4 +29,4 @@ jobs:
             YCtcKbHS+Yy4RwcO9PxZUBkeMXUrejms027bRcdVfwf55hWSD9xYEHpE\
             HupkSL4ofWs3UKeRGz+jCCzl7Nu0S6VSwK4Zzll0auHI0Hwh8WKTJbSn\
             1gxCdF93/rmP"
-          git-ftp-args: --dry-run --remote-root ./wp-content/themes/life-stewardship/
+          git-ftp-args: --dry-run --remote-root /htdocs/wp-content/themes/life-stewardship/
