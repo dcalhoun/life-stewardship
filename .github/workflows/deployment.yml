@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: Deploy
     environment:
-      name: production
+      name: Production
       url: https://lifestewardshipllc.com
     runs-on: ubuntu-latest
     steps:
