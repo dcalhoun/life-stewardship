@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Transfer Files
-        uses: Automattic/FTP-Deploy-Action@3.0.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           ftp-server: sftp://sftp.wp.com/htdocs/
           ftp-username: ${{ secrets.FTP_USER }}
