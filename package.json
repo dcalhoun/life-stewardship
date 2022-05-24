@@ -9,8 +9,7 @@
     "prettier": "^2.4.1"
   },
   "scripts": {
-    "wp-env": "wp-env",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "wp-env": "wp-env"
   },
   "author": "David Calhoun",
   "license": "GPL-2.0-or-later"
