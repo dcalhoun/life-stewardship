@@ -149,3 +149,18 @@ add_action("init", function () {
     inline_post_featured_image("page");
     inline_post_featured_image("post");
 });
+
+/**
+ * Register custom block tupe.
+ */
+function lifestewardship_post_preview_block() {
+    wp_register_script(
+        "lifestewardship_post_preview",
+        get_template_directory_uri() . "/blocks/build/post-preview/index.js",
+        ["wp-blocks"],
+    );
+    register_block_type(__DIR__ . "/blocks/post-preview", [
+        "editor_script" => "lifestewardship_post_preview",
+    ]);
+}
+add_action("init", "lifestewardship_post_preview_block");

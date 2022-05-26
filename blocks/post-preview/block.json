@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "lifestewardship/post-preview",
+  "title": "Post Preview",
+  "textdomain": "lifestewardship",
+  "icon": "universal-access-alt",
+  "category": "theme",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    }
+  },
+  "example": {
+    "attributes": {
+      "content": "Hello world"
+    }
+  }
+}
