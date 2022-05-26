@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build --webpack-copy-php --webpack-src-dir=blocks/post-preview --output-path=blocks/build/post-preview",
-    "start": "wp-scripts start --webpack-copy-php --webpack-src-dir=blocks/post-preview --output-path=blocks/build/post-preview",
+    "dev": "wp-scripts start --webpack-copy-php --webpack-src-dir=blocks/post-preview --output-path=blocks/build/post-preview",
     "wp-env": "wp-env"
   },
   "author": "David Calhoun",
