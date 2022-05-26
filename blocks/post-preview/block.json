@@ -6,16 +6,7 @@
   "textdomain": "lifestewardship",
   "icon": "universal-access-alt",
   "category": "theme",
-  "attributes": {
-    "content": {
-      "type": "string",
-      "source": "html",
-      "selector": "p"
-    }
-  },
-  "example": {
-    "attributes": {
-      "content": "Hello world"
-    }
-  }
+  "attributes": {},
+  "usesContext": ["postId", "postType"],
+  "example": {}
 }
