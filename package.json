@@ -4,8 +4,8 @@
   "description": "WordPress theme for Life Stewardship LLC marketing site.",
   "main": "index.js",
   "scripts": {
-    "build": "wp-scripts build --webpack-copy-php --webpack-src-dir=blocks/post-preview --output-path=blocks/build/post-preview",
-    "dev": "wp-scripts start --webpack-copy-php --webpack-src-dir=blocks/post-preview --output-path=blocks/build/post-preview",
+    "build": "wp-scripts build --webpack-copy-php --webpack-src-dir=blocks --output-path=build/blocks",
+    "dev": "wp-scripts start --webpack-copy-php --webpack-src-dir=blocks --output-path=build/blocks",
     "wp-env": "wp-env"
   },
   "author": "David Calhoun",

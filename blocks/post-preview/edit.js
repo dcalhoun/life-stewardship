@@ -1,13 +1,7 @@
 import { useEntityProp } from "@wordpress/core-data";
 
 export default function PostPreviewEdit({ context: { postType, postId } }) {
-  // @TODO: Why is useEntityProp undefined?
-  const [postTitle] = (useEntityProp || window.wp.coreData.useEntityProp)(
-    "postType",
-    postType,
-    "title",
-    postId
-  );
+  const [postTitle] = useEntityProp("postType", postType, "title", postId);
 
   return (
     <article>

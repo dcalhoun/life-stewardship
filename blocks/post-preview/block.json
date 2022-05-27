@@ -8,5 +8,6 @@
   "category": "theme",
   "attributes": {},
   "usesContext": ["postId", "postType"],
-  "example": {}
+  "example": {},
+  "editorScript": "file:./index.js"
 }
