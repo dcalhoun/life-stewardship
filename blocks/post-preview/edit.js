@@ -5,9 +5,9 @@ export default function PostPreviewEdit({ context: { postType, postId } }) {
   const [link] = useEntityProp("postType", postType, "link", postId);
 
   return (
-    <article>
-      <a href={link}>
-        <h2>{title}</h2>
+    <article role="listitem">
+      <a href={link} title={title}>
+        <h2 aria-hidden="true">{title}</h2>
       </a>
     </article>
   );
