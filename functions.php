@@ -5,6 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  */
 
+include __DIR__ . "/build/blocks/post-preview/index.php";
+
 /**
  * Enqueue theme support.
  */
@@ -149,11 +151,3 @@ add_action("init", function () {
     inline_post_featured_image("page");
     inline_post_featured_image("post");
 });
-
-/**
- * Register custom block tupe.
- */
-function lifestewardship_post_preview_block() {
-    register_block_type(__DIR__ . "/build/blocks/post-preview");
-}
-add_action("init", "lifestewardship_post_preview_block");
