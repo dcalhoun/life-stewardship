@@ -8,11 +8,17 @@ export default function PostPreviewEdit({ context: { postType, postId } }) {
     postId
   );
   const [link] = useEntityProp("postType", postType, "link", postId);
+  const [date] = useEntityProp("postType", postType, "date", postId);
 
   return (
     <article role="listitem">
-      <a href={link} title={title}>
+      <a
+        href={link}
+        onClick={(event) => event.preventDefault()}
+        title={`${title} - Published on ${date}`}
+      >
         <h2 aria-hidden="true">{title}</h2>
+        <time aria-hidden="true">{date}</time>
       </a>
     </article>
   );
