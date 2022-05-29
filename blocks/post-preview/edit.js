@@ -1,7 +1,12 @@
 import { useEntityProp } from "@wordpress/core-data";
 
 export default function PostPreviewEdit({ context: { postType, postId } }) {
-  const [title] = useEntityProp("postType", postType, "title", postId);
+  const [, , { rendered: title }] = useEntityProp(
+    "postType",
+    postType,
+    "title",
+    postId
+  );
   const [link] = useEntityProp("postType", postType, "link", postId);
 
   return (
