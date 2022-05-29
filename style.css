@@ -163,7 +163,8 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
  * WordPress.com.
  */
 .wp-block-image.is-style-circle-mask.is-style-circle-mask img,
-.wp-block-image.is-style-rounded.is-style-rounded img {
+.wp-block-image.is-style-rounded.is-style-rounded img,
+img.is-style-rounded {
   border-radius: var(--wp--custom--presentation--rounded);
 }
 
