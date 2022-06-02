@@ -59,7 +59,7 @@ export default function PostPreviewEdit({ context: { postType, postId } }) {
           src={imgUrl}
           width="100"
         />
-        )<h2 aria-hidden="true">{title}</h2>
+        <h2 aria-hidden="true">{title}</h2>
         <time aria-hidden="true">{date}</time>
       </a>
     </article>
