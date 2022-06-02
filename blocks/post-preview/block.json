@@ -4,7 +4,7 @@
   "name": "lifestewardship/post-preview",
   "title": "Post Preview",
   "textdomain": "lifestewardship",
-  "icon": "universal-access-alt",
+  "icon": "excerpt-view",
   "category": "theme",
   "attributes": {},
   "usesContext": ["postId", "postType"],
