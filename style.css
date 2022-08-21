@@ -229,3 +229,13 @@ figcaption {
 .wp-block-image {
   margin: 0;
 }
+
+/* @TODO: Manually apply theme.json styles. They are mysteriously missing only
+  in WordPress.com front end. */
+.wp-block-navigation-link {
+  color: var(--wp--preset--color--action-secondary);
+  font-family: var(--wp--preset--font-family--alternate);
+  font-size: var(--wp--preset--font-size--small);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
