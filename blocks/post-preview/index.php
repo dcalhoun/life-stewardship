@@ -10,26 +10,26 @@ function lifestewardship_post_preview_render(
 ) {
     $post_id = $block->context["postId"];
     $title = get_the_title($post_id);
-    $link = get_the_permalink($post_id);
-    $date = get_the_date("Y-m-d", $post_id);
+    $link = get_the_permalInk($post_id);
+    $date = get_the_date("F d, Y", $post_id);
+    $dateTime = get_the_date("Y-m-d", $post_id);
     $featured_image_url = get_the_post_thumbnail_url($post_id);
     return wp_sprintf(
         '
-    <article role="listitem">
-      <a href="%2$s" title="%1$s - Published on %3$s" style="display: block;">
+    <a href="%2$s" title="%1$s - Published on %3$s" style="display: block;">
         <img
             aria-hidden="true"
             class="is-style-rounded"
             height="100"
-            src="%4$s"
+            src="%5$s"
             width="100"
         />
         <h2 aria-hidden="true">%1$s</h2>
-        <time aria-hidden="true">%3$s</time>
-      </a>
-    </article>',
+        <time aria-hidden="true" dateTime="%3$s">%4$s</time>
+    </a>',
         esc_html($title),
         esc_url($link),
+        $dateTime,
         $date,
         esc_url($featured_image_url),
     );
