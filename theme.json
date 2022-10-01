@@ -233,6 +233,11 @@
           "lineHeight": "1.25"
         }
       },
+      "h2": {
+        "typography": {
+          "lineHeight": "1.25"
+        }
+      },
       "link": {
         "color": {
           "text": "var(--wp--preset--color--action)"
