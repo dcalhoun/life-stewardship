@@ -59,6 +59,7 @@
       }
     },
     "color": {
+      "defaultPalette": false,
       "palette": [
         {
           "slug": "foreground",
